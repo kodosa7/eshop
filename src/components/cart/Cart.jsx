@@ -8,28 +8,28 @@ const Cart = () => {
 
                 <Item
                     name="Item name"
-                    image="img"
+                    image="image"
                     description="Item description is here, but it's a short one."
                     price="10$"
                 />
 
                 <Item
                     name="Item name"
-                    image="img"
+                    image="image"
                     description="Item description is here, but it's a short one."
                     price="10$"
                 />
                 
                 <Item
                     name="Item name"
-                    image="img"
+                    image="image"
                     description="Item description is here, but it's a short one."
                     price="10$"
                 />
                 
                 <Item
                     name="Item name"
-                    image="img"
+                    image="image"
                     description="Item description is here, but it's a short one."
                     price="10$"
                 />
