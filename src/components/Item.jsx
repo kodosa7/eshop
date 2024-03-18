@@ -1,8 +1,19 @@
+import { useState } from "react";
+
 const Item = (props) => {
+    const itemId = props.id;
     const itemName = props.name;
     const itemDescription = props.description;
-    const itemImage=props.image;
-    const itemPrice=props.price;
+    const itemImage = props.image;
+    const itemPrice = props.price;
+
+    const [cart, setCart] = useState([]);
+
+    const handleAddToCart = () => {
+        console.log("button pressed");
+        setCart(prev => [...prev, itemId]);
+        console.log(cart);
+    }
 
     return (
         <div className="card">
@@ -14,10 +25,15 @@ const Item = (props) => {
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     { itemPrice } $
-                    <button className="btn btn-primary">Add to cart</button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={ handleAddToCart }
+                        cart={ cart }
+                    >
+                        Add to cart
+                    </button>
                 </div>
             </div>
-
         </div>
     );
 };
