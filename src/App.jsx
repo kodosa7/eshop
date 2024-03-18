@@ -1,5 +1,7 @@
 import Header from "./components/Header";
-import Cart from "./components/cart/Cart";
+import Cart from "./components/Cart";
+import Article from "./components/Article";
+
 
 const App = () => {
     return (
@@ -7,6 +9,7 @@ const App = () => {
             <div className="container">
                 <Header />
                 <Cart />
+                <Article />
             </div>
         </>
     )

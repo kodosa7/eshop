@@ -1,11 +1,8 @@
 import Item from "./Item";
 
-const Cart = () => {
+const Article = () => {
         return (
             <>
-                <h1>Cart</h1>
-                <p>Add something to your cart, make it from your heart.</p>
-
                 <Item
                     name="Item name"
                     image="image"
@@ -37,4 +34,4 @@ const Cart = () => {
         );
     };
 
-export default Cart;
+export default Article;
