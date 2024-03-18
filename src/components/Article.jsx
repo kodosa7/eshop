@@ -54,15 +54,19 @@ const Article = () => {
 
     return (
         <>
-            { data.map((item, index) => ( 
-                <Item
-                    key={ index }
-                    name={ item.name }
-                    image={ item.image }
-                    description={ item.description }
-                    price={ item.price }
-                />
-            ))}
+            <article className="row">
+                { data.map((item, index) => ( 
+                    <Item
+                        className="col"
+                        
+                        key={ index }
+                        name={ item.name }
+                        image={ item.image }
+                        description={ item.description }
+                        price={ item.price }
+                    />
+                ))}
+            </article>
         </>
     );
 };

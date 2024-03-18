@@ -5,13 +5,11 @@ import Article from "./components/Article";
 
 const App = () => {
     return (
-        <>
-            <div className="container">
-                <Header />
-                <Cart />
-                <Article />
-            </div>
-        </>
+        <div className="container">
+            <Header />
+            <Cart />
+            <Article />
+        </div>
     )
 }
 
