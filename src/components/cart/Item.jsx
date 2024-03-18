@@ -1,10 +1,15 @@
-const Item = () => {
+const Item = (props) => {
+    const itemName = props.name;
+    const itemDescription = props.description;
+    const itemImage=props.image;
+    const itemPrice=props.price;
+
     return (
         <>
-            <p>Item name</p>
-            <p>img</p>
-            <p>Item description is here, but it's a short one.</p>
-            <p>10$</p>
+            <p>{ itemName }</p>
+            <p>{ itemImage }</p>
+            <p>{ itemDescription }</p>
+            <p>{ itemPrice }</p>
             <button>Add to cart</button>
         </>
     );
