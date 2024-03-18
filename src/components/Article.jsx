@@ -66,7 +66,7 @@ const Article = () => {
                 { data.map((item, index) => ( 
                     <div
                         key={index}
-                        className="col-md-3"
+                        className="col-sm-6 col-md-4 col-lg-3"
                     >
                         <Item
                             name={ item.name }
