@@ -13,50 +13,50 @@ const Article = () => {
     const data = [
         {   name: "Item name 1",
             image: image1,
-            description: "Item description is here, but it's not a short one 1.",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             price: 10
         },
         {
             name: "Item name 2",
             image: image2,
-            description: "Item description is here, but it's not a short one 2.",
-            price: 10
+            description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            price: 150
         },
         {
             name: "Item name 3",
             image: image3,
-            description: "Item description is here, but it's not a short one 3.",
-            price: 10
+            description: "Quam lacus suspendisse faucibus interdum posuere lorem. Sit amet cursus sit amet dictum sit amet justo.",
+            price: 3257
         },
         {
             name: "Item name 4",
             image: image4,
-            description: "Item description is here, but it's not a short one 4.",
-            price: 10
+            description: "Rutrum tellus pellentesque eu tincidunt tortor. Odio ut sem nulla pharetra diam sit amet.",
+            price: 9999999999.99
         },
         {
             name: "Item name 5",
             image: image5,
-            description: "Item description is here, but it's not a short one 5.",
-            price: 10
+            description: "Condimentum vitae sapien pellentesque habitant morbi tristique.",
+            price: 1.50
         },
         {
             name: "Item name 6",
             image: image6,
-            description: "Item description is here, but it's not a short one 6.",
-            price: 10
+            description: "Odio facilisis mauris sit amet massa vitae.",
+            price: 1234
         },
         {
             name: "Item name 7",
             image: image7,
-            description: "Item description is here, but it's not a short one 7.",
-            price: 10
+            description: "Nunc mattis enim ut tellus elementum sagittis vitae et. Eu nisl nunc mi ipsum.",
+            price: 800
         },
         {
             name: "Item name 8",
             image: image8,
-            description: "Item description is here, but it's not a short one 8.",
-            price: 10
+            description: "Id consectetur purus ut faucibus pulvinar. Vitae ultricies leo integer malesuada nunc vel risus commodo.",
+            price: 79.95
         }
     ]
 
