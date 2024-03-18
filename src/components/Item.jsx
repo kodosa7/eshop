@@ -12,7 +12,7 @@ const Item = (props) => {
                 <p className="card-text">{ itemDescription }</p>
             </div>
             <div className="card-footer">
-                <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex justify-content-between align-items-center text-wrap">
                     { itemPrice } $
                     <button className="btn btn-primary">Add to cart</button>
                 </div>
