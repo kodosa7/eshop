@@ -5,13 +5,15 @@ const Item = (props) => {
     const itemPrice=props.price;
 
     return (
-        <>
-            <p>{ itemName }</p>
-            <p>{ itemImage }</p>
+        <div className="card">
+            <h3>{ itemName }</h3>
+            <img src={ itemImage } alt="" />
             <p>{ itemDescription }</p>
-            <p>{ itemPrice }</p>
-            <button>Add to cart</button>
-        </>
+            <div className="d-md-flex justify-content-between align-items-center">
+                { itemPrice } $
+                <button className="btn btn-primary">Add to cart</button>
+            </div>
+        </div>
     );
 };
 
