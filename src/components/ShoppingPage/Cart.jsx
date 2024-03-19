@@ -34,7 +34,7 @@ const Cart = ({ selectedItems }) => {
                             <>
                                 <div className="row">
                                     <div
-                                        className="col-sm-6 col-md-4 col-lg-3"
+                                        className="col"
                                         key={index}
                                     >
                                         {name}
@@ -43,7 +43,7 @@ const Cart = ({ selectedItems }) => {
                                         {price} $
                                     </div>
                                     <div className="col">
-                                        <button className="btn btn-outline-dark">
+                                        <button className="btn btn-outline-dark btn-sm">
                                             Remove from cart
                                         </button>
                                     </div>
@@ -53,14 +53,14 @@ const Cart = ({ selectedItems }) => {
                     )}
                 
                 <div className="row">
-                    <div className="col-sm-6 col-md-4 col-lg-3">
+                    <div className="col">
                         Total
                     </div>
                     <div className="col">
                         {total} $
                     </div>
                 </div>
-                <div className="my-4">
+                <div className="mt-3 mb-4">
                     <button className="btn btn-primary">
                         Checkout
                     </button>
