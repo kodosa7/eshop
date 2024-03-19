@@ -14,7 +14,9 @@ const Cart = ({ selectedItems }) => {
                 <h2>Cart</h2>
                 <ul>
                     {selectedItems.map((itemId, index) => (
-                        <li key={index}>{itemId}</li>
+                        <li key={index}>
+                            {itemId.name}
+                        </li>
                     ))}
                 </ul>
                 
