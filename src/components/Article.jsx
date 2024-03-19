@@ -1,6 +1,6 @@
 import Item from "./Item";
 
-const Article = () => {
+const Article = ({ handleAddToCart }) => {
     const data = [
         {
             id: 1,
@@ -74,6 +74,7 @@ const Article = () => {
                             image={ item.image }
                             description={ item.description }
                             price={ item.price }
+                            handleAddToCart={ handleAddToCart }
                         />
                     </div>
                 ))}

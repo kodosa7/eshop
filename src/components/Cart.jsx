@@ -1,23 +1,17 @@
-const Cart = (props) => {
-    const cart = props.cart;
-    console.log("cart is ", cart);
-
-    if (!cart) {
-        return (
-            <>
-                <h2>Cart</h2>
-                <p>Add something to your cart, make it from your heart.</p>
-                the cart array is empty
-            </>
-        )
-    }
+const Cart = ({ selectedItems }) => {
+    console.log("SelectedItems are", selectedItems);
 
     return (
         <>
             <h2>Cart</h2>
-            {cart.map((item, index) => (
-                <p>{ item }</p>
-            ))}
+            
+            <ul>
+                {selectedItems.map((itemId, index) => (
+                    <li key={index}>{itemId}</li>
+                ))}
+            </ul>
+            
+            <p>Add something to your cart, make it from your heart.</p>
         </>
     );
 };

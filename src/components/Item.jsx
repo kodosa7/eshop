@@ -1,24 +1,24 @@
 
 const Item = (props) => {
-    const itemId = props.id;
-    const itemName = props.name;
-    const itemDescription = props.description;
-    const itemImage = props.image;
-    const itemPrice = props.price;
+    const { id, name, description, image, price, addToCart } = props;
+
+    const handleClick = () => {
+        addToCart(id);
+    }
 
     return (
         <div className="card h-100">
-            <h3 className="card-header">{ itemName }</h3>
-            <img className="card-img rounded-0" src={ itemImage } alt="" />
+            <h3 className="card-header">{ name }</h3>
+            <img className="card-img rounded-0" src={ image } alt="" />
             <div className="card-body">
-                <p className="card-text">{ itemDescription }</p>
+                <p className="card-text">{ description }</p>
             </div>
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
-                    { itemPrice } $
+                    { price } $
                     <button
                         className="btn btn-primary"
-                        // onClick={ handleAddToCart }
+                        onClick={handleClick}
                     >
                         Add to cart
                     </button>

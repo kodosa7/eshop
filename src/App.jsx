@@ -1,15 +1,11 @@
 import Header from "./components/Header";
-import Cart from "./components/Cart";
-import Article from "./components/Article";
+import ShoppingPage from "./components/ShoppingPage"
 
-const App = (props) => {
-    const cart = props.cart;
-
+const App = () => {
     return (
         <div className="container">
             <Header />
-            <Cart cart={ cart } />
-            <Article />
+            <ShoppingPage />
         </div>
     )
 }
