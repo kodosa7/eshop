@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 const Item = (props) => {
     const itemId = props.id;
@@ -6,14 +5,6 @@ const Item = (props) => {
     const itemDescription = props.description;
     const itemImage = props.image;
     const itemPrice = props.price;
-
-    const [cart, setCart] = useState([]);
-
-    const handleAddToCart = () => {
-        console.log("button pressed");
-        setCart(prev => [...prev, itemId]);
-        console.log(cart);
-    }
 
     return (
         <div className="card h-100">
@@ -27,8 +18,7 @@ const Item = (props) => {
                     { itemPrice } $
                     <button
                         className="btn btn-primary"
-                        onClick={ handleAddToCart }
-                        cart={ cart }
+                        // onClick={ handleAddToCart }
                     >
                         Add to cart
                     </button>
