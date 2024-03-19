@@ -1,3 +1,5 @@
+import data from "./data.json";
+
 const Cart = ({ selectedItems }) => {
     console.log("SelectedItems are", selectedItems);
 
@@ -13,11 +15,15 @@ const Cart = ({ selectedItems }) => {
             <>
                 <h2>Cart</h2>
                 <ul>
-                    {selectedItems.map((itemId, index) => (
-                        <li key={index}>
-                            {itemId.name}
-                        </li>
-                    ))}
+                    {selectedItems.map((itemId, index) => {
+                        const selectedItem = data.find(item => item.id === itemId);
+                        const { name, price } = selectedItem;
+                        return (
+                            <li key={index}>
+                                {name}: {price} $
+                            </li>
+                        )}
+                    )}
                 </ul>
                 
             </>
