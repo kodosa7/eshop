@@ -16,7 +16,7 @@ const Item = (props) => {
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     { price } $
                     <button
-                        className="btn btn-primary"
+                        className="btn btn-outline-dark"
                         onClick={handleClick}
                     >
                         Add to cart
