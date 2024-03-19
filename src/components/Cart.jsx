@@ -15,6 +15,7 @@ const Cart = (props) => {
     return (
         <>
             <h2>Cart</h2>
+            <p>asdsdasd</p>
             {cart.map((item, index) => (
                 <p>{ item }</p>
             ))}

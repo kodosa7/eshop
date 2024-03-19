@@ -16,7 +16,7 @@ const Item = (props) => {
     }
 
     return (
-        <div className="card">
+        <div className="card h-100">
             <h3 className="card-header">{ itemName }</h3>
             <img className="card-img rounded-0" src={ itemImage } alt="" />
             <div className="card-body">

@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import Cart from "./components/Cart";
 import Article from "./components/Article";
-import Item from "./components/Item";
 
 const App = (props) => {
     const cart = props.cart;
@@ -9,7 +8,7 @@ const App = (props) => {
     return (
         <div className="container">
             <Header />
-            <Cart cart={ Item.cart } />
+            <Cart cart={ cart } />
             <Article />
         </div>
     )
