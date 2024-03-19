@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Article from "./Article";
-import Cart from "./Cart";
+import Article from "./ShoppingPage/Article";
+import Cart from "./ShoppingPage/Cart";
 
 const ShoppingPage = () => {
     const [selectedItems, setSelectedItems] = useState([]);
@@ -10,16 +10,12 @@ const ShoppingPage = () => {
     };
 
     return (
-        <div className="container">
+        <>
+            <Cart selectedItems={ selectedItems } />
             <div className="row">
-                <div className="col-md-8">
-                    <Article handleAddToCart={ handleAddToCart } />
-                </div>
-                <div className="col-md-4">
-                    <Cart selectedItems={ selectedItems } />
-                </div>
+                <Article handleAddToCart={ handleAddToCart } />
             </div>
-        </div>
+        </>
     );
 };
 

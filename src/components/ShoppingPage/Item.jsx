@@ -1,9 +1,8 @@
-
 const Item = (props) => {
-    const { id, name, description, image, price, addToCart } = props;
+    const { id, name, description, image, price, handleAddToCart } = props;
 
     const handleClick = () => {
-        addToCart(id);
+        handleAddToCart(id);
     }
 
     return (
