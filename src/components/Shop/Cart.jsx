@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import data from "./data.json";
 
-const Cart = ({ selectedItems, setSelectedItems, setIsButtonDisabled }) => {
+const Cart = (props) => {
+    const { selectedItems, setSelectedItems, IsButtonDisabled, setIsButtonDisabled } = props;
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
