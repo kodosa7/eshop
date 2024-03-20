@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Article from "./ShoppingPage/Article";
+import ItemList from "./ShoppingPage/ItemList";
 import Cart from "./ShoppingPage/Cart";
 
 const ShoppingPage = () => {
@@ -13,7 +13,7 @@ const ShoppingPage = () => {
         <>
             <Cart selectedItems={ selectedItems } setSelectedItems={ setSelectedItems }/>
             <div className="row">
-                <Article handleAddToCart={ handleAddToCart } />
+                <ItemList handleAddToCart={ handleAddToCart } />
             </div>
         </>
     );

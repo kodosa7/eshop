@@ -4,10 +4,9 @@ const Item = (props) => {
     const { id, name, description, image, price, handleAddToCart } = props;
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-    const handleAddToCartClick = (e) => {
+    const handleAddToCartClick = () => {
         handleAddToCart(id);
         setIsButtonDisabled(true);
-        e.preventDefault();
     };
 
     return (

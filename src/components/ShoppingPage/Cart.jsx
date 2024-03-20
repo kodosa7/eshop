@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import data from "./data.json";
+import Item from "./Item";
 
-const Cart = ({ selectedItems, setSelectedItems }) => {
+const Cart = ({ selectedItems, setSelectedItems, setIsButtonDisabled }) => {
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -17,6 +18,7 @@ const Cart = ({ selectedItems, setSelectedItems }) => {
         console.log("removeFromCart");
         const updatedItems = selectedItems.filter((id) => id !== itemId);
         setSelectedItems(updatedItems);
+        setIsButtonDisabled(false);
     }
 
     if (selectedItems.length === 0) {

@@ -1,7 +1,7 @@
 import Item from "./Item";
 import data from "./data.json";
 
-const Article = ({ handleAddToCart }) => {
+const ItemList = ({ handleAddToCart }) => {
     return (
         <>
             <div className="row row-gap-4">
@@ -25,4 +25,4 @@ const Article = ({ handleAddToCart }) => {
     );
 };
 
-export default Article;
+export default ItemList;
