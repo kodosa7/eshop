@@ -1,7 +1,7 @@
 const Item = (props) => {
     const { id, name, description, image, price, handleAddToCart } = props;
 
-    const handleClick = (e) => {
+    const handleAddToCartClick = (e) => {
         handleAddToCart(id);
         e.preventDefault();
     };
@@ -16,7 +16,7 @@ const Item = (props) => {
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     {price} $
-                    <button type="button" className="btn btn-outline-dark" onClick={handleClick}>
+                    <button type="button" className="btn btn-outline-dark" onClick={handleAddToCartClick}>
                         Add to cart
                     </button>
                 </div>
