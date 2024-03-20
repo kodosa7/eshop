@@ -24,6 +24,8 @@ const Item = (props) => {
                         className="btn btn-outline-dark btn-sm"
                         onClick={ handleAddToCartClick }
                         disabled={ isButtonDisabled }
+                        isButtonDisabled={ isButtonDisabled }
+                        setIsButtonDisabled={ setIsButtonDisabled }
                     >
                         {isButtonDisabled ? "Already in your cart" : "Add to cart"}
                     </button>
