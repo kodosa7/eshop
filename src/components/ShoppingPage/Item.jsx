@@ -1,8 +1,12 @@
+import { useState } from "react";
+
 const Item = (props) => {
     const { id, name, description, image, price, handleAddToCart } = props;
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     const handleAddToCartClick = (e) => {
         handleAddToCart(id);
+        setIsButtonDisabled(true);
         e.preventDefault();
     };
 
@@ -16,8 +20,13 @@ const Item = (props) => {
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     {price} $
-                    <button type="button" className="btn btn-outline-dark" onClick={handleAddToCartClick}>
-                        Add to cart
+                    <button
+                        type="button"
+                        className="btn btn-outline-dark btn-sm"
+                        onClick={ handleAddToCartClick }
+                        disabled={ isButtonDisabled }
+                    >
+                        {isButtonDisabled ? "Already in your cart" : "Add to cart"}
                     </button>
                 </div>
             </div>
