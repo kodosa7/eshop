@@ -11,7 +11,7 @@ const ShoppingPage = () => {
 
     return (
         <>
-            <Cart selectedItems={ selectedItems } />
+            <Cart selectedItems={ selectedItems } setSelectedItems={ setSelectedItems }/>
             <div className="row">
                 <Article handleAddToCart={ handleAddToCart } />
             </div>

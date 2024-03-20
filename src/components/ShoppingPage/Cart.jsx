@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import data from "./data.json";
 
-const Cart = ({ selectedItems }) => {
+const Cart = ({ selectedItems, setSelectedItems }) => {
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -12,6 +12,12 @@ const Cart = ({ selectedItems }) => {
         });
         setTotal(totalPrice);
     }, [selectedItems]);
+
+    const removeFromCart = (itemId) => {
+        console.log("removeFromCart");
+        const updatedItems = selectedItems.filter((id) => id !== itemId);
+        setSelectedItems(updatedItems);
+    }
 
     if (selectedItems.length === 0) {
         return (
@@ -37,7 +43,11 @@ const Cart = ({ selectedItems }) => {
                                 </div>
                                 <div className="col-1 d-flex justify-content-end align-items-center">{price} $</div>
                                 <div className="col-auto">
-                                    <button type="button" className="btn btn-outline-dark btn-sm">
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-dark btn-sm"
+                                        onClick={ () => removeFromCart(itemId) }
+                                    >
                                         Remove from cart
                                     </button>
                                 </div>
