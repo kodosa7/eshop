@@ -1,11 +1,11 @@
 import Header from "./components/Header";
-import ShoppingPage from "./components/ShoppingPage"
+import Shop from "./components/Shop"
 
 const App = () => {
     return (
         <div className="container">
             <Header />
-            <ShoppingPage />
+            <Shop />
         </div>
     )
 }

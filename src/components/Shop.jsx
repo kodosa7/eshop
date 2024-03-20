@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ItemList from "./ShoppingPage/ItemList";
-import Cart from "./ShoppingPage/Cart";
+import ItemList from "./Shop/ItemList";
+import Cart from "./Shop/Cart";
 
-const ShoppingPage = () => {
+const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
 
     const handleAddToCart = (itemId) => {
@@ -19,4 +19,4 @@ const ShoppingPage = () => {
     );
 };
 
-export default ShoppingPage;
+export default Shop;
