@@ -4,6 +4,10 @@ import data from "./data.json";
 const Cart = ({ selectedItems }) => {
     const [total, setTotal] = useState(0);
 
+    const handleRemoveFromCart = () => {
+        console.log("handleRemoveFromCart clicked");
+    };
+
     useEffect(() => {
         let totalPrice = 0;
         selectedItems.forEach((itemId) => {
@@ -32,12 +36,16 @@ const Cart = ({ selectedItems }) => {
                     return (
                         <>
                             <div className="row mb-1">
-                                <div className="col-2" key={index}>
+                                <div className="col-2 d-flex justify-content-between align-items-center" key={index}>
                                     {name}
                                 </div>
-                                <div className="col-1">{price} $</div>
+                                <div className="col-1 d-flex justify-content-end align-items-center">{price} $</div>
                                 <div className="col-auto">
-                                    <button type="button" className="btn btn-outline-dark btn-sm">
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-dark btn-sm"
+                                        onClick={handleRemoveFromCart}
+                                    >
                                         Remove from cart
                                     </button>
                                 </div>
@@ -48,7 +56,7 @@ const Cart = ({ selectedItems }) => {
 
                 <div className="row">
                     <div className="col-2">Total</div>
-                    <div className="col-1">{total} $</div>
+                    <div className="col-1 d-flex justify-content-end align-items-center text-wrap">{total} $</div>
                 </div>
                 <div className="mt-3 mb-4">
                     <button type="button" className="btn btn-primary">
