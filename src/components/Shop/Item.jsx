@@ -1,12 +1,13 @@
 import { useState } from "react";
 
 const Item = (props) => {
-    const { id, name, description, image, price, handleAddToCart } = props;
+    const { id, name, description, image, price, handleAddToCart, liftUpFromItem } = props;
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     const handleAddToCartClick = () => {
         handleAddToCart(id);
         setIsButtonDisabled(true);
+        // liftUpFromItem("hey");
     };
 
     return (
@@ -22,10 +23,8 @@ const Item = (props) => {
                     <button
                         type="button"
                         className="btn btn-outline-dark btn-sm"
-                        onClick={ handleAddToCartClick }
-                        disabled={ isButtonDisabled }
-                        isButtonDisabled={ isButtonDisabled }
-                        setIsButtonDisabled={ setIsButtonDisabled }
+                        onClick={handleAddToCartClick}
+                        disabled={isButtonDisabled}
                     >
                         {isButtonDisabled ? "Already in your cart" : "Add to cart"}
                     </button>

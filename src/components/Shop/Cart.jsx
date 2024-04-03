@@ -18,8 +18,6 @@ const Cart = (props) => {
         console.log("removeFromCart");
         const updatedItems = selectedItems.filter((id) => id !== itemId);
         setSelectedItems(updatedItems);
-        console.log("isbuttonbisabled=", isButtonDisabled);
-        setIsButtonDisabled(false); // pise undefined!!!!!
     };
 
     if (selectedItems.length === 0) {
