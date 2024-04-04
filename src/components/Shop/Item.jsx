@@ -3,7 +3,6 @@ const Item = (props) => {
 
     const handleAddToCartClick = () => {
         handleAddToCart(id);
-        setIsButtonDisabled(true);
     };
 
     return (
@@ -17,12 +16,14 @@ const Item = (props) => {
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     {price} $
                     <button
+                        id={id}
                         type="button"
                         className="btn btn-outline-dark btn-sm"
                         onClick={handleAddToCartClick}
                         disabled={isButtonDisabled}
                     >
                         {isButtonDisabled ? "Already in your cart" : "Add to cart"}
+                        id={id}
                     </button>
                 </div>
             </div>

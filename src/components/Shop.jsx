@@ -8,6 +8,7 @@ const Shop = () => {
 
     const handleAddToCart = (itemId) => {
         setSelectedItems([...selectedItems, itemId]);
+        setIsButtonDisabled(true);
     };
 
     return (
