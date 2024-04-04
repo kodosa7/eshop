@@ -24,7 +24,10 @@ const Shop = (props) => {
             />
             typeof2: {typeof liftUpButtonState}
             <div className="row">
-                <ItemList handleAddToCart={handleAddToCart} liftUpButtonState={liftUpButtonState} />
+                <ItemList
+                    handleAddToCart={handleAddToCart}
+                    liftUpButtonState={liftUpButtonState}
+                />
             </div>
         </>
     );
