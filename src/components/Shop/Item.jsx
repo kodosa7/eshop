@@ -7,7 +7,11 @@ const Item = (props) => {
     const handleAddToCartClick = () => {
         handleAddToCart(id);
         setIsButtonDisabled(true);
-        liftUpButtonState("ahoj");
+        // liftUpButtonState("ahoj");
+        console.log(typeof liftUpButtonState);
+        if (typeof liftUpButtonState === "function") {
+            liftUpButtonState("ahoj"); // Call liftUpButtonState only if it's a function
+        }
     };
 
     return (

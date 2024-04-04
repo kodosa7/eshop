@@ -3,12 +3,15 @@ import ItemList from "./Shop/ItemList";
 import Cart from "./Shop/Cart";
 
 const Shop = (props) => {
-    const { isButtonDisabled, setIsButtonDisabled, liftUpButtonState } = props;
+    const { isButtonDisabled, setIsButtonDisabled } = props;
     const [selectedItems, setSelectedItems] = useState([]);
 
     const handleAddToCart = (itemId) => {
         setSelectedItems([...selectedItems, itemId]);
-        console.log(liftUpButtonState);
+    };
+
+    const liftUpButtonState = (value) => {
+        console.log("liftUpButtonState", value);
     };
 
     return (
@@ -19,8 +22,9 @@ const Shop = (props) => {
                 isButtonDisabled={isButtonDisabled}
                 setIsButtonDisabled={setIsButtonDisabled}
             />
+            typeof2: {typeof liftUpButtonState}
             <div className="row">
-                <ItemList handleAddToCart={handleAddToCart} liftUpButtonStateFromItemList={handleAddToCart} />
+                <ItemList handleAddToCart={handleAddToCart} liftUpButtonState={liftUpButtonState} />
             </div>
         </>
     );
