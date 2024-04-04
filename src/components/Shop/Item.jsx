@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const Item = (props) => {
     const { id, name, description, image, price, handleAddToCart, isButtonDisabled, setIsButtonDisabled } = props;
 
