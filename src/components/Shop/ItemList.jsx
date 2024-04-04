@@ -1,7 +1,7 @@
 import Item from "./Item";
 import data from "./data.json";
 
-const ItemList = ({ handleAddToCart, liftUpButtonState }) => {
+const ItemList = ({ handleAddToCart, isButtonDisabled, setIsButtonDisabled }) => {
     return (
         <>
             <div className="row row-gap-4">
@@ -14,9 +14,9 @@ const ItemList = ({ handleAddToCart, liftUpButtonState }) => {
                             description={item.description}
                             price={item.price}
                             handleAddToCart={handleAddToCart}
-                            liftUpButtonState={liftUpButtonState}
+                            isButtonDisabled={isButtonDisabled}
+                            setIsButtonDisabled={setIsButtonDisabled}
                         />
-                        typeof: {typeof liftUpButtonState}
                     </div>
                 ))}
             </div>

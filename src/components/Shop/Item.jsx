@@ -1,13 +1,11 @@
 import { useState } from "react";
 
 const Item = (props) => {
-    const { id, name, description, image, price, handleAddToCart, liftUpButtonState } = props;
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    const { id, name, description, image, price, handleAddToCart, isButtonDisabled, setIsButtonDisabled } = props;
 
     const handleAddToCartClick = () => {
         handleAddToCart(id);
         setIsButtonDisabled(true);
-        liftUpButtonState("ahoj");
     };
 
     return (

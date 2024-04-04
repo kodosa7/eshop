@@ -2,16 +2,12 @@ import { useState } from "react";
 import ItemList from "./Shop/ItemList";
 import Cart from "./Shop/Cart";
 
-const Shop = (props) => {
-    const { isButtonDisabled, setIsButtonDisabled } = props;
+const Shop = () => {
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const [selectedItems, setSelectedItems] = useState([]);
 
     const handleAddToCart = (itemId) => {
         setSelectedItems([...selectedItems, itemId]);
-    };
-
-    const liftUpButtonState = (value) => {
-        console.log("liftUpButtonState", value);
     };
 
     return (
@@ -22,11 +18,11 @@ const Shop = (props) => {
                 isButtonDisabled={isButtonDisabled}
                 setIsButtonDisabled={setIsButtonDisabled}
             />
-            typeof2: {typeof liftUpButtonState}
             <div className="row">
                 <ItemList
                     handleAddToCart={handleAddToCart}
-                    liftUpButtonState={liftUpButtonState}
+                    isButtonDisabled={isButtonDisabled}
+                    setIsButtonDisabled={setIsButtonDisabled}
                 />
             </div>
         </>
