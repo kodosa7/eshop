@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import data from "./data.json";
 
 const Cart = (props) => {
-    const { selectedItems, setSelectedItems, setIsButtonDisabled } = props;
+    const { selectedItems, setSelectedItems, buttonState, setButtonState } = props;
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const Cart = (props) => {
         setSelectedItems(updatedItems);
 
         // enable AddToCart button
-        setIsButtonDisabled(false);
+        setButtonState(false);
     };
 
     if (selectedItems.length === 0) {

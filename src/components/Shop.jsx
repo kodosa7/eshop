@@ -2,13 +2,14 @@ import { useState } from "react";
 import ItemList from "./Shop/ItemList";
 import Cart from "./Shop/Cart";
 
-const Shop = () => {
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+const Shop = (props) => {
+    // const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    const { buttonState, setButtonState } = props;
     const [selectedItems, setSelectedItems] = useState([]);
 
     const handleAddToCart = (itemId) => {
         setSelectedItems([...selectedItems, itemId]);
-        setIsButtonDisabled(true);
+        // setIsButtonDisabled(true);
     };
 
     return (
@@ -16,15 +17,11 @@ const Shop = () => {
             <Cart
                 selectedItems={selectedItems}
                 setSelectedItems={setSelectedItems}
-                isButtonDisabled={isButtonDisabled}
-                setIsButtonDisabled={setIsButtonDisabled}
+                buttonState={buttonState}
+                setButtonState={setButtonState}
             />
             <div className="row">
-                <ItemList
-                    handleAddToCart={handleAddToCart}
-                    isButtonDisabled={isButtonDisabled}
-                    setIsButtonDisabled={setIsButtonDisabled}
-                />
+                <ItemList handleAddToCart={handleAddToCart} buttonState={buttonState} setButtonState={setButtonState} />
             </div>
         </>
     );

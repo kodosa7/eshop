@@ -1,7 +1,7 @@
 import Item from "./Item";
 import data from "./data.json";
 
-const ItemList = ({ handleAddToCart, isButtonDisabled, setIsButtonDisabled }) => {
+const ItemList = ({ handleAddToCart, buttonState, setButtonState }) => {
     return (
         <>
             <div className="row row-gap-4">
@@ -14,8 +14,8 @@ const ItemList = ({ handleAddToCart, isButtonDisabled, setIsButtonDisabled }) =>
                             description={item.description}
                             price={item.price}
                             handleAddToCart={handleAddToCart}
-                            isButtonDisabled={isButtonDisabled}
-                            setIsButtonDisabled={setIsButtonDisabled}
+                            buttonState={buttonState}
+                            setButtonState={setButtonState}
                         />
                     </div>
                 ))}
