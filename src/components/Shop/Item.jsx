@@ -25,12 +25,15 @@ const Item = (props) => {
                     {price} $
                     <button
                         type="button"
-                        className="btn btn-outline-dark btn-sm"
+                        className="btn btn-outline-dark"
+                        style={{
+                            fontSize: ".7rem",
+                        }}
                         onClick={handleAddToCartClick}
                         disabled={isButtonDisabled}
                         buttonState={buttonState}
                     >
-                        {isButtonDisabled ? "In your cart" : "Add to cart"}
+                        {isButtonDisabled ? "Already in your cart" : "Add to cart"}
                     </button>
                 </div>
             </div>
