@@ -25,7 +25,7 @@
         "name": "Item name 4",
         "image": "https://satyr.dev/800x500/4",
         "description": "Rutrum tellus pellentesque eu tincidunt tortor. Odio ut sem nulla pharetra diam sit amet.",
-        "price": 9999999999.99
+        "price": 9.95
     },
     {
         "id": 5,
@@ -39,7 +39,7 @@
         "name": "Item name 6",
         "image": "https://satyr.dev/800x500/6",
         "description": "Odio facilisis mauris sit amet massa vitae.",
-        "price": 1234
+        "price": 123
     },
     {
         "id": 7,
