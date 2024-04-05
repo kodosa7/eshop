@@ -26,11 +26,12 @@ const Item = (props) => {
                     <button
                         type="button"
                         className="btn btn-outline-dark btn-sm"
+                        // style="--bs-btn-font-size: 0.1rem;"
                         onClick={handleAddToCartClick}
                         disabled={isButtonDisabled}
                         buttonState={buttonState}
                     >
-                        {isButtonDisabled ? "Already in your cart" : "Add to cart"}
+                        {isButtonDisabled ? "In your cart" : "Add to cart"}
                     </button>
                 </div>
             </div>
