@@ -5,12 +5,15 @@ import Cart from "./Shop/Cart";
 const Shop = (props) => {
     // const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const { buttonState, setButtonState } = props;
+    const [buttonek, setButtonek] = useState(buttonState);
     const [selectedItems, setSelectedItems] = useState([]);
 
     const handleAddToCart = (itemId) => {
         setSelectedItems([...selectedItems, itemId]);
         // setIsButtonDisabled(true);
     };
+    console.log("buttonState", buttonState);
+    console.log("buttonek", buttonek);
 
     return (
         <>
@@ -18,7 +21,7 @@ const Shop = (props) => {
                 selectedItems={selectedItems}
                 setSelectedItems={setSelectedItems}
                 buttonState={buttonState}
-                setButtonState={setButtonState}
+                buttonek={buttonek}
             />
             <div className="row">
                 <ItemList handleAddToCart={handleAddToCart} buttonState={buttonState} setButtonState={setButtonState} />

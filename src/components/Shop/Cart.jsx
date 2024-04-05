@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import data from "./data.json";
 
 const Cart = (props) => {
-    const { selectedItems, setSelectedItems, buttonState, setButtonState } = props;
+    const { selectedItems, setSelectedItems, buttonek, setButtonState } = props;
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -14,13 +14,18 @@ const Cart = (props) => {
         setTotal(totalPrice);
     }, [selectedItems]);
 
+    const setButton = () => {
+        console.log(typeof buttonek);
+        setButtonState(false);
+    };
+
     const removeFromCart = (itemId) => {
         console.log("removeFromCart initiated!");
         const updatedItems = selectedItems.filter((id) => id !== itemId);
         setSelectedItems(updatedItems);
 
         // enable AddToCart button
-        setButtonState(false);
+        setButton();
     };
 
     if (selectedItems.length === 0) {

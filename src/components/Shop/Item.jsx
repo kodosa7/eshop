@@ -10,6 +10,7 @@ const Item = (props) => {
         handleAddToCart(id);
         setIsButtonDisabled(true);
         setButtonState(true);
+        console.log("buttonState in item.jsx", buttonState);
     };
 
     return (

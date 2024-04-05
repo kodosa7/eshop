@@ -2,6 +2,8 @@ import Item from "./Item";
 import data from "./data.json";
 
 const ItemList = ({ handleAddToCart, buttonState, setButtonState }) => {
+    console.log("buttonState in itemList.jsx", buttonState);
+
     return (
         <>
             <div className="row row-gap-4">
