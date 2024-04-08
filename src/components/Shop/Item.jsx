@@ -4,13 +4,10 @@ const Item = (props) => {
     const { id, name, description, image, price, handleAddToCart } = props;
 
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-    const [buttonState, setButtonState] = useState(false);
 
     const handleAddToCartClick = () => {
         handleAddToCart(id);
         setIsButtonDisabled(true);
-        setButtonState(true);
-        console.log("buttonState in item.jsx", buttonState);
     };
 
     return (
@@ -31,7 +28,6 @@ const Item = (props) => {
                         }}
                         onClick={handleAddToCartClick}
                         disabled={isButtonDisabled}
-                        buttonState={buttonState}
                     >
                         {isButtonDisabled ? "Already in your cart" : "Add to cart"}
                     </button>
