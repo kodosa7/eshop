@@ -7,13 +7,9 @@ const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     
-    const handleAddToCartClick = (itemId) => {
-        handleAddToCart(itemId);
-        setIsButtonDisabled(true);
-    };
-
     const handleAddToCart = (itemId) => {
         setSelectedItems([...selectedItems, itemId]);
+        setIsButtonDisabled(true);
     };
 
     return (
@@ -24,7 +20,7 @@ const Shop = () => {
                 setSelectedItems={setSelectedItems}
                 isButtonDisabled={isButtonDisabled}
                 setIsButtonDisabled={setIsButtonDisabled}
-                handleAddToCartClick={handleAddToCartClick}
+                handleAddToCart={handleAddToCart}
             />
             <div className="row">
             
@@ -38,15 +34,14 @@ const Shop = () => {
                                 image={item.image}
                                 description={item.description}
                                 price={item.price}
-                                handleAddToCart={handleAddToCart}
-                                handleAddToCartClick={() => handleAddToCartClick(item.id)}
+                                handleAddToCart={() => handleAddToCart(item.id)}
 
                                 isButtonDisabled={isButtonDisabled}
                             />
                         </div>
                     ))}
                 </div>
-        
+                isButtonDisabled2: {isButtonDisabled}
             </div>
         </>
     );

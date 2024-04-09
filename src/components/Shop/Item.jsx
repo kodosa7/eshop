@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const Item = (props) => {
-    const { id, name, description, image, price, handleAddToCartClick, isButtonDisabled } = props;
+    const { id, name, description, image, price, handleAddToCart, isButtonDisabled } = props;
 
     return (
         <div className="card h-100">
@@ -20,7 +20,7 @@ const Item = (props) => {
                         style={{
                             fontSize: ".7rem",
                         }}
-                        onClick={handleAddToCartClick}
+                        onClick={handleAddToCart}
                         disabled={isButtonDisabled}
                     >
                         {isButtonDisabled ? "Already in your cart" : "Add to cart"}
