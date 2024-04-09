@@ -1,9 +1,17 @@
 import { useState } from "react";
-import ItemList from "./Shop/ItemList";
+import Item from "./Shop/Item";
+import data from "./Shop/data.json";
 import Cart from "./Shop/Cart";
 
 const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
+    
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    
+    const handleAddToCartClick = () => {
+        handleAddToCart(id);
+        setIsButtonDisabled(true);
+    };
 
     const handleAddToCart = (itemId) => {
         setSelectedItems([...selectedItems, itemId]);
@@ -11,12 +19,36 @@ const Shop = () => {
 
     return (
         <>
+            {/* Cart */}
             <Cart
                 selectedItems={selectedItems}
                 setSelectedItems={setSelectedItems}
+                isButtonDisabled={isButtonDisabled}
+                setIsButtonDisabled={setIsButtonDisabled}
+                handleAddToCartClick={handleAddToCartClick}
             />
             <div className="row">
-                <ItemList handleAddToCart={handleAddToCart} />
+            
+            {/* Item */}
+                <div className="row row-gap-4">
+                    {data.map((item, index) => (
+                        <div key={index} className="col-sm-6 col-md-4 col-lg-3">
+                            <Item
+                                id={item.id}
+                                name={item.name}
+                                image={item.image}
+                                description={item.description}
+                                price={item.price}
+                                handleAddToCart={handleAddToCart}
+
+                                isButtonDisabled={isButtonDisabled}
+                                setIsButtonDisabled={setIsButtonDisabled}
+                                handleAddToCartClick={handleAddToCartClick}
+                            />
+                        </div>
+                    ))}
+                </div>
+        
             </div>
         </>
     );
