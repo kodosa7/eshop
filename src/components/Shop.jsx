@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ItemList from "./Shop/ItemList";
 import Cart from "./Shop/Cart";
 
 const Shop = () => {
