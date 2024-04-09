@@ -5,8 +5,8 @@ import Cart from "./Shop/Cart";
 
 const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
-    
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    const [id, setId] = useState(1);
     
     const handleAddToCartClick = () => {
         handleAddToCart(id);
