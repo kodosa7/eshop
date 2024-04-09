@@ -23,7 +23,7 @@ const Item = (props) => {
                         onClick={handleAddToCart}
                         disabled={isButtonDisabled}
                     >
-                        {isButtonDisabled ? "Already in your cart" : "Add to cart"}
+                        {isButtonDisabled ? `Already in your cart ${id}` : `Add to cart ${id}`}
                     </button>
                 </div>
             </div>

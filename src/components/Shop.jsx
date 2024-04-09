@@ -38,10 +38,10 @@ const Shop = () => {
 
                                 isButtonDisabled={isButtonDisabled}
                             />
+                            isButtonDisabled: {isButtonDisabled}
                         </div>
                     ))}
                 </div>
-                isButtonDisabled2: {isButtonDisabled}
             </div>
         </>
     );
