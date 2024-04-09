@@ -1,14 +1,7 @@
 import { useState } from "react";
 
 const Item = (props) => {
-    const { id, name, description, image, price, handleAddToCart } = props;
-
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
-    const handleAddToCartClick = () => {
-        handleAddToCart(id);
-        setIsButtonDisabled(true);
-    };
+    const { id, name, description, image, price, handleAddToCart, handleAddToCartClick, isButtonDisabled, setIsButtonDisabled } = props;
 
     return (
         <div className="card h-100">
@@ -33,6 +26,7 @@ const Item = (props) => {
                     </button>
                 </div>
             </div>
+            id: {id}
         </div>
     );
 };
