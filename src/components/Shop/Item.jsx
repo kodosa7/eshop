@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const Item = (props) => {
-    const { id, name, description, image, price, handleAddToCart, handleAddToCartClick, isButtonDisabled, setIsButtonDisabled } = props;
+    const { id, name, description, image, price, handleAddToCartClick, isButtonDisabled } = props;
 
     return (
         <div className="card h-100">
@@ -14,6 +14,7 @@ const Item = (props) => {
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     {price} $
                     <button
+                        id={id}
                         type="button"
                         className="btn btn-outline-dark"
                         style={{
@@ -26,7 +27,8 @@ const Item = (props) => {
                     </button>
                 </div>
             </div>
-            id: {id}
+            id: {id}<br></br>
+            isButtonDisabled: {isButtonDisabled}
         </div>
     );
 };

@@ -42,7 +42,6 @@ const Shop = () => {
                                 handleAddToCartClick={() => handleAddToCartClick(item.id)}
 
                                 isButtonDisabled={isButtonDisabled}
-                                setIsButtonDisabled={setIsButtonDisabled}
                             />
                         </div>
                     ))}
