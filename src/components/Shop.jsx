@@ -6,10 +6,9 @@ import Cart from "./Shop/Cart";
 const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-    const [id, setId] = useState(1);
     
-    const handleAddToCartClick = () => {
-        handleAddToCart(id);
+    const handleAddToCartClick = (itemId) => {
+        handleAddToCart(itemId);
         setIsButtonDisabled(true);
     };
 
@@ -40,10 +39,10 @@ const Shop = () => {
                                 description={item.description}
                                 price={item.price}
                                 handleAddToCart={handleAddToCart}
+                                handleAddToCartClick={() => handleAddToCartClick(item.id)}
 
                                 isButtonDisabled={isButtonDisabled}
                                 setIsButtonDisabled={setIsButtonDisabled}
-                                handleAddToCartClick={handleAddToCartClick}
                             />
                         </div>
                     ))}
