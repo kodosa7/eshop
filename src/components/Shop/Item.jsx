@@ -14,7 +14,6 @@ const Item = (props) => {
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     {price} $
                     <button
-                        id={id}
                         type="button"
                         className="btn btn-outline-dark"
                         style={{
@@ -27,8 +26,9 @@ const Item = (props) => {
                     </button>
                 </div>
             </div>
-            id: {id}<br></br>
-            isButtonDisabled: {isButtonDisabled}
+            id: {id}
+            <br></br>
+            isButtonDisabled: {isButtonDisabled.toString()}
         </div>
     );
 };

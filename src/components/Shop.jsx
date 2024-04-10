@@ -6,7 +6,7 @@ import Cart from "./Shop/Cart";
 const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-    
+
     const handleAddToCart = (itemId) => {
         setSelectedItems([...selectedItems, itemId]);
         setIsButtonDisabled(true);
@@ -23,11 +23,10 @@ const Shop = () => {
                 handleAddToCart={handleAddToCart}
             />
             <div className="row">
-            
-            {/* Item */}
+                {/* Item */}
                 <div className="row row-gap-4">
                     {data.map((item, index) => (
-                        <div key={index} className="col-sm-6 col-md-4 col-lg-3">
+                        <div key={item.id} className="col-sm-6 col-md-4 col-lg-3">
                             <Item
                                 id={item.id}
                                 name={item.name}
@@ -35,10 +34,8 @@ const Shop = () => {
                                 description={item.description}
                                 price={item.price}
                                 handleAddToCart={() => handleAddToCart(item.id)}
-
                                 isButtonDisabled={isButtonDisabled}
                             />
-                            isButtonDisabled: {isButtonDisabled}
                         </div>
                     ))}
                 </div>
