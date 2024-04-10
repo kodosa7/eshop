@@ -8,6 +8,7 @@ const Shop = () => {
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     const handleAddToCart = (itemId) => {
+        console.log("added to cart with itemId", itemId);
         setSelectedItems([...selectedItems, itemId]);
         setIsButtonDisabled(true);
     };
@@ -28,7 +29,8 @@ const Shop = () => {
                     {data.map((item, index) => (
                         <div key={item.id} className="col-sm-6 col-md-4 col-lg-3">
                             <Item
-                                id={item.id}
+                                itemId={item.id}
+                                index={index}
                                 name={item.name}
                                 image={item.image}
                                 description={item.description}
