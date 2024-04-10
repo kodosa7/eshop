@@ -1,9 +1,5 @@
-import { useState } from "react";
-
 const Item = (props) => {
-    const { itemId, index, name, description, image, price, handleAddToCart, isButtonDisabled } = props;
-
-    console.log("itemId v Item: ", itemId);
+    const { itemId, name, description, image, price, handleAddToCart, disabledButtons } = props;
 
     return (
         <div className="card h-100">
@@ -15,38 +11,21 @@ const Item = (props) => {
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     {price} $
-                    {itemId === index ? (
-                        <button
-                            id={itemId}
-                            type="button"
-                            className="btn btn-outline-dark"
-                            style={{
-                                fontSize: ".7rem",
-                            }}
-                            onClick={() => handleAddToCart(itemId)}
-                            disabled={true}
-                        >
-                            {isButtonDisabled ? `Already in your cart ${itemId}` : `Add to cart ${itemId}`}
-                        </button>
-                    ) : (
-                        <button
-                            id={itemId}
-                            type="button"
-                            className="btn btn-outline-dark"
-                            style={{
-                                fontSize: ".7rem",
-                            }}
-                            onClick={() => handleAddToCart(itemId)}
-                            disabled={false}
-                        >
-                            {isButtonDisabled ? `Already in your cart ${itemId}` : `Add to cart ${itemId}`}
-                        </button>
-                    )}
+                    <button
+                        key={itemId}
+                        type="button"
+                        className="btn btn-outline-dark"
+                        style={{
+                            fontSize: ".7rem",
+                        }}
+                        onClick={() => handleAddToCart(itemId)}
+                        disabled={disabledButtons.includes(itemId)}
+                    >
+                        {disabledButtons.includes(itemId) ? `Already in your cart ${itemId}` : `Add to cart ${itemId}`}
+                    </button>
                 </div>
+                disabled: {disabledButtons.includes(itemId).toString()}
             </div>
-            itemId: {itemId}
-            <br></br>
-            isButtonDisabled: {isButtonDisabled.toString()}
         </div>
     );
 };
