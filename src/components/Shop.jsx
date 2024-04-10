@@ -7,26 +7,33 @@ const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [disabledButtons, setDisabledButtons] = useState([]);
 
+    // Handling whether the item is or isn't in cart
     const handleAddToCart = (itemId) => {
-        console.log("added to cart with itemId", itemId);
-        setSelectedItems([...selectedItems, itemId]);
+        const itemIndex = selectedItems.indexOf(itemId);
 
-        // new:
-        const updatedDisabledButtons = [...disabledButtons];
-        updatedDisabledButtons.push(itemId);
-        setDisabledButtons(updatedDisabledButtons);
+        if (itemIndex === -1) {
+            // Item is not in the cart, add it
+            setSelectedItems([...selectedItems, itemId]);
+
+            // Push the clicked item to the array
+            const updatedDisabledButtons = [...disabledButtons];
+            updatedDisabledButtons.push(itemId);
+            setDisabledButtons(updatedDisabledButtons);
+        } else {
+            // If item is already in the cart, remove it
+            const updatedItems = selectedItems.filter((id) => id !== itemId);
+            setSelectedItems(updatedItems);
+
+            // Remove the item from disabledButtons array to enable the button
+            const updatedDisabledButtons = disabledButtons.filter((id) => id !== itemId);
+            setDisabledButtons(updatedDisabledButtons);
+        }
     };
 
     return (
         <>
             {/* Cart */}
-            <Cart
-                selectedItems={selectedItems}
-                setSelectedItems={setSelectedItems}
-                // isButtonDisabled={isButtonDisabled}
-                // setIsButtonDisabled={setIsButtonDisabled}
-                handleAddToCart={handleAddToCart}
-            />
+            <Cart selectedItems={selectedItems} setSelectedItems={setSelectedItems} handleAddToCart={handleAddToCart} />
             <div className="row">
                 {/* Item */}
                 <div className="row row-gap-4">

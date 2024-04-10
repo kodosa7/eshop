@@ -24,7 +24,6 @@ const Item = (props) => {
                         {disabledButtons.includes(itemId) ? `Already in your cart ${itemId}` : `Add to cart ${itemId}`}
                     </button>
                 </div>
-                disabled: {disabledButtons.includes(itemId).toString()}
             </div>
         </div>
     );
