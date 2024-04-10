@@ -21,7 +21,7 @@ const Item = (props) => {
                         onClick={() => handleAddToCart(itemId)}
                         disabled={disabledButtons.includes(itemId)}
                     >
-                        {disabledButtons.includes(itemId) ? `Already in your cart ${itemId}` : `Add to cart ${itemId}`}
+                        {disabledButtons.includes(itemId) ? `Already in your cart` : `Add to cart`}
                     </button>
                 </div>
             </div>
