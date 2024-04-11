@@ -20,14 +20,16 @@ const Cart = (props) => {
         const updatedItems = selectedItems.filter((id) => id !== itemId);
         setSelectedItems(updatedItems);
         handleAddToCart(itemId); // remove button disabled
+        console.log(selectedItems);
+
+        // if cart gets emptied then hide the checkout form
+        if (selectedItems.length === 1) {
+            setShowCheckout(false);
+        }
     };
 
     const handleCheckout = () => {
-        if (selectedItems.length === 0) {
-            setShowCheckout(false);
-        } else {
-            setShowCheckout(true);
-        }
+        setShowCheckout(true);
     };
 
     const handleEmail = () => {
