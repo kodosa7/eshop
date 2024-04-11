@@ -23,7 +23,11 @@ const Cart = (props) => {
     };
 
     const handleCheckout = () => {
-        setShowCheckout(true);
+        if (selectedItems.length === 0) {
+            setShowCheckout(false);
+        } else {
+            setShowCheckout(true);
+        }
     };
 
     const handleEmail = () => {
