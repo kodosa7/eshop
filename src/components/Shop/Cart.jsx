@@ -63,20 +63,17 @@ const Cart = (props) => {
                     );
                 })}
 
+                <div className="row">
+                    <div className="col-2">Total</div>
+                    <div className="col-1 d-flex justify-content-end align-items-center text-wrap">{total} $</div>
+                </div>
+
                 {!showCheckout && (
-                    <>
-                        <div className="row">
-                            <div className="col-2">Total</div>
-                            <div className="col-1 d-flex justify-content-end align-items-center text-wrap">
-                                {total} $
-                            </div>
-                        </div>
-                        <div className="mt-3 mb-4">
-                            <button type="button" className="btn btn-primary" onClick={handleCheckout}>
-                                Checkout
-                            </button>
-                        </div>
-                    </>
+                    <div className="mt-3 mb-4">
+                        <button type="button" className="btn btn-primary" onClick={handleCheckout}>
+                            Checkout
+                        </button>
+                    </div>
                 )}
                 {showCheckout && <Checkout />}
             </>
