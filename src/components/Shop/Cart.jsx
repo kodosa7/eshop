@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import data from "./data.json";
+import Checkout from "./Checkout";
 
 const Cart = (props) => {
     const { selectedItems, setSelectedItems, handleAddToCart } = props;
     const [total, setTotal] = useState(0);
+    const [showCheckout, setShowCheckout] = useState(false);
 
     useEffect(() => {
         let totalPrice = 0;
@@ -18,6 +20,10 @@ const Cart = (props) => {
         const updatedItems = selectedItems.filter((id) => id !== itemId);
         setSelectedItems(updatedItems);
         handleAddToCart(itemId); // remove button disabled
+    };
+
+    const handleCheckout = () => {
+        setShowCheckout(true);
     };
 
     if (selectedItems.length === 0) {
@@ -57,15 +63,22 @@ const Cart = (props) => {
                     );
                 })}
 
-                <div className="row">
-                    <div className="col-2">Total</div>
-                    <div className="col-1 d-flex justify-content-end align-items-center text-wrap">{total} $</div>
-                </div>
-                <div className="mt-3 mb-4">
-                    <button type="button" className="btn btn-primary">
-                        Checkout
-                    </button>
-                </div>
+                {!showCheckout && (
+                    <>
+                        <div className="row">
+                            <div className="col-2">Total</div>
+                            <div className="col-1 d-flex justify-content-end align-items-center text-wrap">
+                                {total} $
+                            </div>
+                        </div>
+                        <div className="mt-3 mb-4">
+                            <button type="button" className="btn btn-primary" onClick={handleCheckout}>
+                                Checkout
+                            </button>
+                        </div>
+                    </>
+                )}
+                {showCheckout && <Checkout />}
             </>
         );
     }
