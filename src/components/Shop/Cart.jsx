@@ -26,6 +26,10 @@ const Cart = (props) => {
         setShowCheckout(true);
     };
 
+    const handleEmail = () => {
+        console.log("handleEmail fnc");
+    };
+
     if (selectedItems.length === 0) {
         return (
             <>
@@ -75,7 +79,7 @@ const Cart = (props) => {
                         </button>
                     </div>
                 )}
-                {showCheckout && <Checkout />}
+                {showCheckout && <Checkout eMail={"asd@qwe.zx"} handleEmail={handleEmail} />}
             </>
         );
     }
