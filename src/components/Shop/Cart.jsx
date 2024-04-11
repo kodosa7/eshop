@@ -75,7 +75,9 @@ const Cart = (props) => {
 
                 <div className="row">
                     <div className="col-2">Total</div>
-                    <div className="col-1 d-flex justify-content-end align-items-center text-wrap">{total} $</div>
+                    <div className="col-1 d-flex justify-content-end align-items-center text-wrap">
+                        {(Math.round(total * 100) / 100).toString()} $
+                    </div>
                 </div>
 
                 {!showCheckout && (
