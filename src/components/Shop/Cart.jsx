@@ -32,8 +32,9 @@ const Cart = (props) => {
         setShowCheckout(true);
     };
 
-    const handleEmail = () => {
+    const handleEmail = (email) => {
         console.log("handleEmail fnc");
+        console.log("entered email is", email)
     };
 
     if (selectedItems.length === 0) {

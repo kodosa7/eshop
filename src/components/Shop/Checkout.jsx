@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const Checkout = (props) => {
     const { handleEmail } = props;
@@ -6,6 +6,7 @@ const Checkout = (props) => {
     const [isEmailFieldEmpty, setIsEmailFieldEmpty] = useState(false);
 
     const handleValidation = (event) => {
+        event.preventDefault();
         setIsEmailFieldEmpty(true);
         const form = event.currentTarget;
 
@@ -19,6 +20,24 @@ const Checkout = (props) => {
         form.classList.add("was-validated");
     };
 
+    const inputRef = useRef();
+    const handleOnChange = (event) => {
+        console.log("input: ", inputRef.current.value);
+        event.preventDefault();
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (isEmailValid) {
+            console.log("Submitted.");
+            // execute the parent function with the email value
+            handleEmail(inputRef.current.value);
+        } else {
+            // if value is invalid, do this
+            console.log("not submitted, field invalid");
+        }
+    };
+
     return (
         <form className="mt-4 mb-4 needs-validation" onInput={handleValidation} noValidate>
             <div className="form-label">
@@ -27,12 +46,15 @@ const Checkout = (props) => {
             <div className="input-group">
                 <input
                     type="email"
+                    placeholder=""
+                    ref={inputRef}
                     className="form-control"
                     id="email"
                     name="email"
                     aria-label="Email input field"
                     aria-describedby="emailHelp"
-                    onChange={handleEmail}
+                    onChange={handleOnChange}
+                    onSubmit={handleSubmit}
                     required
                 />
                 <div className={isEmailValid ? "valid-feedback" : "invalid-feedback"}>
@@ -42,7 +64,7 @@ const Checkout = (props) => {
             <div id="emailHelp" className="form-text">
                 {isEmailFieldEmpty ? "" : "Please enter an email address."}
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
                 Place order
             </button>
         </form>
