@@ -87,7 +87,7 @@ const Cart = (props) => {
                         </button>
                     </div>
                 )}
-                {showCheckout && <Checkout eMail={"asd@qwe.zx"} handleEmail={handleEmail} />}
+                {showCheckout && <Checkout eMail={""} handleEmail={handleEmail} />}
             </>
         );
     }

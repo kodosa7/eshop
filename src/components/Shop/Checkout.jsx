@@ -1,27 +1,51 @@
+import React, { useState } from "react";
+
 const Checkout = (props) => {
-    const { eMail, handleEmail } = props;
+    const { handleEmail } = props;
+    const [isEmailValid, setIsEmailValid] = useState(false);
+    const [isEmailFieldEmpty, setIsEmailFieldEmpty] = useState(false);
+
+    const handleValidation = (event) => {
+        setIsEmailFieldEmpty(true);
+        const form = event.currentTarget;
+
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+            setIsEmailValid(false);
+        } else {
+            setIsEmailValid(true);
+        }
+        form.classList.add("was-validated");
+    };
 
     return (
-        <div className="mt-4 mb-4">
+        <form className="mt-4 mb-4 needs-validation" onInput={handleValidation} noValidate>
             <div className="form-label">
-                <label htmlFor="field">e-mail</label>
+                <label htmlFor="email">e-mail</label>
             </div>
             <div className="input-group">
                 <input
+                    type="email"
                     className="form-control"
-                    type="e-mail"
-                    id="e-mail"
-                    name="e-mail"
-                    required
-                    value={eMail}
+                    id="email"
+                    name="email"
+                    aria-label="Email input field"
+                    aria-describedby="emailHelp"
                     onChange={handleEmail}
+                    required
                 />
+                <div className={isEmailValid ? "valid-feedback" : "invalid-feedback"}>
+                    {isEmailValid ? "Email address looks good." : "Please enter a valid email address."}
+                </div>
             </div>
-            <p>Please enter an email address.</p>
-            <button type="button" className="btn btn-primary" onClick={""}>
+            <div id="emailHelp" className="form-text">
+                {isEmailFieldEmpty ? "" : "Please enter an email address."}
+            </div>
+            <button type="submit" className="btn btn-primary">
                 Place order
             </button>
-        </div>
+        </form>
     );
 };
 
