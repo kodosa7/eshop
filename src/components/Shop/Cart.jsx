@@ -32,9 +32,11 @@ const Cart = (props) => {
         setShowCheckout(true);
     };
 
+    // potrebuju aby kdyz je tady v tom email, tak aby se renderovala zelena tabulka
     const handleEmail = (email) => {
-        console.log("handleEmail fnc");
-        console.log("entered email is", email)
+        console.log("handleEmail function.");
+        console.log("entered email is", email);
+        return email;
     };
 
     if (selectedItems.length === 0) {
@@ -48,7 +50,6 @@ const Cart = (props) => {
         return (
             <>
                 <h2>Cart</h2>
-
                 {selectedItems.map((itemId, index) => {
                     const selectedItem = data.find((item) => item.id === itemId);
                     const { name, price } = selectedItem;
