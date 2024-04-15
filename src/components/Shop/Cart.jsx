@@ -25,26 +25,34 @@ const Cart = (props) => {
 
         // if cart gets emptied then hide the checkout form
         if (selectedItems.length === 1) {
+            console.log("removeFromCart length = 1");
             setShowCheckout(false);
         }
     };
 
+    // checkout button
     const handleCheckout = () => {
         setShowCheckout(true);
     };
 
-    // potrebuju aby kdyz je tady v tom email, tak aby se renderovala zelena tabulka
+    // show success text and empty cart
     const handleEmail = (email) => {
         setShowOrderSent(true);
+        setShowCheckout(false);
+
+        setSelectedItems([]);
+
         console.log("handleEmail function.");
         console.log("entered email is", email);
+        console.log("selectedItems in handleEmail()", selectedItems);
+        console.log("selectedItems.length in handleEmail()", selectedItems.length);
     };
 
     if (selectedItems.length === 0 || showOrderSent) {
         return (
             <>
                 {showOrderSent && (
-                    <div class="my-3 pt-3 pb-2 px-3 text-success bg-success-subtle border border-success rounded-3">
+                    <div className="my-3 pt-3 pb-2 px-3 text-success bg-success-subtle border border-success rounded-3">
                         <p>Your order was sent. Thank You.</p>
                         <p>You can buy more if you want now.</p>
                     </div>
