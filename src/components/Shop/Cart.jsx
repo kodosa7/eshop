@@ -6,6 +6,7 @@ const Cart = (props) => {
     const { selectedItems, setSelectedItems, handleAddToCart } = props;
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
+    const [showOrderSent, setShowOrderSent] = useState(false);
 
     useEffect(() => {
         let totalPrice = 0;
@@ -34,14 +35,20 @@ const Cart = (props) => {
 
     // potrebuju aby kdyz je tady v tom email, tak aby se renderovala zelena tabulka
     const handleEmail = (email) => {
+        setShowOrderSent(true);
         console.log("handleEmail function.");
         console.log("entered email is", email);
-        return email;
     };
 
-    if (selectedItems.length === 0) {
+    if (selectedItems.length === 0 || showOrderSent) {
         return (
             <>
+                {showOrderSent && (
+                    <>
+                        <p>Your order was sent. Thank You.</p>
+                    </>
+                )}
+
                 <h2>Cart</h2>
                 <p>Add something to your cart, make it from your heart.</p>
             </>
