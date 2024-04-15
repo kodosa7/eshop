@@ -44,9 +44,10 @@ const Cart = (props) => {
         return (
             <>
                 {showOrderSent && (
-                    <>
+                    <div class="my-3 pt-3 pb-2 px-3 text-success bg-success-subtle border border-success rounded-3">
                         <p>Your order was sent. Thank You.</p>
-                    </>
+                        <p>You can buy more if you want now.</p>
+                    </div>
                 )}
 
                 <h2>Cart</h2>
