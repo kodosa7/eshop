@@ -40,7 +40,7 @@ const Cart = (props) => {
         setShowOrderSent(true);
         setShowCheckout(false);
 
-        setSelectedItems([]);
+        setSelectedItems((prev) => prev.length === 1); // nejde
 
         console.log("handleEmail function.");
         console.log("entered email is", email);
