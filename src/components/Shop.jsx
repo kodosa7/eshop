@@ -47,6 +47,7 @@ const Shop = () => {
                 setShowOrderSent={setShowOrderSent}
             />
             <div className="row">
+                <h2>Articles (goods)</h2>
                 {/* Item */}
                 <div className="row row-gap-4">
                     {data.map((item, index) => (
