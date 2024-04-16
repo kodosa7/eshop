@@ -3,7 +3,7 @@ import data from "./data.json";
 import Checkout from "./Checkout";
 
 const Cart = (props) => {
-    const { selectedItems, setSelectedItems, handleAddToCart } = props;
+    const { selectedItems, setSelectedItems, handleAddToCart, setDisabledButtons } = props;
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
     const [showOrderSent, setShowOrderSent] = useState(false);
@@ -20,6 +20,7 @@ const Cart = (props) => {
     const removeFromCart = (itemId) => {
         const updatedItems = selectedItems.filter((id) => id !== itemId);
         setSelectedItems(updatedItems);
+        console.log("selectedItems in removeFromCart()", selectedItems);
         handleAddToCart(itemId); // remove button disabled
         console.log(selectedItems);
 
@@ -36,14 +37,13 @@ const Cart = (props) => {
     };
 
     // show success text and empty cart
-    const handleEmail = (email) => {
+    const handleEmail = () => {
         setShowOrderSent(true);
         setShowCheckout(false);
-
-        setSelectedItems((prev) => prev.length === 1); // nejde
+        setDisabledButtons([]); // enable all buttons
+        setSelectedItems([]); // empty cart array
 
         console.log("handleEmail function.");
-        console.log("entered email is", email);
         console.log("selectedItems in handleEmail()", selectedItems);
         console.log("selectedItems.length in handleEmail()", selectedItems.length);
     };

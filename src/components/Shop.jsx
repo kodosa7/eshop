@@ -33,7 +33,13 @@ const Shop = () => {
     return (
         <>
             {/* Cart */}
-            <Cart selectedItems={selectedItems} setSelectedItems={setSelectedItems} handleAddToCart={handleAddToCart} />
+            <Cart
+                selectedItems={selectedItems}
+                setSelectedItems={setSelectedItems}
+                handleAddToCart={handleAddToCart}
+                disabledButtons={disabledButtons}
+                setDisabledButtons={setDisabledButtons}
+            />
             <div className="row">
                 {/* Item */}
                 <div className="row row-gap-4">
