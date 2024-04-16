@@ -20,13 +20,10 @@ const Cart = (props) => {
     const removeFromCart = (itemId) => {
         const updatedItems = selectedItems.filter((id) => id !== itemId);
         setSelectedItems(updatedItems);
-        console.log("selectedItems in removeFromCart()", selectedItems);
         handleAddToCart(itemId); // remove button disabled
-        console.log(selectedItems);
 
         // if cart gets emptied then hide the checkout form
         if (selectedItems.length === 1) {
-            console.log("removeFromCart length = 1");
             setShowCheckout(false);
         }
     };
@@ -42,10 +39,6 @@ const Cart = (props) => {
         setShowCheckout(false);
         setDisabledButtons([]); // enable all buttons
         setSelectedItems([]); // empty cart array
-
-        console.log("handleEmail function.");
-        console.log("selectedItems in handleEmail()", selectedItems);
-        console.log("selectedItems.length in handleEmail()", selectedItems.length);
     };
 
     if (selectedItems.length === 0 || showOrderSent) {

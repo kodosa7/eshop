@@ -22,14 +22,12 @@ const Checkout = (props) => {
 
     const inputRef = useRef();
     const handleOnChange = (event) => {
-        console.log("input: ", inputRef.current.value);
         event.preventDefault();
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         if (isEmailValid) {
-            console.log("Submitted.");
             // execute the parent function with the email value
             handleEmail(inputRef.current.value);
         } else {
