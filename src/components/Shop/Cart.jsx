@@ -3,10 +3,10 @@ import data from "./data.json";
 import Checkout from "./Checkout";
 
 const Cart = (props) => {
-    const { selectedItems, setSelectedItems, handleAddToCart, setDisabledButtons } = props;
+    const { selectedItems, setSelectedItems, handleAddToCart, setDisabledButtons, showOrderSent, setShowOrderSent } =
+        props;
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
-    const [showOrderSent, setShowOrderSent] = useState(false);
 
     useEffect(() => {
         let totalPrice = 0;

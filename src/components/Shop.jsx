@@ -6,10 +6,14 @@ import Cart from "./Shop/Cart";
 const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [disabledButtons, setDisabledButtons] = useState([]);
+    const [showOrderSent, setShowOrderSent] = useState(false);
 
     // Handling whether the item is or isn't in cart
     const handleAddToCart = (itemId) => {
         const itemIndex = selectedItems.indexOf(itemId);
+
+        // hide order sent green element if clicked on the add item button
+        setShowOrderSent(false);
 
         if (itemIndex === -1) {
             // Item is not in the cart, add it
@@ -39,6 +43,8 @@ const Shop = () => {
                 handleAddToCart={handleAddToCart}
                 disabledButtons={disabledButtons}
                 setDisabledButtons={setDisabledButtons}
+                showOrderSent={showOrderSent}
+                setShowOrderSent={setShowOrderSent}
             />
             <div className="row">
                 {/* Item */}
