@@ -8,6 +8,7 @@ const Cart = (props) => {
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
 
+    // count total price
     useEffect(() => {
         let totalPrice = 0;
         selectedItems.forEach((itemId) => {
@@ -69,7 +70,15 @@ const Cart = (props) => {
                                 <div className="col-2 d-flex justify-content-between align-items-center" key={index}>
                                     {name}
                                 </div>
-                                <div className="col-1 d-flex justify-content-end align-items-center">{price} $</div>
+                                <div className="col-1 d-flex justify-content-end align-items-center">
+                                    {price.toFixed(2).split(".")[1] === "00"
+                                        ? price.toFixed(2).split(".")[0]
+                                        : `${price.toFixed(2).split(".")[0]}.${price
+                                              .toFixed(2)
+                                              .split(".")[1]
+                                              .padEnd(2, "0")}`}{" "}
+                                    $
+                                </div>
                                 <div className="col-auto">
                                     <button
                                         type="button"
@@ -87,10 +96,13 @@ const Cart = (props) => {
                 <div className="row">
                     <div className="col-2">Total</div>
                     <div className="col-1 d-flex justify-content-end align-items-center text-wrap">
-                        {(Math.round(total * 100) / 100).toString()} $
+                        {/* {(Math.round(formattedTotalPrice * 100) / 100).toString()} $ */}
+                        {total.toFixed(2).split(".")[1] === "00"
+                            ? total.toFixed(2).split(".")[0]
+                            : `${total.toFixed(2).split(".")[0]}.${total.toFixed(2).split(".")[1].padEnd(2, "0")}`}{" "}
+                        $
                     </div>
                 </div>
-
                 {!showCheckout && (
                     <div className="mt-3 mb-4">
                         <button type="button" className="btn btn-primary" onClick={handleCheckout}>
