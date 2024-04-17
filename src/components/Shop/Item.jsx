@@ -1,6 +1,10 @@
 const Item = (props) => {
     const { itemId, name, description, image, price, handleAddToCart, disabledButtons } = props;
 
+    // price display format
+    const [integerPart, decimalPart] = price.toFixed(2).split(".");
+    const formattedPrice = decimalPart === "00" ? integerPart : `${integerPart}.${decimalPart.padEnd(2, "0")}`;
+
     return (
         <div className="card h-100">
             <h3 className="card-header">{name}</h3>
@@ -10,7 +14,7 @@ const Item = (props) => {
             </div>
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
-                    {price} $
+                    {formattedPrice} $
                     <button
                         key={itemId}
                         type="button"
