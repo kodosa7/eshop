@@ -9,7 +9,7 @@ const Cart = (props) => {
         setDisabledButtons,
         showOrderSent,
         setShowOrderSent,
-        data,
+        products,
     } = props;
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
@@ -18,7 +18,7 @@ const Cart = (props) => {
     useEffect(() => {
         let totalPrice = 0;
         selectedItems.forEach((itemId) => {
-            const selectedItem = data.products.find((item) => item.id === itemId);
+            const selectedItem = products.find((item) => item.id === itemId);
             totalPrice += selectedItem.price;
         });
         setTotal(totalPrice);
@@ -67,8 +67,16 @@ const Cart = (props) => {
             <>
                 <h2>Cart</h2>
                 {selectedItems.map((itemId, index) => {
-                    const selectedItem = data.products.find((item) => item.id === itemId);
+                    const selectedItem = products.find((item) => {
+                        console.log("itemId", itemId);
+                        console.log("item.id", item.id);
+
+                        return item.id === itemId;
+                    });
+                    console.log(selectedItems);
                     const { title, price } = selectedItem;
+                    console.log(title);
+                    console.log(price);
 
                     return (
                         <>

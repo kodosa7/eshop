@@ -6,7 +6,7 @@ const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [showOrderSent, setShowOrderSent] = useState(false);
-    const [data, setData] = useState([]);
+    const [products, setProducts] = useState([]);
     const [limit, setLimit] = useState(10);
     const [amountToShow, setAmountToShow] = useState(10);
     const [total, setTotal] = useState(0);
@@ -16,7 +16,7 @@ const Shop = () => {
         fetch(`https://dummyjson.com/products?limit=8`)
             .then((res) => res.json())
             .then((data) => {
-                setData(data);
+                setProducts(data.products);
                 setTotal(data.total);
             });
     }, []);
@@ -26,12 +26,12 @@ const Shop = () => {
         setAmountToShow((prevAmount) => (prevAmount += limit));
         fetch(`https://dummyjson.com/products?limit=${amountToShow}`)
             .then((res) => res.json())
-            .then((data) => setData(data));
+            .then((data) => setProducts(data));
         console.log("showNextItems btn clicked");
         console.log("amountToShow=", amountToShow);
         console.log("limit=", limit);
-        console.log("total=", data.total);
-        setTotal(data.total);
+        console.log("total=", products.total);
+        setTotal(products.total);
     };
 
     // Handling whether the item is or isn't in cart
@@ -71,16 +71,16 @@ const Shop = () => {
                 setDisabledButtons={setDisabledButtons}
                 showOrderSent={showOrderSent}
                 setShowOrderSent={setShowOrderSent}
-                data={data}
+                products={products}
             />
             <div className="row">
                 <h2>Articles (goods)</h2>
                 {/* Item */}
 
-                {/* show only if data.products is not empty - not when initial state = [] */}
-                {data.products && (
+                {/* show only if products is not empty - not when initial state = [] */}
+                {products && (
                     <div className="row row-gap-4">
-                        {data.products.map((item, index) => (
+                        {products.map((item, index) => (
                             <div key={item.id} className="col-sm-6 col-md-4 col-lg-3">
                                 <Item
                                     itemId={item.id}
