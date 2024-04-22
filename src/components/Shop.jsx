@@ -7,8 +7,9 @@ const Shop = () => {
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [data, setData] = useState([]);
-    const [limit, setLimit] = useState(8);
-    const [amountToShow, setAmountToShow] = useState(8);
+    const [limit, setLimit] = useState(10);
+    const [amountToShow, setAmountToShow] = useState(10);
+    const [total, setTotal] = useState(100);
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -26,6 +27,8 @@ const Shop = () => {
         console.log("showNextItems btn clicked");
         console.log("amountToShow=", amountToShow);
         console.log("limit=", limit);
+        console.log("total=", data.total);
+        setTotal(data.total);
     };
 
     // Handling whether the item is or isn't in cart
@@ -91,11 +94,13 @@ const Shop = () => {
                     </div>
                 )}
             </div>
-            <div className="row">
-                <button className="btn btn-primary" onClick={showNextItems}>
-                    Next 20 items
-                </button>
-            </div>
+            {amountToShow <= total && (
+                <div className="row">
+                    <button className="btn btn-primary my-4" onClick={showNextItems}>
+                        Next 10 items
+                    </button>
+                </div>
+            )}
         </>
     );
 };
