@@ -7,15 +7,25 @@ const Shop = () => {
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [data, setData] = useState([]);
+    const [limit, setLimit] = useState(8);
+    const [amountToShow, setAmountToShow] = useState(8);
 
+    // fetch data from API (first time)
     useEffect(() => {
-        fetch("https://dummyjson.com/products")
+        fetch(`https://dummyjson.com/products?limit=8`)
             .then((res) => res.json())
             .then((data) => setData(data));
     }, []);
 
+    // load and show next items on "Show next items" button click
     const showNextItems = () => {
-        console.log("show next items btn clicked");
+        setAmountToShow((prevAmount) => (prevAmount += limit));
+        fetch(`https://dummyjson.com/products?limit=${amountToShow}`)
+            .then((res) => res.json())
+            .then((data) => setData(data));
+        console.log("showNextItems btn clicked");
+        console.log("amountToShow=", amountToShow);
+        console.log("limit=", limit);
     };
 
     // Handling whether the item is or isn't in cart
