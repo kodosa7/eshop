@@ -55,6 +55,7 @@ const Shop = () => {
                 setDisabledButtons={setDisabledButtons}
                 showOrderSent={showOrderSent}
                 setShowOrderSent={setShowOrderSent}
+                data={data}
             />
             <div className="row">
                 <h2>Articles (goods)</h2>

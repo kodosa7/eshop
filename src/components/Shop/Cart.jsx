@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
-import data from "./data.json";
 import Checkout from "./Checkout";
 
 const Cart = (props) => {
-    const { selectedItems, setSelectedItems, handleAddToCart, setDisabledButtons, showOrderSent, setShowOrderSent } =
-        props;
+    const {
+        selectedItems,
+        setSelectedItems,
+        handleAddToCart,
+        setDisabledButtons,
+        showOrderSent,
+        setShowOrderSent,
+        data,
+    } = props;
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
 
@@ -12,7 +18,7 @@ const Cart = (props) => {
     useEffect(() => {
         let totalPrice = 0;
         selectedItems.forEach((itemId) => {
-            const selectedItem = data.find((item) => item.id === itemId);
+            const selectedItem = data.products.find((item) => item.id === itemId);
             totalPrice += selectedItem.price;
         });
         setTotal(totalPrice);
@@ -61,14 +67,14 @@ const Cart = (props) => {
             <>
                 <h2>Cart</h2>
                 {selectedItems.map((itemId, index) => {
-                    const selectedItem = data.find((item) => item.id === itemId);
-                    const { name, price } = selectedItem;
+                    const selectedItem = data.products.find((item) => item.id === itemId);
+                    const { title, price } = selectedItem;
 
                     return (
                         <>
                             <div className="row mb-1">
                                 <div className="col-2 d-flex justify-content-between align-items-center" key={index}>
-                                    {name}
+                                    {title}
                                 </div>
                                 <div className="col-1 d-flex justify-content-end align-items-center">
                                     {price.toFixed(2).split(".")[1] === "00"
