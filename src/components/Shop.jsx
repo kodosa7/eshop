@@ -9,13 +9,16 @@ const Shop = () => {
     const [data, setData] = useState([]);
     const [limit, setLimit] = useState(10);
     const [amountToShow, setAmountToShow] = useState(10);
-    const [total, setTotal] = useState(100);
+    const [total, setTotal] = useState(0);
 
     // fetch data from API (first time)
     useEffect(() => {
         fetch(`https://dummyjson.com/products?limit=8`)
             .then((res) => res.json())
-            .then((data) => setData(data));
+            .then((data) => {
+                setData(data);
+                setTotal(data.total);
+            });
     }, []);
 
     // load and show next items on "Show next items" button click
@@ -32,27 +35,27 @@ const Shop = () => {
     };
 
     // Handling whether the item is or isn't in cart
-    const handleAddToCart = (itemId) => {
-        const itemIndex = selectedItems.indexOf(itemId);
+    const handleAddToCart = (item) => {
+        const itemIndex = selectedItems.indexOf(item.id);
 
         // hide order sent green element if clicked on the add item button
         setShowOrderSent(false);
 
         if (itemIndex === -1) {
             // Item is not in the cart, add it
-            setSelectedItems([...selectedItems, itemId]);
+            setSelectedItems([...selectedItems, item.id]);
 
             // Push the clicked item to the array
             const updatedDisabledButtons = [...disabledButtons];
-            updatedDisabledButtons.push(itemId);
+            updatedDisabledButtons.push(item.id);
             setDisabledButtons(updatedDisabledButtons);
         } else {
             // If item is already in the cart, remove it
-            const updatedItems = selectedItems.filter((id) => id !== itemId);
+            const updatedItems = selectedItems.filter((id) => id !== item.id);
             setSelectedItems(updatedItems);
 
             // Remove the item from disabledButtons array to enable the button
-            const updatedDisabledButtons = disabledButtons.filter((id) => id !== itemId);
+            const updatedDisabledButtons = disabledButtons.filter((id) => id !== item.id);
             setDisabledButtons(updatedDisabledButtons);
         }
     };
@@ -86,7 +89,7 @@ const Shop = () => {
                                     image={item.thumbnail}
                                     description={item.description}
                                     price={item.price}
-                                    handleAddToCart={() => handleAddToCart(item.id)}
+                                    handleAddToCart={() => handleAddToCart(item)}
                                     disabledButtons={disabledButtons}
                                 />
                             </div>
