@@ -1,12 +1,15 @@
 const Categories = (props) => {
     const categories = props.categories;
+
+    console.log(typeof categories);
+    console.log(categories);
+
     return (
         <>
             <h2>Categories</h2>
-            {/* {categories.forEach((category) => (
-                <div className="col-sm-6 col-md-4 col-lg-3">{category}</div>
-            ))} */}
-            {typeof categories}
+            {categories.forEach((item) => (
+                <div className="col-sm-6 col-md-4 col-lg-3">{item}</div>
+            ))}
         </>
     );
 };
