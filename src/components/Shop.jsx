@@ -9,7 +9,7 @@ const Shop = () => {
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
     const [total, setTotal] = useState(0);
-    const [categories, setCategories] = useState(0);
+    const [categories, setCategories] = useState([]);
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -36,8 +36,7 @@ const Shop = () => {
     const fetchCategories = () => {
         fetch(`https://dummyjson.com/products/categories`)
             .then((res) => res.json())
-            .then((data) => setCategories([...data]));
-        console.log("fetch categories");
+            .then((data) => setCategories(data));
     };
 
     // Handling whether the item is or isn't in cart

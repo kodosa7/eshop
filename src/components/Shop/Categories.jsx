@@ -7,7 +7,7 @@ const Categories = (props) => {
     return (
         <>
             <h2>Categories</h2>
-            {categories.forEach((item) => (
+            {categories.map((item, index) => (
                 <div className="col-sm-6 col-md-4 col-lg-3">{item}</div>
             ))}
         </>
