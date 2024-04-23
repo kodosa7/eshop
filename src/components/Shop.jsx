@@ -7,7 +7,6 @@ const Shop = () => {
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
-    const [skip, setSkip] = useState(0);
     const [total, setTotal] = useState(100);
 
     // fetch data from API (first time)
@@ -17,18 +16,15 @@ const Shop = () => {
 
     // load and show next items on "Show next items" button click
     const showNextItems = () => {
-        setSkip((prevSkip) => (prevSkip += 8));
-        fetchProducts(skip);
+        fetchProducts(products.length);
     };
 
     const fetchProducts = (skip) => {
         fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
             .then((res) => res.json())
-            .then((data) => setProducts([...data.products]));
-        // .then((data) => setTotal(data.total));
+            .then((data) => setProducts((prev) => [...prev, ...data.products]));
         console.log("products=", products);
         console.log("skip=", skip);
-        // console.log("total=", total);
     };
 
     // Handling whether the item is or isn't in cart
@@ -89,7 +85,7 @@ const Shop = () => {
                     ))}
                 </div>
             </div>
-            {skip <= total && (
+            {products.length <= total && (
                 <div className="row">
                     <button className="btn btn-primary my-4" onClick={showNextItems}>
                         Next 10 items
