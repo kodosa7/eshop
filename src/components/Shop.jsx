@@ -26,7 +26,7 @@ const Shop = () => {
         setAmountToShow((prevAmount) => (prevAmount += limit));
         fetch(`https://dummyjson.com/products?limit=${amountToShow}`)
             .then((res) => res.json())
-            .then((data) => setProducts(data));
+            .then((data) => setProducts(data.products));
         console.log("showNextItems btn clicked");
         console.log("amountToShow=", amountToShow);
         console.log("limit=", limit);
@@ -36,14 +36,14 @@ const Shop = () => {
 
     // Handling whether the item is or isn't in cart
     const handleAddToCart = (item) => {
-        const itemIndex = selectedItems.indexOf(item.id);
+        const itemIndex = selectedItems.findIndex((prod) => prod.id === item.id);
 
         // hide order sent green element if clicked on the add item button
         setShowOrderSent(false);
 
         if (itemIndex === -1) {
             // Item is not in the cart, add it
-            setSelectedItems([...selectedItems, item.id]);
+            setSelectedItems([...selectedItems, item]);
 
             // Push the clicked item to the array
             const updatedDisabledButtons = [...disabledButtons];
@@ -51,7 +51,7 @@ const Shop = () => {
             setDisabledButtons(updatedDisabledButtons);
         } else {
             // If item is already in the cart, remove it
-            const updatedItems = selectedItems.filter((id) => id !== item.id);
+            const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
             setSelectedItems(updatedItems);
 
             // Remove the item from disabledButtons array to enable the button
@@ -71,7 +71,6 @@ const Shop = () => {
                 setDisabledButtons={setDisabledButtons}
                 showOrderSent={showOrderSent}
                 setShowOrderSent={setShowOrderSent}
-                products={products}
             />
             <div className="row">
                 <h2>Articles (goods)</h2>

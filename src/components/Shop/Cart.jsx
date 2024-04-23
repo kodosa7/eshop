@@ -9,7 +9,6 @@ const Cart = (props) => {
         setDisabledButtons,
         showOrderSent,
         setShowOrderSent,
-        products,
     } = props;
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
@@ -17,17 +16,16 @@ const Cart = (props) => {
     // count total price
     useEffect(() => {
         let totalPrice = 0;
-        selectedItems.forEach((itemId) => {
-            const selectedItem = products.find((item) => item.id === itemId);
-            totalPrice += selectedItem.price;
+        selectedItems.forEach((item) => {
+            totalPrice += item.price;
         });
         setTotal(totalPrice);
     }, [selectedItems]);
 
-    const removeFromCart = (itemId) => {
-        const updatedItems = selectedItems.filter((id) => id !== itemId);
+    const removeFromCart = (item) => {
+        const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
         setSelectedItems(updatedItems);
-        handleAddToCart(itemId); // remove button disabled
+        handleAddToCart(item); // remove button disabled
 
         // if cart gets emptied then hide the checkout form
         if (selectedItems.length === 1) {
@@ -66,17 +64,11 @@ const Cart = (props) => {
         return (
             <>
                 <h2>Cart</h2>
-                {selectedItems.map((itemId, index) => {
-                    const selectedItem = products.find((item) => {
-                        console.log("itemId", itemId);
-                        console.log("item.id", item.id);
-
-                        return item.id === itemId;
-                    });
-                    console.log(selectedItems);
-                    const { title, price } = selectedItem;
-                    console.log(title);
-                    console.log(price);
+                {selectedItems.map((prod, index) => {
+                    console.log("selectedItems", selectedItems);
+                    const { title, price } = prod;
+                    console.log("title", title);
+                    console.log("price", price);
 
                     return (
                         <>
@@ -97,7 +89,7 @@ const Cart = (props) => {
                                     <button
                                         type="button"
                                         className="btn btn-outline-dark btn-sm"
-                                        onClick={() => removeFromCart(itemId)}
+                                        onClick={() => removeFromCart(prod)}
                                     >
                                         Remove from cart
                                     </button>
