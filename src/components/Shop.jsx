@@ -7,8 +7,8 @@ const Shop = () => {
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
-    const [skip, setSkip] = useState(8);
-    const [total, setTotal] = useState(100);
+    const [skip, setSkip] = useState(0);
+    const [total, setTotal] = useState(0);
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -24,11 +24,11 @@ const Shop = () => {
     const fetchProducts = (skip) => {
         fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
             .then((res) => res.json())
-            .then((data) => setProducts(data.products))
-            .then((data) => setTotal(data.products.total));
+            .then((data) => setProducts((prev) => [...prev, ...data.products]))
+            .then((data) => setTotal(data.total));
         console.log("products=", products);
         console.log("skip=", skip);
-        console.log("total=", products.total);
+        console.log("total=", total);
     };
 
     // Handling whether the item is or isn't in cart
@@ -73,16 +73,16 @@ const Shop = () => {
                 <h2>Articles (goods)</h2>
                 {/* Item */}
                 <div className="row row-gap-4">
-                    {products.map((item, index) => (
-                        <div key={item.id} className="col-sm-6 col-md-4 col-lg-3">
+                    {products.map((prod, index) => (
+                        <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
                             <Item
-                                itemId={item.id}
+                                itemId={prod.id}
                                 index={index}
-                                name={item.title}
-                                image={item.thumbnail}
-                                description={item.description}
-                                price={item.price}
-                                handleAddToCart={() => handleAddToCart(item)}
+                                name={prod.title}
+                                image={prod.thumbnail}
+                                description={prod.description}
+                                price={prod.price}
+                                handleAddToCart={() => handleAddToCart(prod)}
                                 disabledButtons={disabledButtons}
                             />
                         </div>
