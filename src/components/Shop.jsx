@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Item from "./Shop/Item";
 import Cart from "./Shop/Cart";
+import Categories from "./Shop/Categories";
 
 const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
@@ -8,10 +9,12 @@ const Shop = () => {
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
     const [total, setTotal] = useState(0);
+    const [categories, setCategories] = useState(0);
 
     // fetch data from API (first time)
     useEffect(() => {
         fetchProducts(0);
+        fetchCategories();
     }, []);
 
     // load and show next items on "Show next items" button click
@@ -28,6 +31,13 @@ const Shop = () => {
             });
         console.log("products=", products);
         console.log("products.length", products.length);
+    };
+
+    const fetchCategories = () => {
+        fetch(`https://dummyjson.com/products/categories`)
+            .then((res) => res.json())
+            .then((data) => setCategories([...data]));
+        console.log("fetch categories");
     };
 
     // Handling whether the item is or isn't in cart
@@ -69,23 +79,28 @@ const Shop = () => {
                 setShowOrderSent={setShowOrderSent}
             />
             <div className="row">
-                <h2>Articles (goods)</h2>
-                {/* Item */}
-                <div className="row row-gap-4">
-                    {products.map((prod, index) => (
-                        <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
-                            <Item
-                                itemId={prod.id}
-                                index={index}
-                                name={prod.title}
-                                image={prod.thumbnail}
-                                description={prod.description}
-                                price={prod.price}
-                                handleAddToCart={() => handleAddToCart(prod)}
-                                disabledButtons={disabledButtons}
-                            />
-                        </div>
-                    ))}
+                <div className="col-3">
+                    <Categories categories={categories} />
+                </div>
+                <div className="col">
+                    <h2>Articles (goods)</h2>
+                    {/* Item */}
+                    <div className="row row-gap-4">
+                        {products.map((prod, index) => (
+                            <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
+                                <Item
+                                    itemId={prod.id}
+                                    index={index}
+                                    name={prod.title}
+                                    image={prod.thumbnail}
+                                    description={prod.description}
+                                    price={prod.price}
+                                    handleAddToCart={() => handleAddToCart(prod)}
+                                    disabledButtons={disabledButtons}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
             {products.length < total && (
