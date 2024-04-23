@@ -7,7 +7,6 @@ const Shop = () => {
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
-    const [total, setTotal] = useState(100);
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -24,7 +23,7 @@ const Shop = () => {
             .then((res) => res.json())
             .then((data) => setProducts((prev) => [...prev, ...data.products]));
         console.log("products=", products);
-        console.log("skip=", skip);
+        console.log("products.length", products.length);
     };
 
     // Handling whether the item is or isn't in cart
@@ -85,7 +84,7 @@ const Shop = () => {
                     ))}
                 </div>
             </div>
-            {products.length <= total && (
+            {products.length < 100 && (
                 <div className="row">
                     <button className="btn btn-primary my-4" onClick={showNextItems}>
                         Next 10 items
