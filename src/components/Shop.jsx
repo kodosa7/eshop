@@ -8,27 +8,30 @@ const Shop = () => {
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
     const [amountToShow, setAmountToShow] = useState(8);
-    const [total, setTotal] = useState(0);
+    const [total, setTotal] = useState(8);
 
     // fetch data from API (first time)
     useEffect(() => {
-        fetch(`https://dummyjson.com/products?skip=0&limit=8`)
-            .then((res) => res.json())
-            .then((data) => {
-                setProducts(data.products);
-                setTotal(data.total);
-            });
+        fetchProducts(0);
+        console.log(products);
     }, []);
 
     // load and show next items on "Show next items" button click
     const showNextItems = () => {
         setAmountToShow((prevAmount) => (prevAmount += 8));
-        fetch(`https://dummyjson.com/products?skip=${amountToShow}&limit=8`)
-            .then((res) => res.json())
-            .then((data) => setProducts(data.products));
+
+        fetchProducts(amountToShow);
+
+        console.log("products=", products);
         console.log("amountToShow=", amountToShow);
         console.log("total=", products.total);
         setTotal(products.total);
+    };
+
+    const fetchProducts = (amount) => {
+        fetch(`https://dummyjson.com/products?skip=${amount}&limit=8`)
+            .then((res) => res.json())
+            .then((data) => setProducts(data.products));
     };
 
     // Handling whether the item is or isn't in cart
@@ -74,24 +77,24 @@ const Shop = () => {
                 {/* Item */}
 
                 {/* show only if products is not empty - not when initial state = [] */}
-                {products && (
-                    <div className="row row-gap-4">
-                        {products.map((item, index) => (
-                            <div key={item.id} className="col-sm-6 col-md-4 col-lg-3">
-                                <Item
-                                    itemId={item.id}
-                                    index={index}
-                                    name={item.title}
-                                    image={item.thumbnail}
-                                    description={item.description}
-                                    price={item.price}
-                                    handleAddToCart={() => handleAddToCart(item)}
-                                    disabledButtons={disabledButtons}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                )}
+                {/* {products && ( */}
+                <div className="row row-gap-4">
+                    {products.map((item, index) => (
+                        <div key={item.id} className="col-sm-6 col-md-4 col-lg-3">
+                            <Item
+                                itemId={item.id}
+                                index={index}
+                                name={item.title}
+                                image={item.thumbnail}
+                                description={item.description}
+                                price={item.price}
+                                handleAddToCart={() => handleAddToCart(item)}
+                                disabledButtons={disabledButtons}
+                            />
+                        </div>
+                    ))}
+                </div>
+                {/* )} */}
             </div>
             {amountToShow <= total && (
                 <div className="row">
