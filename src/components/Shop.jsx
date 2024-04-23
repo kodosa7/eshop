@@ -82,7 +82,7 @@ const Shop = () => {
                     <Categories categories={categories} />
                 </div>
                 <div className="col">
-                    <h2>Articles (goods)</h2>
+                    <h2>All articles</h2>
                     {/* Item */}
                     <div className="row row-gap-4">
                         {products.map((prod, index) => (

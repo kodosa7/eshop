@@ -73,7 +73,7 @@ const Cart = (props) => {
                     return (
                         <>
                             <div className="row mb-1">
-                                <div className="col-2 d-flex justify-content-between align-items-center" key={index}>
+                                <div className="col-3 d-flex justify-content-between align-items-center" key={index}>
                                     {title}
                                 </div>
                                 <div className="col-1 d-flex justify-content-end align-items-center">
@@ -100,7 +100,7 @@ const Cart = (props) => {
                 })}
 
                 <div className="row">
-                    <div className="col-2">Total</div>
+                    <div className="col-3">Total</div>
                     <div className="col-1 d-flex justify-content-end align-items-center text-wrap">
                         {/* {(Math.round(formattedTotalPrice * 100) / 100).toString()} $ */}
                         {total.toFixed(2).split(".")[1] === "00"
