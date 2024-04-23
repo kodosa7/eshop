@@ -22,6 +22,7 @@ const Shop = () => {
         fetchProducts(products.length);
     };
 
+    // fetsch products API
     const fetchProducts = (skip) => {
         fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
             .then((res) => res.json())
@@ -33,10 +34,15 @@ const Shop = () => {
         console.log("products.length", products.length);
     };
 
+    // fetch categories API
     const fetchCategories = () => {
         fetch(`https://dummyjson.com/products/categories`)
             .then((res) => res.json())
             .then((data) => setCategories(data));
+    };
+
+    const handleSelectCategory = (category) => {
+        console.log("handleSelectCategory", category);
     };
 
     // Handling whether the item is or isn't in cart
@@ -79,7 +85,7 @@ const Shop = () => {
             />
             <div className="row">
                 <div className="col-3">
-                    <Categories categories={categories} />
+                    <Categories categories={categories} handleSelectCategory={handleSelectCategory} />
                 </div>
                 <div className="col">
                     <h2>All articles</h2>
