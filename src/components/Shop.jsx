@@ -7,13 +7,12 @@ const Shop = () => {
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
-    const [limit, setLimit] = useState(10);
-    const [amountToShow, setAmountToShow] = useState(10);
+    const [amountToShow, setAmountToShow] = useState(8);
     const [total, setTotal] = useState(0);
 
     // fetch data from API (first time)
     useEffect(() => {
-        fetch(`https://dummyjson.com/products?limit=8`)
+        fetch(`https://dummyjson.com/products?skip=0&limit=8`)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data.products);
@@ -23,13 +22,11 @@ const Shop = () => {
 
     // load and show next items on "Show next items" button click
     const showNextItems = () => {
-        setAmountToShow((prevAmount) => (prevAmount += limit));
-        fetch(`https://dummyjson.com/products?limit=${amountToShow}`)
+        setAmountToShow((prevAmount) => (prevAmount += 8));
+        fetch(`https://dummyjson.com/products?skip=${amountToShow}&limit=8`)
             .then((res) => res.json())
             .then((data) => setProducts(data.products));
-        console.log("showNextItems btn clicked");
         console.log("amountToShow=", amountToShow);
-        console.log("limit=", limit);
         console.log("total=", products.total);
         setTotal(products.total);
     };
