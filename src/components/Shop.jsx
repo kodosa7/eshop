@@ -8,7 +8,7 @@ const Shop = () => {
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
     const [skip, setSkip] = useState(0);
-    const [total, setTotal] = useState(0);
+    const [total, setTotal] = useState(100);
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -24,11 +24,11 @@ const Shop = () => {
     const fetchProducts = (skip) => {
         fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
             .then((res) => res.json())
-            .then((data) => setProducts((prev) => [...prev, ...data.products]))
-            .then((data) => setTotal(data.total));
+            .then((data) => setProducts([...data.products]));
+        // .then((data) => setTotal(data.total));
         console.log("products=", products);
         console.log("skip=", skip);
-        console.log("total=", total);
+        // console.log("total=", total);
     };
 
     // Handling whether the item is or isn't in cart
