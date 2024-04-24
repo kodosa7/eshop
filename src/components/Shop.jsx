@@ -11,10 +11,11 @@ const Shop = () => {
     const [total, setTotal] = useState(0);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState("");
+    const [fetchType, setFetchType] = useState("type-products");
 
     // fetch data from API (first time)
     useEffect(() => {
-        fetchProducts(0);
+        fetchProducts(0, fetchType);
         fetchCategories();
     }, []);
 
@@ -24,13 +25,25 @@ const Shop = () => {
     };
 
     // fetch products API
-    const fetchProducts = (skip) => {
-        fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
-            .then((res) => res.json())
-            .then((data) => {
-                setTotal(data.total);
-                setProducts((prev) => [...prev, ...data.products]);
-            });
+    const fetchProducts = (skip, fetchType, category) => {
+        console.log("fetchType in fetchPruducts", fetchType);
+        if (fetchType === "type-products") {
+            fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
+                .then((res) => res.json())
+                .then((data) => {
+                    setTotal(data.total);
+                    setProducts((prev) => [...prev, ...data.products]);
+                });
+        } else if (fetchType === "type-category") {
+            setCategory(category);
+            console.log("asdsad", category);
+            fetch(`https://dummyjson.com/products/category/${category}?limit=8`)
+                .then((res) => res.json())
+                .then((data) => {
+                    setTotal(data.total);
+                    setProducts([...data.products]);
+                });
+        }
     };
 
     // fetch all categories API
@@ -45,22 +58,11 @@ const Shop = () => {
             });
     };
 
-    // fetch one caregory API
-    const fetchProductsInCategory = (category) => {
-        console.log("--* fetchProductsInCategory");
-        setCategory(category);
-        fetch(`https://dummyjson.com/products/category/${category}?limit=2`)
-            .then((res) => res.json())
-            .then((data) => {
-                setTotal(data.total);
-                setProducts([...data.products]);
-                console.log(products.length);
-            });
-    };
-
     const handleSelectCategory = (category) => {
         console.log("handleSelectCategory", category);
-        fetchProductsInCategory(category);
+        setFetchType("category");
+        console.log("fetchType", fetchType);
+        fetchProducts(8, "type-category", category);
     };
 
     // Handling whether the item is or isn't in cart
