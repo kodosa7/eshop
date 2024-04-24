@@ -37,7 +37,11 @@ const Shop = () => {
     const fetchCategories = () => {
         fetch(`https://dummyjson.com/products/categories/`)
             .then((res) => res.json())
-            .then((data) => setCategories(data));
+            .then((data) => {
+                // capitalize first letter on category name first
+                const capitalizedData = data.map((category) => category.charAt(0).toUpperCase() + category.slice(1));
+                setCategories(capitalizedData);
+            });
     };
 
     // fetch one caregory API
