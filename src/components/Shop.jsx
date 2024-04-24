@@ -10,6 +10,7 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const [total, setTotal] = useState(0);
     const [categories, setCategories] = useState([]);
+    const [category, setCategory] = useState("All articles");
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -23,7 +24,7 @@ const Shop = () => {
     };
 
     // fetsch products API
-    const fetchProducts = (skip, category) => {
+    const fetchProducts = (skip) => {
         fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
             .then((res) => res.json())
             .then((data) => {
@@ -34,19 +35,20 @@ const Shop = () => {
         console.log("products.length", products.length);
     };
 
-    // fetch categories API
+    // fetch all categories API
     const fetchCategories = () => {
         fetch(`https://dummyjson.com/products/categories/`)
             .then((res) => res.json())
             .then((data) => setCategories(data));
     };
 
-    // fetch one caregory
+    // fetch one caregory API
     const fetchProductsInCategory = (category) => {
-        console.log("fetchProductsInCategory");
+        console.log("--* fetchProductsInCategory");
+        setCategory(category);
         fetch(`https://dummyjson.com/products/category/${category}`)
             .then((res) => res.json())
-            .then((data) => setProducts(data));
+            .then((data) => setProducts([...data.products]));
     };
 
     const handleSelectCategory = (category) => {
@@ -97,7 +99,7 @@ const Shop = () => {
                     <Categories categories={categories} handleSelectCategory={handleSelectCategory} />
                 </div>
                 <div className="col">
-                    <h2>All articles</h2>
+                    {category === "All articles" ? <h2>All articles</h2> : <h2>{category}</h2>}
                     {/* Item */}
                     <div className="row row-gap-4">
                         {products.map((prod, index) => (
