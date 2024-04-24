@@ -23,7 +23,7 @@ const Shop = () => {
         fetchProducts(products.length);
     };
 
-    // fetsch products API
+    // fetch products API
     const fetchProducts = (skip) => {
         fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
             .then((res) => res.json())
@@ -31,8 +31,6 @@ const Shop = () => {
                 setTotal(data.total);
                 setProducts((prev) => [...prev, ...data.products]);
             });
-        console.log("products=", products);
-        console.log("products.length", products.length);
     };
 
     // fetch all categories API
@@ -53,7 +51,7 @@ const Shop = () => {
 
     const handleSelectCategory = (category) => {
         console.log("handleSelectCategory", category);
-        fetchProductsInCategory(category); // skip value, category name
+        fetchProductsInCategory(category);
     };
 
     // Handling whether the item is or isn't in cart
