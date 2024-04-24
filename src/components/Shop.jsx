@@ -10,7 +10,7 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const [total, setTotal] = useState(0);
     const [categories, setCategories] = useState([]);
-    const [category, setCategory] = useState("All articles");
+    const [category, setCategory] = useState("");
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -48,7 +48,8 @@ const Shop = () => {
     const fetchProductsInCategory = (category) => {
         console.log("--* fetchProductsInCategory");
         setCategory(category);
-        fetch(`https://dummyjson.com/products/category/${category}`)
+        console.log("cat len", category.length);
+        fetch(`https://dummyjson.com/products/category/${category}?limit=8`)
             .then((res) => res.json())
             .then((data) => setProducts([...data.products]));
     };
@@ -101,7 +102,7 @@ const Shop = () => {
                     <Categories categories={categories} handleSelectCategory={handleSelectCategory} />
                 </div>
                 <div className="col">
-                    {category === "All articles" ? <h2>All articles</h2> : <h2>{category}</h2>}
+                    {category === "" ? <h2>All articles</h2> : <h2>{category}</h2>}
                     {/* Item */}
                     <div className="row row-gap-4">
                         {products.map((prod, index) => (
@@ -121,7 +122,7 @@ const Shop = () => {
                     </div>
                 </div>
             </div>
-            {products.length < total && (
+            {(products.length < total || categories.length < total) && (
                 <div className="row">
                     <button className="btn btn-primary my-4" onClick={showNextItems}>
                         Next 8 items
