@@ -39,6 +39,7 @@ const Shop = () => {
             .then((res) => res.json())
             .then((data) => {
                 // capitalize first letter on category name first
+                // TODO: capitalize all first letters and swap '-' for spaces
                 const capitalizedData = data.map((category) => category.charAt(0).toUpperCase() + category.slice(1));
                 setCategories(capitalizedData);
             });
@@ -48,10 +49,13 @@ const Shop = () => {
     const fetchProductsInCategory = (category) => {
         console.log("--* fetchProductsInCategory");
         setCategory(category);
-        console.log("cat len", category.length);
-        fetch(`https://dummyjson.com/products/category/${category}?limit=8`)
+        fetch(`https://dummyjson.com/products/category/${category}?limit=2`)
             .then((res) => res.json())
-            .then((data) => setProducts([...data.products]));
+            .then((data) => {
+                setTotal(data.total);
+                setProducts([...data.products]);
+                console.log(products.length);
+            });
     };
 
     const handleSelectCategory = (category) => {
@@ -122,7 +126,7 @@ const Shop = () => {
                     </div>
                 </div>
             </div>
-            {(products.length < total || categories.length < total) && (
+            {products.length < total && (
                 <div className="row">
                     <button className="btn btn-primary my-4" onClick={showNextItems}>
                         Next 8 items
