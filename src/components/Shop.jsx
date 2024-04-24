@@ -23,7 +23,7 @@ const Shop = () => {
     };
 
     // fetsch products API
-    const fetchProducts = (skip) => {
+    const fetchProducts = (skip, category) => {
         fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
             .then((res) => res.json())
             .then((data) => {
@@ -36,13 +36,22 @@ const Shop = () => {
 
     // fetch categories API
     const fetchCategories = () => {
-        fetch(`https://dummyjson.com/products/categories`)
+        fetch(`https://dummyjson.com/products/categories/`)
             .then((res) => res.json())
             .then((data) => setCategories(data));
     };
 
+    // fetch one caregory
+    const fetchProductsInCategory = (category) => {
+        console.log("fetchProductsInCategory");
+        fetch(`https://dummyjson.com/products/category/${category}`)
+            .then((res) => res.json())
+            .then((data) => setProducts(data));
+    };
+
     const handleSelectCategory = (category) => {
         console.log("handleSelectCategory", category);
+        fetchProductsInCategory(category); // skip value, category name
     };
 
     // Handling whether the item is or isn't in cart

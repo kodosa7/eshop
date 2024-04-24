@@ -4,11 +4,11 @@ const Categories = (props) => {
     return (
         <>
             <h2>Categories</h2>
-            {categories.map((item, index) => (
-                <div className="col-sm-6 col-md-4 col-lg-3">
-                    <a key={index} onClick={() => handleSelectCategory(item)} href={item}>
-                        {item.charAt(0).toUpperCase() + item.slice(1)}
-                    </a>
+            {categories.map((category, index) => (
+                <div key={index} className="col-sm-6 col-md-4 col-lg-3">
+                    <button type="button" onClick={() => handleSelectCategory(category)}>
+                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </button>
                 </div>
             ))}
         </>
