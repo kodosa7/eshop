@@ -102,10 +102,14 @@ const Shop = () => {
             />
             <div className="row">
                 <div className="col-3">
-                    <Categories categories={categories} handleSelectCategory={handleSelectCategory} />
+                    <Categories
+                        categories={categories}
+                        category={category}
+                        handleSelectCategory={handleSelectCategory}
+                    />
                 </div>
                 <div className="col">
-                    {category === "" ? <h2>All articles</h2> : <h2>{category}</h2>}
+                    {category === "" ? <h2>All products</h2> : <h2>{category}</h2>}
                     {/* Item */}
                     <div className="row row-gap-4">
                         {products.map((prod, index) => (
@@ -128,7 +132,7 @@ const Shop = () => {
             {products.length < total && (
                 <div className="row">
                     <button className="btn btn-primary my-4" onClick={showNextItems}>
-                        Next 8 items
+                        Load next items
                     </button>
                 </div>
             )}
