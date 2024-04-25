@@ -17,6 +17,7 @@ const Shop = () => {
         fetchCategories();
     }, []);
 
+    // fetch data from API (first time and everytime 'category' state changes)
     useEffect(() => {
         fetchProducts();
     }, [category]);
@@ -56,6 +57,7 @@ const Shop = () => {
     };
 
     const handleSelectCategory = (category) => {
+        console.log(category);
         setProducts([]);
         setCategory(category);
     };
