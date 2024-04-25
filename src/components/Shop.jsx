@@ -15,33 +15,34 @@ const Shop = () => {
 
     // fetch data from API (first time)
     useEffect(() => {
-        fetchProducts(0, fetchType);
         fetchCategories();
     }, []);
 
+    useEffect(() => {
+        fetchProducts();
+    }, [category]);
+
     // load and show next items on "Show next items" button click
     const showNextItems = () => {
-        fetchProducts(products.length);
+        fetchProducts();
     };
 
     // fetch products API
-    const fetchProducts = (skip, fetchType, category) => {
-        console.log("fetchType in fetchPruducts", fetchType);
-        if (fetchType === "type-products") {
+    const fetchProducts = () => {
+        const skip = products.length;
+        if (!category) {
             fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
                 .then((res) => res.json())
                 .then((data) => {
                     setTotal(data.total);
                     setProducts((prev) => [...prev, ...data.products]);
                 });
-        } else if (fetchType === "type-category") {
-            setCategory(category);
-            console.log("asdsad", category);
-            fetch(`https://dummyjson.com/products/category/${category}?limit=8`)
+        } else {
+            fetch(`https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`)
                 .then((res) => res.json())
                 .then((data) => {
                     setTotal(data.total);
-                    setProducts([...data.products]);
+                    setProducts((prev) => [...prev, ...data.products]);
                 });
         }
     };
@@ -62,7 +63,8 @@ const Shop = () => {
         console.log("handleSelectCategory", category);
         setFetchType("category");
         console.log("fetchType", fetchType);
-        fetchProducts(8, "type-category", category);
+        setProducts([]);
+        setCategory(category);
     };
 
     // Handling whether the item is or isn't in cart
