@@ -11,7 +11,6 @@ const Shop = () => {
     const [total, setTotal] = useState(0);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState("");
-    const [fetchType, setFetchType] = useState("type-products");
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -29,22 +28,19 @@ const Shop = () => {
 
     // fetch products API
     const fetchProducts = () => {
+        let fetchUrl = "";
         const skip = products.length;
         if (!category) {
-            fetch(`https://dummyjson.com/products?skip=${skip}&limit=8`)
-                .then((res) => res.json())
-                .then((data) => {
-                    setTotal(data.total);
-                    setProducts((prev) => [...prev, ...data.products]);
-                });
+            fetchUrl = `https://dummyjson.com/products?skip=${skip}&limit=8`;
         } else {
-            fetch(`https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`)
-                .then((res) => res.json())
-                .then((data) => {
-                    setTotal(data.total);
-                    setProducts((prev) => [...prev, ...data.products]);
-                });
+            fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`;
         }
+        fetch(fetchUrl)
+            .then((res) => res.json())
+            .then((data) => {
+                setTotal(data.total);
+                setProducts((prev) => [...prev, ...data.products]);
+            });
     };
 
     // fetch all categories API
@@ -60,9 +56,6 @@ const Shop = () => {
     };
 
     const handleSelectCategory = (category) => {
-        console.log("handleSelectCategory", category);
-        setFetchType("category");
-        console.log("fetchType", fetchType);
         setProducts([]);
         setCategory(category);
     };
