@@ -146,7 +146,7 @@ export const Shop = () => {
                     )}
                 </div>
             </div>
-            {products.length < total && (
+            {products.length < total && !isLoading && (
                 <div className="row">
                     <button className="btn btn-primary my-4" onClick={showNextItems}>
                         Load next items
