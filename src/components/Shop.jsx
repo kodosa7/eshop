@@ -53,14 +53,6 @@ export const Shop = () => {
         fetch(`https://dummyjson.com/products/categories/`)
             .then((res) => res.json())
             .then((data) => {
-                // capitalize first letter on category name first
-                // TODO: capitalize all first letters and swap '-' for spaces
-                const capitalizedData = data.map((category) =>
-                    category
-                        .split("-")
-                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                        .join(" ")
-                );
                 setCategories(data);
                 setIsLoading(false);
             });
