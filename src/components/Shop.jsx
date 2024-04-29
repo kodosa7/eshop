@@ -11,6 +11,7 @@ export const Shop = () => {
     const [total, setTotal] = useState(0);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -36,16 +37,19 @@ export const Shop = () => {
         } else {
             fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`;
         }
+        setIsLoading(true);
         fetch(fetchUrl)
             .then((res) => res.json())
             .then((data) => {
                 setTotal(data.total);
                 setProducts((prev) => [...prev, ...data.products]);
+                setIsLoading(false);
             });
     };
 
     // fetch all categories API
     const fetchCategories = () => {
+        setIsLoading(true);
         fetch(`https://dummyjson.com/products/categories/`)
             .then((res) => res.json())
             .then((data) => {
@@ -53,6 +57,7 @@ export const Shop = () => {
                 // TODO: capitalize all first letters and swap '-' for spaces
                 const capitalizedData = data.map((category) => category.charAt(0).toUpperCase() + category.slice(1));
                 setCategories(capitalizedData);
+                setIsLoading(false);
             });
     };
 
@@ -103,31 +108,42 @@ export const Shop = () => {
             <div className="row">
                 <div className="col-3">
                     {/* Categories */}
-                    <Categories
-                        categories={categories}
-                        category={category}
-                        handleSelectCategory={handleSelectCategory}
-                    />
+                    {isLoading ? (
+                        <p>Loading categories...</p>
+                    ) : (
+                        <Categories
+                            categories={categories}
+                            category={category}
+                            handleSelectCategory={handleSelectCategory}
+                        />
+                    )}
                 </div>
+
                 <div className="col">
-                    {category === "" ? <h2>All products</h2> : <h2>{category}</h2>}
-                    {/* Item */}
-                    <div className="row row-gap-4">
-                        {products.map((prod, index) => (
-                            <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
-                                <Item
-                                    itemId={prod.id}
-                                    index={index}
-                                    name={prod.title}
-                                    image={prod.thumbnail}
-                                    description={prod.description}
-                                    price={prod.price}
-                                    handleAddToCart={() => handleAddToCart(prod)}
-                                    disabledButtons={disabledButtons}
-                                />
+                    {isLoading ? (
+                        <p>Loading products...</p>
+                    ) : (
+                        <>
+                            {category === "" ? <h2>All products</h2> : <h2>{category}</h2>}
+                            {/* Item */}
+                            <div className="row row-gap-4">
+                                {products.map((prod, index) => (
+                                    <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
+                                        <Item
+                                            itemId={prod.id}
+                                            index={index}
+                                            name={prod.title}
+                                            image={prod.thumbnail}
+                                            description={prod.description}
+                                            price={prod.price}
+                                            handleAddToCart={() => handleAddToCart(prod)}
+                                            disabledButtons={disabledButtons}
+                                        />
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
+                        </>
+                    )}
                 </div>
             </div>
             {products.length < total && (
