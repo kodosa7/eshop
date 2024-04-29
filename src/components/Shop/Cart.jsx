@@ -59,7 +59,6 @@ const Cart = (props) => {
             <>
                 <h2>Cart</h2>
                 {selectedItems.map((prod, index) => {
-                    console.log("selectedItems", selectedItems);
                     const { title, price } = prod;
 
                     return (
