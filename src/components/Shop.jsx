@@ -89,6 +89,39 @@ export const Shop = () => {
         }
     };
 
+    const renderProductsHtml = () => {
+        return (
+            <>
+                {category === "" ? (
+                    <h2>All products</h2>
+                ) : (
+                    <h2>
+                        {category
+                            .split("-")
+                            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                            .join(" ")}
+                    </h2>
+                )}
+                <div className="row row-gap-4">
+                    {products.map((prod, index) => (
+                        <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
+                            <Item
+                                itemId={prod.id}
+                                index={index}
+                                name={prod.title}
+                                image={prod.thumbnail}
+                                description={prod.description}
+                                price={prod.price}
+                                handleAddToCart={() => handleAddToCart(prod)}
+                                disabledButtons={disabledButtons}
+                            />
+                        </div>
+                    ))}
+                </div>
+            </>
+        );
+    };
+
     return (
         <>
             {/* Cart */}
@@ -125,65 +158,11 @@ export const Shop = () => {
                 <div className="col">
                     {isLoading ? (
                         <>
-                            {category === "" ? (
-                                <h2>All products</h2>
-                            ) : (
-                                <h2>
-                                    {category
-                                        .split("-")
-                                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                                        .join(" ")}
-                                </h2>
-                            )}
-                            {/* Item */}
-                            <div className="row row-gap-4">
-                                {products.map((prod, index) => (
-                                    <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
-                                        <Item
-                                            itemId={prod.id}
-                                            index={index}
-                                            name={prod.title}
-                                            image={prod.thumbnail}
-                                            description={prod.description}
-                                            price={prod.price}
-                                            handleAddToCart={() => handleAddToCart(prod)}
-                                            disabledButtons={disabledButtons}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
+                            {renderProductsHtml()}
                             <p>Loading products...</p>
                         </>
                     ) : (
-                        <>
-                            {category === "" ? (
-                                <h2>All products</h2>
-                            ) : (
-                                <h2>
-                                    {category
-                                        .split("-")
-                                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                                        .join(" ")}
-                                </h2>
-                            )}
-                            {/* Item */}
-                            <div className="row row-gap-4">
-                                {products.map((prod, index) => (
-                                    <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
-                                        <Item
-                                            itemId={prod.id}
-                                            index={index}
-                                            name={prod.title}
-                                            image={prod.thumbnail}
-                                            description={prod.description}
-                                            price={prod.price}
-                                            handleAddToCart={() => handleAddToCart(prod)}
-                                            disabledButtons={disabledButtons}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </>
+                        <>{renderProductsHtml()}</>
                     )}
                 </div>
             </div>
