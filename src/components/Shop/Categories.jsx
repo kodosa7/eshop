@@ -5,14 +5,24 @@ const Categories = (props) => {
         <>
             <h2>Categories</h2>
             {category && (
-                <a href="#" onClick={() => handleSelectCategory("")}>
+                <a
+                    className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                    href="#"
+                    onClick={() => handleSelectCategory("")}
+                >
                     All Products
                 </a>
             )}
-            {categories.map((category, index) => (
+            {categories.map((selectedCategory, index) => (
                 <div key={index} className="col-sm-6 col-md-4 col-lg-3">
-                    <a href="#" onClick={() => handleSelectCategory(category)}>
-                        {category}
+                    <a
+                        className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
+                            category === selectedCategory ? "link-info" : "link-dark"
+                        }`}
+                        href="#"
+                        onClick={() => handleSelectCategory(selectedCategory)}
+                    >
+                        {selectedCategory}
                     </a>
                 </div>
             ))}

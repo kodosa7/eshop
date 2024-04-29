@@ -102,6 +102,7 @@ export const Shop = () => {
             />
             <div className="row">
                 <div className="col-3">
+                    {/* Categories */}
                     <Categories
                         categories={categories}
                         category={category}
