@@ -2,14 +2,8 @@ import { useState, useEffect } from "react";
 import Checkout from "./Checkout";
 
 const Cart = (props) => {
-    const {
-        selectedItems,
-        setSelectedItems,
-        handleAddToCart,
-        setDisabledButtons,
-        showOrderSent,
-        setShowOrderSent,
-    } = props;
+    const { selectedItems, setSelectedItems, handleAddToCart, setDisabledButtons, showOrderSent, setShowOrderSent } =
+        props;
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
 
@@ -67,8 +61,6 @@ const Cart = (props) => {
                 {selectedItems.map((prod, index) => {
                     console.log("selectedItems", selectedItems);
                     const { title, price } = prod;
-                    console.log("title", title);
-                    console.log("price", price);
 
                     return (
                         <>

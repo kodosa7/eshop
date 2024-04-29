@@ -21,6 +21,7 @@ const Categories = (props) => {
                     All Products
                 </a>
             )}
+
             {categories.map((selectedCategory, index) => (
                 <div key={index} className="col-sm-6 col-md-4 col-lg-3">
                     <a
@@ -30,7 +31,10 @@ const Categories = (props) => {
                         href="#"
                         onClick={() => handleSelectCategory(selectedCategory)}
                     >
-                        {selectedCategory}
+                        {selectedCategory
+                            .split("-")
+                            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                            .join(" ")}
                     </a>
                 </div>
             ))}

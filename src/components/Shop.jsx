@@ -55,14 +55,18 @@ export const Shop = () => {
             .then((data) => {
                 // capitalize first letter on category name first
                 // TODO: capitalize all first letters and swap '-' for spaces
-                const capitalizedData = data.map((category) => category.charAt(0).toUpperCase() + category.slice(1));
-                setCategories(capitalizedData);
+                const capitalizedData = data.map((category) =>
+                    category
+                        .split("-")
+                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(" ")
+                );
+                setCategories(data);
                 setIsLoading(false);
             });
     };
 
     const handleSelectCategory = (category) => {
-        console.log(category);
         setProducts([]);
         setCategory(category);
     };
@@ -129,7 +133,16 @@ export const Shop = () => {
                 <div className="col">
                     {isLoading ? (
                         <>
-                            {category === "" ? <h2>All products</h2> : <h2>{category}</h2>}
+                            {category === "" ? (
+                                <h2>All products</h2>
+                            ) : (
+                                <h2>
+                                    {category
+                                        .split("-")
+                                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                                        .join(" ")}
+                                </h2>
+                            )}
                             {/* Item */}
                             <div className="row row-gap-4">
                                 {products.map((prod, index) => (
@@ -151,7 +164,16 @@ export const Shop = () => {
                         </>
                     ) : (
                         <>
-                            {category === "" ? <h2>All products</h2> : <h2>{category}</h2>}
+                            {category === "" ? (
+                                <h2>All products</h2>
+                            ) : (
+                                <h2>
+                                    {category
+                                        .split("-")
+                                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                                        .join(" ")}
+                                </h2>
+                            )}
                             {/* Item */}
                             <div className="row row-gap-4">
                                 {products.map((prod, index) => (
