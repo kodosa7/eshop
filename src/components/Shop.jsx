@@ -3,7 +3,7 @@ import Item from "./Shop/Item";
 import Cart from "./Shop/Cart";
 import Categories from "./Shop/Categories";
 
-const Shop = () => {
+export const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [showOrderSent, setShowOrderSent] = useState(false);

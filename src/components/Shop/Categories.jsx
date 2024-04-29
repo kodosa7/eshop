@@ -5,15 +5,15 @@ const Categories = (props) => {
         <>
             <h2>Categories</h2>
             {category && (
-                <button type="button" onClick={() => handleSelectCategory("")}>
+                <a href="#" onClick={() => handleSelectCategory("")}>
                     All Products
-                </button>
+                </a>
             )}
             {categories.map((category, index) => (
                 <div key={index} className="col-sm-6 col-md-4 col-lg-3">
-                    <button type="button" onClick={() => handleSelectCategory(category)}>
+                    <a href="#" onClick={() => handleSelectCategory(category)}>
                         {category}
-                    </button>
+                    </a>
                 </div>
             ))}
         </>
