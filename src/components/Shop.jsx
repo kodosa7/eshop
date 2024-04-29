@@ -109,7 +109,14 @@ export const Shop = () => {
                 <div className="col-3">
                     {/* Categories */}
                     {isLoading ? (
-                        <p>Loading categories...</p>
+                        <>
+                            <Categories
+                                categories={categories}
+                                category={category}
+                                handleSelectCategory={handleSelectCategory}
+                            />
+                            <p>Loading categories...</p>
+                        </>
                     ) : (
                         <Categories
                             categories={categories}
@@ -121,7 +128,27 @@ export const Shop = () => {
 
                 <div className="col">
                     {isLoading ? (
-                        <p>Loading products...</p>
+                        <>
+                            {category === "" ? <h2>All products</h2> : <h2>{category}</h2>}
+                            {/* Item */}
+                            <div className="row row-gap-4">
+                                {products.map((prod, index) => (
+                                    <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
+                                        <Item
+                                            itemId={prod.id}
+                                            index={index}
+                                            name={prod.title}
+                                            image={prod.thumbnail}
+                                            description={prod.description}
+                                            price={prod.price}
+                                            handleAddToCart={() => handleAddToCart(prod)}
+                                            disabledButtons={disabledButtons}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                            <p>Loading products...</p>
+                        </>
                     ) : (
                         <>
                             {category === "" ? <h2>All products</h2> : <h2>{category}</h2>}
