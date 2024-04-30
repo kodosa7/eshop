@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Item from "./Shop/Item";
 import Cart from "./Shop/Cart";
 import Categories from "./Shop/Categories";
+import Search from "./Shop/Search";
 
 export const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
@@ -89,6 +90,11 @@ export const Shop = () => {
         }
     };
 
+    // show success text and empty cart
+    const handleSearch = () => {
+        console.log("handleSearch fnc");
+    };
+
     return (
         <>
             {/* Cart */}
@@ -101,6 +107,9 @@ export const Shop = () => {
                 showOrderSent={showOrderSent}
                 setShowOrderSent={setShowOrderSent}
             />
+            {/* Search */}
+            <Search handleSearch={handleSearch} />
+
             <div className="row">
                 <div className="col-3">
                     {/* Categories */}
