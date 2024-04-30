@@ -3,7 +3,9 @@ const Item = (props) => {
 
     return (
         <div className="card h-100">
-            <img className="card-img-top object-fit-cover" src={image} alt="" />
+            <div className="ratio ratio-1x1">
+                <img className="card-img-top object-fit-cover" src={image} alt="" />
+            </div>
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
