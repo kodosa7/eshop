@@ -23,7 +23,7 @@ const Categories = (props) => {
             )}
 
             {categories.map((selectedCategory, index) => (
-                <div key={index} className="col-sm-6 col-md-4 col-lg-3">
+                <div key={index} className="col">
                     <a
                         className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
                             category === selectedCategory ? "link-info" : "link-dark"
