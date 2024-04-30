@@ -4,6 +4,7 @@ const Search = (props) => {
     const { handleSearch } = props;
     const [isSearchValid, setIsSearchValid] = useState(false);
     const [isSearchFieldEmpty, setIsSearchFieldEmpty] = useState(false);
+    const [lastTypedString, setLastTypedString] = useState("");
 
     const handleValidation = (event) => {
         event.preventDefault();
@@ -20,11 +21,14 @@ const Search = (props) => {
         form.classList.add("was-validated");
     };
 
-    const inputRef = useRef();
     const handleOnChange = (event) => {
+        const formValue = event.target.value;
+        setLastTypedString(formValue);
+        console.log(lastTypedString);
         event.preventDefault();
     };
 
+    const inputRef = useRef();
     const handleSubmit = (event) => {
         event.preventDefault();
         if (isSearchValid) {
