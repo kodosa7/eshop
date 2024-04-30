@@ -3,10 +3,10 @@ const Item = (props) => {
 
     return (
         <div className="card h-100">
-            <img className="card-img-top object-fit-cover" style={{ minHeight: "9rem" }} src={image} alt="" />
-            <h5 className="card-header">{name}</h5>
+            <img className="card-img-top object-fit-cover" src={image} alt="" />
             <div className="card-body">
-                <p className="card-text h-100">{description}</p>
+                <h5 className="card-title">{name}</h5>
+                <p className="card-text">{description}</p>
             </div>
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
