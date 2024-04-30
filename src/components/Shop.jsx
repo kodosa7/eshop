@@ -89,12 +89,6 @@ export const Shop = () => {
         }
     };
 
-    // const renderProductsHtml = () => {
-    //     return (
-
-    //     );
-    // };
-
     return (
         <>
             {/* Cart */}
