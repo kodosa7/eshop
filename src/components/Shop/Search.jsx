@@ -24,7 +24,7 @@ const Search = (props) => {
     const handleOnChange = (event) => {
         const formValue = event.target.value;
         setLastTypedString(formValue);
-        console.log(lastTypedString);
+        console.log(formValue);
         event.preventDefault();
     };
 
