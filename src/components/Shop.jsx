@@ -52,11 +52,6 @@ export const Shop = () => {
             });
     };
 
-    const handleSearch = (value) => {
-        console.log("Value from handleOnChange in handleSearch:", value);
-        setSearchValue(value);
-    };
-
     // fetch all categories API
     const fetchCategories = () => {
         setIsLoading(true);
@@ -68,9 +63,17 @@ export const Shop = () => {
             });
     };
 
+    const handleSearch = (value) => {
+        console.log("Value from handleOnChange in handleSearch:", value);
+        setProducts([]);
+        setCategory("");
+        setSearchValue(value);
+    };
+
     const handleSelectCategory = (category) => {
         setProducts([]);
         setCategory(category);
+        setSearchValue("");
     };
 
     // Handling whether the item is or isn't in cart
