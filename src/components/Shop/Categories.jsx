@@ -4,23 +4,13 @@ const Categories = (props) => {
     return (
         <>
             <h2>Categories</h2>
-            {category ? (
-                <a
-                    className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                    href="#"
-                    onClick={() => handleSelectCategory("")}
-                >
-                    All Products
-                </a>
-            ) : (
-                <a
-                    className="link-info link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-                    href="#"
-                    onClick={() => handleSelectCategory("")}
-                >
-                    All Products
-                </a>
-            )}
+            <a
+                className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                href="#"
+                onClick={() => handleSelectCategory("")}
+            >
+                All Products
+            </a>
 
             {categories.map((selectedCategory, index) => (
                 <div key={index} className="col">

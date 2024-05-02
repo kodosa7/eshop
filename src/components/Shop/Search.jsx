@@ -1,8 +1,6 @@
 import { useState, useRef } from "react";
 
 const Search = () => {
-    const [isSearchValid, setIsSearchValid] = useState(false);
-    const [isSearchFieldEmpty, setIsSearchFieldEmpty] = useState(false);
     const [lastTypedString, setLastTypedString] = useState("");
     const valueRef = useRef("");
 
