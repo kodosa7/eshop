@@ -129,16 +129,21 @@ export const Shop = () => {
                 </div>
 
                 <div className="col">
-                    {category === "" ? (
-                        <h2>All products</h2>
+                    {searchValue === "" ? (
+                        !category ? (
+                            <h2>All products</h2>
+                        ) : (
+                            <h2>
+                                {category
+                                    .split("-")
+                                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                                    .join(" ")}
+                            </h2>
+                        )
                     ) : (
-                        <h2>
-                            {category
-                                .split("-")
-                                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                                .join(" ")}
-                        </h2>
+                        <h2>Search results</h2>
                     )}
+
                     <div className="row row-gap-4">
                         {products.map((prod, index) => (
                             <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
