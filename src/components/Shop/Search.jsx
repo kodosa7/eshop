@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 
-const Search = () => {
+const Search = (props) => {
+    const { handleSearch } = props;
     const valueRef = useRef("");
 
     // zjednodusit!
@@ -9,16 +10,12 @@ const Search = () => {
         valueRef.current = formValue;
     };
 
-    const handleSearch = () => {
-        console.log("Value from handleOnChange in handleSearch:", valueRef.current);
-    };
-
     return (
         <form
             className="mt-4 mb-4"
             onSubmit={(event) => {
                 event.preventDefault();
-                handleSearch();
+                handleSearch(valueRef.current);
             }}
         >
             <div className="input-group">
