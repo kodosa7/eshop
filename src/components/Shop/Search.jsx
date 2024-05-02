@@ -1,13 +1,11 @@
 import { useState, useRef } from "react";
 
 const Search = () => {
-    const [lastTypedString, setLastTypedString] = useState("");
     const valueRef = useRef("");
 
     // zjednodusit!
     const handleOnChange = (event) => {
         const formValue = event.target.value;
-        setLastTypedString(formValue);
         valueRef.current = formValue;
     };
 
