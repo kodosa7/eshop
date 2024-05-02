@@ -1,23 +1,28 @@
-import { useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const Search = (props) => {
-    const { handleSearch } = props;
+    const { handleSearch, searchValue } = props;
     const valueRef = useRef("");
 
-    // zjednodusit!
+    console.log(`searchValue in Search: "${searchValue}"`);
+    console.log(`valueRef.current: "${valueRef.current}"`);
+
+    useEffect(() => {
+        valueRef.current = searchValue;
+    }, [searchValue]);
+
     const handleOnChange = (event) => {
         const formValue = event.target.value;
         valueRef.current = formValue;
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        handleSearch(valueRef.current);
+    };
+
     return (
-        <form
-            className="mt-4 mb-4"
-            onSubmit={(event) => {
-                handleSearch(valueRef.current);
-                event.preventDefault();
-            }}
-        >
+        <form className="mt-4 mb-4" onSubmit={handleSubmit}>
             <div className="input-group">
                 <div className="form-outline">
                     <input

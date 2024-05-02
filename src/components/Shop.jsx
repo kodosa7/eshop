@@ -71,9 +71,9 @@ export const Shop = () => {
     };
 
     const handleSelectCategory = (category) => {
+        setSearchValue("");
         setProducts([]);
         setCategory(category);
-        setSearchValue("");
     };
 
     // Handling whether the item is or isn't in cart
@@ -115,7 +115,7 @@ export const Shop = () => {
                 setShowOrderSent={setShowOrderSent}
             />
             {/* Search */}
-            <Search handleSearch={handleSearch} />
+            <Search handleSearch={handleSearch} searchValue={searchValue} />
 
             <div className="row">
                 <div className="col-3">
