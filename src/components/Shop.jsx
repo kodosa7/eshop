@@ -52,6 +52,11 @@ export const Shop = () => {
             });
     };
 
+    const handleSearch = (value) => {
+        console.log("Value from handleOnChange in handleSearch:", value);
+        setSearchValue(value);
+    };
+
     // fetch all categories API
     const fetchCategories = () => {
         setIsLoading(true);
@@ -92,11 +97,6 @@ export const Shop = () => {
             const updatedDisabledButtons = disabledButtons.filter((id) => id !== item.id);
             setDisabledButtons(updatedDisabledButtons);
         }
-    };
-
-    const handleSearch = (value) => {
-        console.log("Value from handleOnChange in handleSearch:", value);
-        setSearchValue(value);
     };
 
     return (
