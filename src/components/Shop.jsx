@@ -90,11 +90,6 @@ export const Shop = () => {
         }
     };
 
-    // show success text and empty cart
-    const handleSearch = () => {
-        console.log("handleSearch fnc");
-    };
-
     return (
         <>
             {/* Cart */}
@@ -108,7 +103,7 @@ export const Shop = () => {
                 setShowOrderSent={setShowOrderSent}
             />
             {/* Search */}
-            <Search handleSearch={handleSearch} />
+            <Search />
 
             <div className="row">
                 <div className="col-3">
