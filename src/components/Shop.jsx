@@ -30,6 +30,22 @@ export const Shop = () => {
         fetchProducts();
     };
 
+    // if searchValue changes, fetch products filtered by that value
+    useEffect(() => {
+        fetchSearchedProducts();
+    }, [searchValue]);
+
+    const fetchSearchedProducts = () => {
+        console.log("searchValue changed, fetching products");
+        let fetchUrl = "";
+        fetchUrl = `https://dummyjson.com/products/search?q=${searchValue}&limit=2`;
+        fetch(fetchUrl)
+            .then((res) => res.json())
+            .then((data) => {
+                setProducts(data.products);
+            });
+    };
+
     // fetch products API
     const fetchProducts = () => {
         let fetchUrl = "";
@@ -134,22 +150,20 @@ export const Shop = () => {
                         </h2>
                     )}
                     <div className="row row-gap-4">
-                        {products
-                            .filter((prod) => prod.title.toLowerCase().includes(searchValue.toLowerCase()))
-                            .map((prod, index) => (
-                                <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
-                                    <Item
-                                        itemId={prod.id}
-                                        index={index}
-                                        name={prod.title}
-                                        image={prod.thumbnail}
-                                        description={prod.description}
-                                        price={prod.price}
-                                        handleAddToCart={() => handleAddToCart(prod)}
-                                        disabledButtons={disabledButtons}
-                                    />
-                                </div>
-                            ))}
+                        {products.map((prod, index) => (
+                            <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
+                                <Item
+                                    itemId={prod.id}
+                                    index={index}
+                                    name={prod.title}
+                                    image={prod.thumbnail}
+                                    description={prod.description}
+                                    price={prod.price}
+                                    handleAddToCart={() => handleAddToCart(prod)}
+                                    disabledButtons={disabledButtons}
+                                />
+                            </div>
+                        ))}
                     </div>
                     {isLoading && <p>Loading products...</p>}
                 </div>
