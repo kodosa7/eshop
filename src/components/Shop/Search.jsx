@@ -14,8 +14,8 @@ const Search = (props) => {
         <form
             className="mt-4 mb-4"
             onSubmit={(event) => {
-                event.preventDefault();
                 handleSearch(valueRef.current);
+                event.preventDefault();
             }}
         >
             <div className="input-group">

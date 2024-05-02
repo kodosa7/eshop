@@ -23,38 +23,25 @@ export const Shop = () => {
     // fetch data from API (first time and everytime 'category' state changes)
     useEffect(() => {
         fetchProducts();
-    }, [category]);
+    }, [searchValue, category]);
 
     // load and show next items on "Show next items" button click
     const showNextItems = () => {
         fetchProducts();
     };
 
-    // if searchValue changes, fetch products filtered by that value
-    useEffect(() => {
-        fetchSearchedProducts();
-    }, [searchValue]);
-
-    const fetchSearchedProducts = () => {
-        console.log("searchValue changed, fetching products");
-        let fetchUrl = "";
-        fetchUrl = `https://dummyjson.com/products/search?q=${searchValue}&limit=2`;
-        fetch(fetchUrl)
-            .then((res) => res.json())
-            .then((data) => {
-                setProducts(data.products);
-            });
-    };
-
     // fetch products API
     const fetchProducts = () => {
         let fetchUrl = "";
         const skip = products.length;
-        if (!category) {
+        if (!category && searchValue === "") {
             fetchUrl = `https://dummyjson.com/products?skip=${skip}&limit=8`;
-        } else {
+        } else if (category && searchValue === "") {
             fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`;
+        } else if (searchValue !== "") {
+            fetchUrl = `https://dummyjson.com/products/search?q=${searchValue}&skip=${skip}&limit=8`;
         }
+
         setIsLoading(true);
         fetch(fetchUrl)
             .then((res) => res.json())
