@@ -115,7 +115,7 @@ export const Shop = () => {
                 setShowOrderSent={setShowOrderSent}
             />
             {/* Search */}
-            <Search handleSearch={handleSearch} searchValue={searchValue} />
+            <Search handleSearch={handleSearch} searchValue={searchValue} setSearchValue={setSearchValue} />
 
             <div className="row">
                 <div className="col-3">

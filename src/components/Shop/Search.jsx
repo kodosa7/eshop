@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 const Search = (props) => {
-    const { handleSearch, searchValue } = props;
+    const { handleSearch, searchValue, setSearchValue } = props;
     const valueRef = useRef("");
 
     console.log(`searchValue in Search: "${searchValue}"`);
@@ -14,11 +14,12 @@ const Search = (props) => {
     const handleOnChange = (event) => {
         const formValue = event.target.value;
         valueRef.current = formValue;
+        setSearchValue(event.target.value);
     };
 
     const handleSubmit = (event) => {
-        event.preventDefault();
         handleSearch(valueRef.current);
+        event.preventDefault();
     };
 
     return (
@@ -34,6 +35,7 @@ const Search = (props) => {
                         aria-label="Search input field"
                         aria-describedby="searchHelp"
                         onChange={handleOnChange}
+                        value={searchValue}
                         required
                     />
                 </div>
