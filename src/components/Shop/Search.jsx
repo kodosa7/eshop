@@ -1,29 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Search = (props) => {
-    const { handleSearch, searchValue, setSearchValue } = props;
-    const valueRef = useRef("");
+    const { handleSearch, searchValue, inputValue, setInputValue } = props;
 
     console.log(`searchValue in Search: "${searchValue}"`);
-    console.log(`valueRef.current: "${valueRef.current}"`);
 
-    useEffect(() => {
-        valueRef.current = searchValue;
-    }, [searchValue]);
-
-    const handleOnChange = (event) => {
-        const formValue = event.target.value;
-        valueRef.current = formValue;
-        setSearchValue(event.target.value);
-    };
-
-    const handleSubmit = (event) => {
-        handleSearch(valueRef.current);
-        event.preventDefault();
+    const handleSubmit = (e, value) => {
+        handleSearch(value);
+        e.preventDefault();
     };
 
     return (
-        <form className="mt-4 mb-4" onSubmit={handleSubmit}>
+        <form className="mt-4 mb-4" onSubmit={(e) => handleSubmit(e, inputValue)}>
             <div className="input-group">
                 <div className="form-outline">
                     <input
@@ -34,8 +22,8 @@ const Search = (props) => {
                         name="search"
                         aria-label="Search input field"
                         aria-describedby="searchHelp"
-                        onChange={handleOnChange}
-                        value={searchValue}
+                        onChange={(event) => setInputValue(event.target.value)}
+                        value={inputValue}
                         required
                     />
                 </div>

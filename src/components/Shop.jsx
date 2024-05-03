@@ -14,6 +14,7 @@ export const Shop = () => {
     const [category, setCategory] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [searchValue, setSearchValue] = useState("");
+    const [inputValue, setInputValue] = useState("");
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -40,6 +41,7 @@ export const Shop = () => {
             fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`;
         } else if (searchValue !== "") {
             fetchUrl = `https://dummyjson.com/products/search?q=${searchValue}&skip=${skip}&limit=8`;
+            console.log("now");
         }
 
         setIsLoading(true);
@@ -72,6 +74,7 @@ export const Shop = () => {
 
     const handleSelectCategory = (category) => {
         setSearchValue("");
+        setInputValue("");
         setProducts([]);
         setCategory(category);
     };
@@ -115,7 +118,12 @@ export const Shop = () => {
                 setShowOrderSent={setShowOrderSent}
             />
             {/* Search */}
-            <Search handleSearch={handleSearch} searchValue={searchValue} setSearchValue={setSearchValue} />
+            <Search
+                handleSearch={handleSearch}
+                searchValue={searchValue}
+                inputValue={inputValue}
+                setInputValue={setInputValue}
+            />
 
             <div className="row">
                 <div className="col-3">
