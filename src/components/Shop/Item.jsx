@@ -2,6 +2,15 @@ const Item = (props) => {
     const { itemId, name, description, image, price, discountPercentage, rating, handleAddToCart, disabledButtons } =
         props;
 
+    const stars = (rating) => {
+        const starsArray = [];
+        for (let i = 0; i < Math.abs(rating); i++) {
+            starsArray.push("⭐");
+        }
+        console.log(starsArray, Math.abs(rating));
+        return starsArray;
+    };
+
     return (
         <div className="card h-100">
             <div className="ratio ratio-1x1">
@@ -11,10 +20,11 @@ const Item = (props) => {
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Discount: {discountPercentage}</li>
-                <li class="list-group-item">Rating: {rating}</li>
+            <ul className="list-group list-group-flush">
+                <li className="list-group-item">{stars(rating)}</li>
+                <li className="list-group-item">Discount: {discountPercentage}</li>
             </ul>
+
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     {price.toFixed(2).split(".")[1] === "00"
