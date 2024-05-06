@@ -184,15 +184,15 @@ export const Shop = () => {
                         isLoading && <p>No products found</p>
                     )}
                     {isLoading && <p>Loading products...</p>}
+                    {products.length < total && !isLoading && (
+                        <div className="row">
+                            <button className="btn btn-primary my-4" onClick={showNextItems}>
+                                Load next items
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
-            {products.length < total && !isLoading && (
-                <div className="row">
-                    <button className="btn btn-primary my-4" onClick={showNextItems}>
-                        Load next items
-                    </button>
-                </div>
-            )}
         </>
     );
 };
