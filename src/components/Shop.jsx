@@ -162,6 +162,8 @@ export const Shop = () => {
                                         image={prod.thumbnail}
                                         description={prod.description}
                                         price={prod.price}
+                                        discountPercentage={prod.discountPercentage}
+                                        rating={prod.rating}
                                         handleAddToCart={() => handleAddToCart(prod)}
                                         disabledButtons={disabledButtons}
                                     />

@@ -1,5 +1,6 @@
 const Item = (props) => {
-    const { itemId, name, description, image, price, handleAddToCart, disabledButtons } = props;
+    const { itemId, name, description, image, price, discountPercentage, rating, handleAddToCart, disabledButtons } =
+        props;
 
     return (
         <div className="card h-100">
@@ -10,6 +11,10 @@ const Item = (props) => {
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
             </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Discount: {discountPercentage}</li>
+                <li class="list-group-item">Rating: {rating}</li>
+            </ul>
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     {price.toFixed(2).split(".")[1] === "00"
