@@ -2,14 +2,10 @@ const Item = (props) => {
     const { itemId, name, description, image, price, discountPercentage, rating, handleAddToCart, disabledButtons } =
         props;
 
-    const stars = (rating) => {
-        const starsArray = [];
-        for (let i = 0; i < Math.abs(rating); i++) {
-            starsArray.push("⭐");
-        }
-        console.log(starsArray, Math.abs(rating));
-        return starsArray;
-    };
+    const starsArray = [];
+    for (let i = 0; i < Math.round(rating); i++) {
+        starsArray.push("⭐");
+    }
 
     return (
         <div className="card h-100">
@@ -21,7 +17,7 @@ const Item = (props) => {
                 <p className="card-text">{description}</p>
             </div>
             <ul className="list-group list-group-flush">
-                <li className="list-group-item">{stars(rating)}</li>
+                <li className="list-group-item">{starsArray}</li>
                 <li className="list-group-item">Discount: {discountPercentage}</li>
             </ul>
 
