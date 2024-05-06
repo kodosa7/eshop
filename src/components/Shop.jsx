@@ -41,7 +41,6 @@ export const Shop = () => {
             fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`;
         } else if (searchValue !== "") {
             fetchUrl = `https://dummyjson.com/products/search?q=${searchValue}&skip=${skip}&limit=8`;
-            console.log("now");
         }
 
         setIsLoading(true);
