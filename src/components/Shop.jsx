@@ -15,6 +15,7 @@ export const Shop = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const [inputValue, setInputValue] = useState("");
+    const [discountPrice, setDiscountPrice] = useState(0);
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -48,7 +49,16 @@ export const Shop = () => {
             .then((res) => res.json())
             .then((data) => {
                 setTotal(data.total);
-                setProducts((prev) => [...prev, ...data.products]);
+                const productsWithDiscountPrice = [];
+                for (let i = 0; i < data.products.length; i++) {
+                    const product = data.products[i];
+                    const discountPrice = Math.round(
+                        product.price - (product.discountPercentage * product.price) / 100
+                    );
+                    product.discountPrice = discountPrice;
+                    productsWithDiscountPrice.push(product);
+                }
+                setProducts((prev) => [...prev, ...productsWithDiscountPrice]);
                 setIsLoading(false);
             });
     };
@@ -162,7 +172,7 @@ export const Shop = () => {
                                         image={prod.thumbnail}
                                         description={prod.description}
                                         price={prod.price}
-                                        discountPercentage={prod.discountPercentage}
+                                        discountPrice={prod.discountPrice}
                                         rating={prod.rating}
                                         handleAddToCart={() => handleAddToCart(prod)}
                                         disabledButtons={disabledButtons}

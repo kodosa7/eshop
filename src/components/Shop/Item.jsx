@@ -1,6 +1,5 @@
 const Item = (props) => {
-    const { itemId, name, description, image, price, discountPercentage, rating, handleAddToCart, disabledButtons } =
-        props;
+    const { itemId, name, description, image, price, discountPrice, rating, handleAddToCart, disabledButtons } = props;
 
     const starsArray = [];
     for (let i = 0; i < Math.round(rating); i++) {
@@ -18,15 +17,22 @@ const Item = (props) => {
             </div>
             <ul className="list-group list-group-flush">
                 <li className="list-group-item">{starsArray}</li>
-                <li className="list-group-item">Discount: {discountPercentage}</li>
+                <li className="list-group-item fw-light">
+                    <s>was ${price}</s>
+                </li>
             </ul>
 
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
-                    {price.toFixed(2).split(".")[1] === "00"
-                        ? price.toFixed(2).split(".")[0]
-                        : `${price.toFixed(2).split(".")[0]}.${price.toFixed(2).split(".")[1].padEnd(2, "0")}`}{" "}
-                    $
+                    <div className="fw-bold">
+                        $
+                        {discountPrice.toFixed(2).split(".")[1] === "00"
+                            ? discountPrice.toFixed(2).split(".")[0]
+                            : `${discountPrice.toFixed(2).split(".")[0]}.${discountPrice
+                                  .toFixed(2)
+                                  .split(".")[1]
+                                  .padEnd(2, "0")}`}{" "}
+                    </div>
                     <button
                         key={itemId}
                         type="button"
