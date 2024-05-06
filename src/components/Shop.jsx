@@ -171,7 +171,7 @@ export const Shop = () => {
                             ))}
                         </div>
                     ) : (
-                        <p>No products found</p>
+                        isLoading && <p>No products found</p>
                     )}
                     {isLoading && <p>Loading products...</p>}
                 </div>
