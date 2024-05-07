@@ -110,6 +110,7 @@ const Cart = (props) => {
                                         +
                                     </button>
                                 </div>
+                                <div className="col-auto">x</div>
                             </div>
                         </>
                     );

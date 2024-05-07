@@ -15,6 +15,7 @@ export const Shop = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const [inputValue, setInputValue] = useState("");
+    const [cart, setCart] = useState([]);
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -88,16 +89,20 @@ export const Shop = () => {
         setCategory(category);
     };
 
-    // Handling whether the item is in cart
+    // If the item IS in cart
     const handleAddToCart = (item) => {
+        setCart([...cart, { ...item, quantity: 1 }]);
+        console.log("cart in handleAddToCart", cart);
+
         const itemIndex = selectedItems.findIndex((prod) => prod.id === item.id);
+        increaseQuantity(item.id);
 
         // hide order sent green element if clicked on the add item button
         setShowOrderSent(false);
 
+        setSelectedItems([...selectedItems, item]);
         // if (itemIndex === -1) {
         // Item is not in the cart, add it
-        setSelectedItems([...selectedItems, item]);
 
         // Push the clicked item to the array
         // const updatedDisabledButtons = [...disabledButtons];
@@ -113,12 +118,26 @@ export const Shop = () => {
         // setDisabledButtons(updatedDisabledButtons);
     };
 
-    // Handling whether the item is not in cart
+    // If the item IS NOT in cart
     const handleRemoveFromCart = (item) => {
         const itemIndex = selectedItems.findIndex((prod) => prod.id === item.id);
         setShowOrderSent(false);
         const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
         setSelectedItems(updatedItems);
+    };
+
+    // increase quantity (+)
+    const increaseQuantity = (productId) => {
+        setCart(
+            cart.map((cartItem) => {
+                if (cartItem.id === productId) {
+                    return { ...cartItem, quantity: cartItem.quantity + 1 };
+                } else {
+                    return cartItem;
+                }
+            })
+        );
+        console.log("cart in increaseQuantity", cart);
     };
 
     return (
