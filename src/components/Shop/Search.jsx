@@ -1,9 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-
 const Search = (props) => {
     const { handleSearch, searchValue, inputValue, setInputValue } = props;
-
-    console.log(`searchValue in Search: "${searchValue}"`);
 
     const handleSubmit = (e, value) => {
         handleSearch(value);
