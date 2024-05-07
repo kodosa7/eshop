@@ -85,6 +85,24 @@ const Cart = (props) => {
                                         Remove from cart
                                     </button>
                                 </div>
+                                <div className="col-auto">
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-dark btn-sm"
+                                        onClick={() => removeItem(prod)}
+                                    >
+                                        -
+                                    </button>
+                                </div>
+                                <div className="col-auto">
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-dark btn-sm"
+                                        onClick={() => addItem(prod)}
+                                    >
+                                        +
+                                    </button>
+                                </div>
                             </div>
                         </>
                     );
