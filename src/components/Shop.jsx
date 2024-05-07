@@ -49,15 +49,12 @@ export const Shop = () => {
             .then((data) => {
                 setTotal(data.total);
                 // calculate product discount price and put it to data
-                const productsWithDiscountPrice = [];
-                for (let i = 0; i < data.products.length; i++) {
-                    const product = data.products[i];
+                const productsWithDiscountPrice = data.products.map((product) => {
                     const discountPrice = Math.round(
                         product.price - (product.discountPercentage * product.price) / 100
                     );
-                    product.discountPrice = discountPrice;
-                    productsWithDiscountPrice.push(product);
-                }
+                    return { ...product, discountPrice };
+                });
                 setProducts((prev) => [...prev, ...productsWithDiscountPrice]);
                 setIsLoading(false);
             });
