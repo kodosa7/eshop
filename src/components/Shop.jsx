@@ -88,11 +88,14 @@ export const Shop = () => {
         setProducts([]);
         setCategory(category);
     };
+    useEffect(() => {
+        console.log("cart", cart);
+    }, [cart]);
 
     // If the item IS in cart
     const handleAddToCart = (item) => {
+        console.log("item", item);
         setCart([...cart, { ...item, quantity: 1 }]);
-        console.log("cart in handleAddToCart", cart);
 
         const itemIndex = selectedItems.findIndex((prod) => prod.id === item.id);
         increaseQuantity(item.id);
@@ -128,16 +131,15 @@ export const Shop = () => {
 
     // increase quantity (+)
     const increaseQuantity = (productId) => {
-        setCart(
-            cart.map((cartItem) => {
-                if (cartItem.id === productId) {
-                    return { ...cartItem, quantity: cartItem.quantity + 1 };
-                } else {
-                    return cartItem;
-                }
-            })
-        );
-        console.log("cart in increaseQuantity", cart);
+        const newCart = cart.map((cartItem) => {
+            if (cartItem.id === productId) {
+                return { ...cartItem, quantity: cartItem.quantity + 1 };
+            } else {
+                return cartItem;
+            }
+        });
+        setCart(newCart);
+        console.log("cart in increaseQuantity", newCart);
     };
 
     return (
@@ -193,6 +195,7 @@ export const Shop = () => {
                             {products.map((prod, index) => (
                                 <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
                                     <Item
+                                        item={prod}
                                         itemId={prod.id}
                                         index={index}
                                         name={prod.title}

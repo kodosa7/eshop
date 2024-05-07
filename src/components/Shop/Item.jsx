@@ -1,11 +1,11 @@
 const Item = (props) => {
-    const { itemId, name, description, image, price, discountPrice, rating, handleAddToCart, disabledButtons } = props;
+    const { item, itemId, name, description, image, price, discountPrice, rating, handleAddToCart, disabledButtons } =
+        props;
 
     const starsArray = [];
     for (let i = 0; i < Math.round(rating); i++) {
         starsArray.push("⭐");
     }
-
     return (
         <div className="card h-100">
             <div className="ratio ratio-1x1">
@@ -40,7 +40,7 @@ const Item = (props) => {
                         style={{
                             fontSize: ".7rem",
                         }}
-                        onClick={() => handleAddToCart(itemId)}
+                        onClick={() => handleAddToCart(item)}
                         disabled={disabledButtons.includes(itemId)}
                     >
                         {disabledButtons.includes(itemId) ? `Already in your cart` : `Add to cart`}
