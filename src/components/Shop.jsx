@@ -117,7 +117,7 @@ export const Shop = () => {
     };
 
     // increase quantity (-)
-    const decreaseQuantity = (productId) => {
+    const decreaseQuantity = (id) => {
         const newCart = selectedItems.map((item) => {
             if (item.id === id) {
                 return { ...item, quantity: item.quantity - 1 };
