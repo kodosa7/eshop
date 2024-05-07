@@ -1,8 +1,20 @@
+import { useState } from "react";
 import Rating from "./Rating";
 
 const Item = (props) => {
     const { item, itemId, name, description, image, price, discountPrice, rating, handleAddToCart, disabledButtons } =
         props;
+
+    const [myRating, setMyRating] = useState(rating);
+
+    // nejde:
+    const setRatingOnClick = (newRating) => {
+        console.log(itemId);
+        console.log(rating);
+        console.log(newRating);
+        setMyRating([...item, { ...item, rating: newRating }]);
+        // setMyRating([...item, { ...item, rating: newRating }]);
+    };
 
     return (
         <div className="card h-100">
@@ -13,10 +25,9 @@ const Item = (props) => {
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
             </div>
-
             {/* Stars rating */}
-            <Rating item={item} />
-
+            <Rating item={item} setRatingOnClick={setRatingOnClick} myRating={myRating} setMyRating={setMyRating} />
+            rating: {rating}
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     <div className="fw-bold fs-4">
