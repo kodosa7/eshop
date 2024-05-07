@@ -108,12 +108,12 @@ export const Shop = () => {
     };
 
     // increase quantity (+)
-    const increaseQuantity = (productId) => {
-        const newCart = selectedItems.map((cartItem) => {
-            if (cartItem.id === productId) {
-                return { ...cartItem, quantity: cartItem.quantity + 1 };
+    const increaseQuantity = (id) => {
+        const newCart = selectedItems.map((item) => {
+            if (item.id === id) {
+                return { ...item, quantity: item.quantity + 1 };
             } else {
-                return cartItem;
+                return item;
             }
         });
         setSelectedItems(newCart);
@@ -121,11 +121,11 @@ export const Shop = () => {
 
     // increase quantity (-)
     const decreaseQuantity = (productId) => {
-        const newCart = selectedItems.map((cartItem) => {
-            if (cartItem.id === productId) {
-                return { ...cartItem, quantity: cartItem.quantity - 1 };
+        const newCart = selectedItems.map((item) => {
+            if (item.id === id) {
+                return { ...item, quantity: item.quantity - 1 };
             } else {
-                return cartItem;
+                return item;
             }
         });
         setSelectedItems(newCart);
