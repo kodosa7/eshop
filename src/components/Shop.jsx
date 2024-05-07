@@ -48,7 +48,7 @@ export const Shop = () => {
             .then((res) => res.json())
             .then((data) => {
                 setTotal(data.total);
-                // calculate product discount price en put it to data
+                // calculate product discount price and put it to data
                 const productsWithDiscountPrice = [];
                 for (let i = 0; i < data.products.length; i++) {
                     const product = data.products[i];

@@ -1,5 +1,5 @@
 const Search = (props) => {
-    const { handleSearch, searchValue, inputValue, setInputValue } = props;
+    const { handleSearch, inputValue, setInputValue } = props;
 
     const handleSubmit = (e, value) => {
         handleSearch(value);
