@@ -10,6 +10,7 @@ const Cart = (props) => {
         setDisabledButtons,
         showOrderSent,
         setShowOrderSent,
+        decreaseQuantity,
     } = props;
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
@@ -93,13 +94,19 @@ const Cart = (props) => {
                                     </button>
                                 </div>
                                 <div className="col-auto">
-                                    <button
-                                        type="button"
-                                        className="btn btn-outline-dark btn-sm"
-                                        onClick={() => handleRemoveFromCart(prod)}
-                                    >
-                                        -
-                                    </button>
+                                    {prod.quantity > 1 ? (
+                                        <button
+                                            type="button"
+                                            className="btn btn-outline-dark btn-sm"
+                                            onClick={() => decreaseQuantity(prod.id)}
+                                        >
+                                            -
+                                        </button>
+                                    ) : (
+                                        <button type="button" className="btn btn-outline-dark btn-sm" disabled>
+                                            -
+                                        </button>
+                                    )}
                                 </div>
                                 <div className="col-auto">
                                     <button
@@ -110,7 +117,7 @@ const Cart = (props) => {
                                         +
                                     </button>
                                 </div>
-                                <div className="col-auto">x</div>
+                                <div className="col-auto">{prod.quantity}</div>
                             </div>
                         </>
                     );

@@ -15,7 +15,6 @@ export const Shop = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const [inputValue, setInputValue] = useState("");
-    const [cart, setCart] = useState([]);
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -88,43 +87,48 @@ export const Shop = () => {
         setProducts([]);
         setCategory(category);
     };
-    useEffect(() => {
-        console.log("cart", cart);
-    }, [cart]);
 
-    // If the item IS in cart
+    // Insert item to cart (Add to cart button pressed)
     const handleAddToCart = (item) => {
-        console.log("item", item);
-        setCart([...cart, { ...item, quantity: 1 }]);
-
-        const itemIndex = selectedItems.findIndex((prod) => prod.id === item.id);
-        increaseQuantity(item.id);
-
-        // hide order sent green element if clicked on the add item button
+        if (selectedItems.some((prod) => prod.id === item.id)) {
+            increaseQuantity(item.id);
+        } else {
+            setSelectedItems([...selectedItems, { ...item, quantity: 1 }]);
+        }
+        // hide "order was sent" green element
         setShowOrderSent(false);
-
-        setSelectedItems([...selectedItems, item]);
     };
 
-    // If the item IS NOT in cart
+    // Remove from cart button pressed
     const handleRemoveFromCart = (item) => {
-        const itemIndex = selectedItems.findIndex((prod) => prod.id === item.id);
-        setShowOrderSent(false);
         const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
         setSelectedItems(updatedItems);
+        // hide "order was sent" green element
+        setShowOrderSent(false);
     };
 
     // increase quantity (+)
     const increaseQuantity = (productId) => {
-        const newCart = cart.map((cartItem) => {
+        const newCart = selectedItems.map((cartItem) => {
             if (cartItem.id === productId) {
                 return { ...cartItem, quantity: cartItem.quantity + 1 };
             } else {
                 return cartItem;
             }
         });
-        setCart(newCart);
-        console.log("cart in increaseQuantity", newCart);
+        setSelectedItems(newCart);
+    };
+
+    // increase quantity (-)
+    const decreaseQuantity = (productId) => {
+        const newCart = selectedItems.map((cartItem) => {
+            if (cartItem.id === productId) {
+                return { ...cartItem, quantity: cartItem.quantity - 1 };
+            } else {
+                return cartItem;
+            }
+        });
+        setSelectedItems(newCart);
     };
 
     return (
@@ -139,6 +143,7 @@ export const Shop = () => {
                 setDisabledButtons={setDisabledButtons}
                 showOrderSent={showOrderSent}
                 setShowOrderSent={setShowOrderSent}
+                decreaseQuantity={decreaseQuantity}
             />
             {/* Search */}
             <Search
