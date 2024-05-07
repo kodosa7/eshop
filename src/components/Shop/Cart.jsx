@@ -26,7 +26,7 @@ const Cart = (props) => {
     const removeFromCart = (item) => {
         const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
         setSelectedItems(updatedItems);
-        handleAddToCart(item); // remove button disabled
+        handleRemoveFromCart(item); // remove button disabled
 
         // if cart gets emptied then hide the checkout form
         if (selectedItems.length === 1) {
@@ -118,7 +118,6 @@ const Cart = (props) => {
                 <div className="row">
                     <div className="col-3">Total</div>
                     <div className="col-1 d-flex justify-content-end align-items-center text-wrap">
-                        {/* {(Math.round(formattedTotalPrice * 100) / 100).toString()} $ */}
                         {total.toFixed(2).split(".")[1] === "00"
                             ? total.toFixed(2).split(".")[0]
                             : `${total.toFixed(2).split(".")[0]}.${total.toFixed(2).split(".")[1].padEnd(2, "0")}`}{" "}
