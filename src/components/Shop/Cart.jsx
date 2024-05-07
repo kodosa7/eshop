@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import Checkout from "./Checkout";
 
 const Cart = (props) => {
-    const { selectedItems, setSelectedItems, handleAddToCart, setDisabledButtons, showOrderSent, setShowOrderSent } =
-        props;
+    const {
+        selectedItems,
+        setSelectedItems,
+        handleAddToCart,
+        handleRemoveFromCart,
+        setDisabledButtons,
+        showOrderSent,
+        setShowOrderSent,
+    } = props;
     const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
 
@@ -89,7 +96,7 @@ const Cart = (props) => {
                                     <button
                                         type="button"
                                         className="btn btn-outline-dark btn-sm"
-                                        onClick={() => removeItem(prod)}
+                                        onClick={() => handleRemoveFromCart(prod)}
                                     >
                                         -
                                     </button>
@@ -98,7 +105,7 @@ const Cart = (props) => {
                                     <button
                                         type="button"
                                         className="btn btn-outline-dark btn-sm"
-                                        onClick={() => addItem(prod)}
+                                        onClick={() => handleAddToCart(prod)}
                                     >
                                         +
                                     </button>

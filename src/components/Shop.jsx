@@ -88,30 +88,37 @@ export const Shop = () => {
         setCategory(category);
     };
 
-    // Handling whether the item is or isn't in cart
+    // Handling whether the item is in cart
     const handleAddToCart = (item) => {
         const itemIndex = selectedItems.findIndex((prod) => prod.id === item.id);
 
         // hide order sent green element if clicked on the add item button
         setShowOrderSent(false);
 
-        if (itemIndex === -1) {
-            // Item is not in the cart, add it
-            setSelectedItems([...selectedItems, item]);
+        // if (itemIndex === -1) {
+        // Item is not in the cart, add it
+        setSelectedItems([...selectedItems, item]);
 
-            // Push the clicked item to the array
-            // const updatedDisabledButtons = [...disabledButtons];
-            // updatedDisabledButtons.push(item.id);
-            // setDisabledButtons(updatedDisabledButtons);
-        } else {
-            // If item is already in the cart, remove it
-            const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
-            setSelectedItems(updatedItems);
+        // Push the clicked item to the array
+        // const updatedDisabledButtons = [...disabledButtons];
+        // updatedDisabledButtons.push(item.id);
+        // setDisabledButtons(updatedDisabledButtons);
+        // } else {
+        // If item is already in the cart, remove it
+        // const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
+        // setSelectedItems(updatedItems);
 
-            // Remove the item from disabledButtons array to enable the button
-            // const updatedDisabledButtons = disabledButtons.filter((id) => id !== item.id);
-            // setDisabledButtons(updatedDisabledButtons);
-        }
+        // Remove the item from disabledButtons array to enable the button
+        // const updatedDisabledButtons = disabledButtons.filter((id) => id !== item.id);
+        // setDisabledButtons(updatedDisabledButtons);
+    };
+
+    // Handling whether the item is not in cart
+    const handleRemoveFromCart = (item) => {
+        const itemIndex = selectedItems.findIndex((prod) => prod.id === item.id);
+        setShowOrderSent(false);
+        const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
+        setSelectedItems(updatedItems);
     };
 
     return (
@@ -121,6 +128,7 @@ export const Shop = () => {
                 selectedItems={selectedItems}
                 setSelectedItems={setSelectedItems}
                 handleAddToCart={handleAddToCart}
+                handleRemoveFromCart={handleRemoveFromCart}
                 disabledButtons={disabledButtons}
                 setDisabledButtons={setDisabledButtons}
                 showOrderSent={showOrderSent}
