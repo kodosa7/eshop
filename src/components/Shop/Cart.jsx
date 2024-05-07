@@ -11,7 +11,7 @@ const Cart = (props) => {
     useEffect(() => {
         let totalPrice = 0;
         selectedItems.forEach((item) => {
-            totalPrice += item.price;
+            totalPrice += item.discountPrice;
         });
         setTotal(totalPrice);
     }, [selectedItems]);
@@ -59,7 +59,7 @@ const Cart = (props) => {
             <>
                 <h2>Cart</h2>
                 {selectedItems.map((prod, index) => {
-                    const { title, price } = prod;
+                    const { title, discountPrice } = prod;
 
                     return (
                         <>
@@ -68,9 +68,9 @@ const Cart = (props) => {
                                     {title}
                                 </div>
                                 <div className="col-1 d-flex justify-content-end align-items-center">
-                                    {price.toFixed(2).split(".")[1] === "00"
-                                        ? price.toFixed(2).split(".")[0]
-                                        : `${price.toFixed(2).split(".")[0]}.${price
+                                    {discountPrice.toFixed(2).split(".")[1] === "00"
+                                        ? discountPrice.toFixed(2).split(".")[0]
+                                        : `${discountPrice.toFixed(2).split(".")[0]}.${discountPrice
                                               .toFixed(2)
                                               .split(".")[1]
                                               .padEnd(2, "0")}`}{" "}
