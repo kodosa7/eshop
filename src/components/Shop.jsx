@@ -104,21 +104,6 @@ export const Shop = () => {
         setShowOrderSent(false);
 
         setSelectedItems([...selectedItems, item]);
-        // if (itemIndex === -1) {
-        // Item is not in the cart, add it
-
-        // Push the clicked item to the array
-        // const updatedDisabledButtons = [...disabledButtons];
-        // updatedDisabledButtons.push(item.id);
-        // setDisabledButtons(updatedDisabledButtons);
-        // } else {
-        // If item is already in the cart, remove it
-        // const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
-        // setSelectedItems(updatedItems);
-
-        // Remove the item from disabledButtons array to enable the button
-        // const updatedDisabledButtons = disabledButtons.filter((id) => id !== item.id);
-        // setDisabledButtons(updatedDisabledButtons);
     };
 
     // If the item IS NOT in cart
