@@ -4,13 +4,6 @@ const Item = (props) => {
     const { item, itemId, name, description, image, price, discountPrice, rating, handleAddToCart, disabledButtons } =
         props;
 
-    const starsArray = [];
-    Array(Math.round(rating))
-        .fill()
-        .forEach(() => {
-            starsArray.push("⭐");
-        });
-
     return (
         <div className="card h-100">
             <div className="ratio ratio-1x1">
@@ -22,7 +15,7 @@ const Item = (props) => {
             </div>
 
             {/* Stars rating */}
-            <Rating starsArray={starsArray} />
+            <Rating item={item} />
 
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">

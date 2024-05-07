@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 
 const Rating = (props) => {
-    const { starsArray } = props;
-    const [rating, setRating] = useState(null);
+    const { item } = props;
+    const [myRating, setMyRating] = useState(null);
     const [hover, setHover] = useState(null);
 
+    useEffect(() => {
+        setMyRating(item.rating);
+    }, [item.rating]);
+
+    const setRatingOnClick = (rating) => {
+        setMyRating(rating);
+    };
     return (
         <div className="">
             {[...Array(5)].map((star, index) => {
@@ -16,13 +23,13 @@ const Rating = (props) => {
                             type="radio"
                             name="rating"
                             value={currentRating}
-                            onClick={() => setRating(currentRating)}
+                            onClick={() => setRatingOnClick(currentRating)}
                             style={{ display: "none" }}
                         />
                         <FaStar
                             style={{
                                 cursor: "pointer",
-                                color: currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9",
+                                color: currentRating <= (hover || myRating) ? "#ffc107" : "#e4e5e9",
                             }}
                             size={25}
                             onMouseEnter={() => setHover(currentRating)}
