@@ -3,9 +3,12 @@ const Item = (props) => {
         props;
 
     const starsArray = [];
-    for (let i = 0; i < Math.round(rating); i++) {
-        starsArray.push("⭐");
-    }
+    Array(Math.round(rating))
+        .fill()
+        .forEach(() => {
+            starsArray.push("⭐");
+        });
+
     return (
         <div className="card h-100">
             <div className="ratio ratio-1x1">
