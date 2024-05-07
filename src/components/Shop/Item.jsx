@@ -1,3 +1,5 @@
+import Rating from "./Rating";
+
 const Item = (props) => {
     const { item, itemId, name, description, image, price, discountPrice, rating, handleAddToCart, disabledButtons } =
         props;
@@ -18,9 +20,9 @@ const Item = (props) => {
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
             </div>
-            <ul className="list-group list-group-flush">
-                <li className="list-group-item">{starsArray}</li>
-            </ul>
+
+            {/* Stars rating */}
+            <Rating starsArray={starsArray} />
 
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
