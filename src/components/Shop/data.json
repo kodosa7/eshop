@@ -32,7 +32,7 @@
         "name": "Item name 5",
         "image": "https://satyr.dev/800x500/5",
         "description": "Condimentum vitae sapien pellentesque habitant morbi tristique.",
-        "price": 1.50
+        "price": 1.5
     },
     {
         "id": 6,
@@ -46,7 +46,7 @@
         "name": "Item name 7",
         "image": "https://satyr.dev/800x500/7",
         "description": "Nunc mattis enim ut tellus elementum sagittis vitae et. Eu nisl nunc mi ipsum.",
-        "price": 59.90
+        "price": 59.9
     },
     {
         "id": 8,
