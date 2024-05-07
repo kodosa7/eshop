@@ -15,7 +15,6 @@ export const Shop = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const [inputValue, setInputValue] = useState("");
-    const [discountPrice, setDiscountPrice] = useState(0);
 
     // fetch data from API (first time)
     useEffect(() => {
