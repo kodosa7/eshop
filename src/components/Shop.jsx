@@ -90,7 +90,7 @@ export const Shop = () => {
         if (selectedItems.some((prod) => prod.id === item.id)) {
             increaseQuantity(item.id);
         } else {
-            setSelectedItems([...selectedItems, { ...item, quantity: 1 }]);
+            setSelectedItems([...selectedItems, { ...item, quantity: 1, totalPrice: item.discountPrice }]);
         }
         // hide "order was sent" green element
         setShowOrderSent(false);

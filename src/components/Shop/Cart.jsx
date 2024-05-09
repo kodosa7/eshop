@@ -19,8 +19,10 @@ const Cart = (props) => {
     useEffect(() => {
         let resultPrice = 0;
         selectedItems.forEach((item) => {
+            console.log(item.totalPrice);
             resultPrice += item.totalPrice;
-            resultPrice += item.discountPrice;
+            // resultPrice += item.discountPrice;
+            return resultPrice;
         });
         setTotal(resultPrice);
     }, [selectedItems]);
