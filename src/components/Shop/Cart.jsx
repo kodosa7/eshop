@@ -113,6 +113,7 @@ const Cart = (props) => {
                                     </button>
                                 </div>
                                 <div className="col-auto">{prod.quantity}</div>
+                                <div className="col-auto">{discountPrice * prod.quantity}</div>
                             </div>
                         </Fragment>
                     );
