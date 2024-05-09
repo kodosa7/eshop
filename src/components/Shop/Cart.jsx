@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, Fragment } from "react";
 import Checkout from "./Checkout";
 
 const Cart = (props) => {
@@ -12,20 +12,12 @@ const Cart = (props) => {
         setShowOrderSent,
         decreaseQuantity,
     } = props;
-    const [total, setTotal] = useState(0);
     const [showCheckout, setShowCheckout] = useState(false);
 
-    // count total price
-    useEffect(() => {
-        let resultPrice = 0;
-        selectedItems.forEach((item) => {
-            console.log(item.totalPrice);
-            resultPrice += item.totalPrice;
-            // resultPrice += item.discountPrice;
-            return resultPrice;
-        });
-        setTotal(resultPrice);
-    }, [selectedItems]);
+    let resultPrice = 0;
+    selectedItems.forEach((item) => {
+        resultPrice += item.totalPrice;
+    });
 
     const removeFromCart = (item) => {
         const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
@@ -73,7 +65,7 @@ const Cart = (props) => {
                     const { title, discountPrice } = prod;
 
                     return (
-                        <>
+                        <Fragment key={prod.id}>
                             <div className="row mb-1">
                                 <div className="col-3 d-flex justify-content-between align-items-center" key={index}>
                                     {title}
@@ -122,18 +114,13 @@ const Cart = (props) => {
                                 </div>
                                 <div className="col-auto">{prod.quantity}</div>
                             </div>
-                        </>
+                        </Fragment>
                     );
                 })}
 
                 <div className="row">
                     <div className="col-3">Total</div>
-                    <div className="col-1 d-flex justify-content-end align-items-center text-wrap">
-                        {/* {total.toFixed(2).split(".")[1] === "00"
-                            ? total.toFixed(2).split(".")[0]
-                            : `${total.toFixed(2).split(".")[0]}.${total.toFixed(2).split(".")[1].padEnd(2, "0")}`}{" "} */}
-                        {total}$
-                    </div>
+                    <div className="col-1 d-flex justify-content-end align-items-center text-wrap">{resultPrice} $</div>
                 </div>
                 {!showCheckout && (
                     <div className="mt-3 mb-4">
