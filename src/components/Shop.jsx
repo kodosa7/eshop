@@ -108,7 +108,7 @@ export const Shop = () => {
     const increaseQuantity = (id) => {
         const newCart = selectedItems.map((item) => {
             if (item.id === id) {
-                return { ...item, quantity: item.quantity + 1 };
+                return { ...item, quantity: item.quantity + 1, totalPrice: item.discountPrice * item.quantity };
             } else {
                 return item;
             }
@@ -120,7 +120,7 @@ export const Shop = () => {
     const decreaseQuantity = (id) => {
         const newCart = selectedItems.map((item) => {
             if (item.id === id) {
-                return { ...item, quantity: item.quantity - 1 };
+                return { ...item, quantity: item.quantity - 1, totalPrice: item.discountPrice * item.quantity };
             } else {
                 return item;
             }

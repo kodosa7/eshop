@@ -17,11 +17,12 @@ const Cart = (props) => {
 
     // count total price
     useEffect(() => {
-        let totalPrice = 0;
+        let resultPrice = 0;
         selectedItems.forEach((item) => {
-            totalPrice += item.discountPrice;
+            resultPrice += item.totalPrice;
+            resultPrice += item.discountPrice;
         });
-        setTotal(totalPrice);
+        setTotal(resultPrice);
     }, [selectedItems]);
 
     const removeFromCart = (item) => {
@@ -126,10 +127,10 @@ const Cart = (props) => {
                 <div className="row">
                     <div className="col-3">Total</div>
                     <div className="col-1 d-flex justify-content-end align-items-center text-wrap">
-                        {total.toFixed(2).split(".")[1] === "00"
+                        {/* {total.toFixed(2).split(".")[1] === "00"
                             ? total.toFixed(2).split(".")[0]
-                            : `${total.toFixed(2).split(".")[0]}.${total.toFixed(2).split(".")[1].padEnd(2, "0")}`}{" "}
-                        $
+                            : `${total.toFixed(2).split(".")[0]}.${total.toFixed(2).split(".")[1].padEnd(2, "0")}`}{" "} */}
+                        {total}$
                     </div>
                 </div>
                 {!showCheckout && (
