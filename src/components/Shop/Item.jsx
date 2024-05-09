@@ -5,22 +5,6 @@ const Item = (props) => {
     const { item, itemId, name, description, image, price, discountPrice, rating, handleAddToCart, disabledButtons } =
         props;
 
-    const [myRating, setMyRating] = useState(rating);
-
-    // nejde:
-    const setRatingOnClick = (newRating, id) => {
-        console.log("id", itemId);
-        console.log("rating", rating);
-        console.log("newRating", newRating);
-
-        if (item.id === id) {
-            setMyRating(newRating);
-            return { ...item, rating: newRating };
-        } else {
-            return item;
-        }
-    };
-
     return (
         <div className="card h-100">
             <div className="ratio ratio-1x1">
@@ -31,10 +15,8 @@ const Item = (props) => {
                 <p className="card-text">{description}</p>
             </div>
 
-            {/* Stars rating */}
-            <Rating item={item} setRatingOnClick={setRatingOnClick} myRating={myRating} setMyRating={setMyRating} />
-
-            rating: {myRating}
+            <Rating rating={rating} />
+            rating: {rating}
 
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">

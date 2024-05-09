@@ -1,7 +1,7 @@
 import { FaStar } from "react-icons/fa";
 
 const Rating = (props) => {
-    const { myRating } = props;
+    const { rating } = props;
 
     return (
         <div className="">
@@ -11,7 +11,7 @@ const Rating = (props) => {
                     <FaStar
                         key={index}
                         style={{
-                            color: currentRating <= myRating ? "#ffc107" : "#e4e5e9",
+                            color: currentRating <= rating ? "#ffc107" : "#e4e5e9",
                         }}
                         size={25}
                     />
