@@ -8,12 +8,17 @@ const Item = (props) => {
     const [myRating, setMyRating] = useState(rating);
 
     // nejde:
-    const setRatingOnClick = (newRating) => {
-        console.log(itemId);
-        console.log(rating);
-        console.log(newRating);
-        setMyRating([...item, { ...item, rating: newRating }]);
-        // setMyRating([...item, { ...item, rating: newRating }]);
+    const setRatingOnClick = (newRating, id) => {
+        console.log("id", itemId);
+        console.log("rating", rating);
+        console.log("newRating", newRating);
+
+        if (item.id === id) {
+            setMyRating(newRating);
+            return { ...item, rating: newRating };
+        } else {
+            return item;
+        }
     };
 
     return (
@@ -25,9 +30,12 @@ const Item = (props) => {
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
             </div>
+
             {/* Stars rating */}
             <Rating item={item} setRatingOnClick={setRatingOnClick} myRating={myRating} setMyRating={setMyRating} />
-            rating: {rating}
+
+            rating: {myRating}
+
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     <div className="fw-bold fs-4">
