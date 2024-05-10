@@ -132,7 +132,9 @@ const Cart = (props) => {
                                         -
                                     </button>
                                 </div>
-                                <div className="col-auto d-flex align-items-center">{prod.quantity} pc in cart</div>
+                                <div className="col-auto d-flex align-items-center">
+                                    {prod.quantity} {prod.quantity === 1 ? "pc" : "pcs"} in cart
+                                </div>
                                 <div className="col-auto d-flex align-items-center">
                                     $ {discountPrice * prod.quantity}
                                 </div>
