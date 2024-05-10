@@ -43,6 +43,16 @@ const Cart = (props) => {
         setSelectedItems([]); // empty cart array
     };
 
+    const handleQuantityChange = (event, prod) => {
+        const newQuantity = parseInt(event.target.value);
+        if (!isNaN(newQuantity) && newQuantity >= 0) {
+            const updatedItems = selectedItems.map((item) =>
+                item.id === prod.id ? { ...item, quantity: newQuantity } : item
+            );
+            setSelectedItems(updatedItems);
+        }
+    };
+
     if (selectedItems.length === 0 || showOrderSent) {
         return (
             <>
@@ -67,41 +77,40 @@ const Cart = (props) => {
                     return (
                         <Fragment key={prod.id}>
                             <div className="row mb-1">
-                                <div className="col-3 d-flex justify-content-between align-items-center" key={index}>
+                                <div
+                                    className="col-3 d-flex justify-content-between align-items-center fw-bold"
+                                    key={index}
+                                >
                                     {title}
                                 </div>
                                 <div className="col-1 d-flex justify-content-end align-items-center">
+                                    ${" "}
                                     {discountPrice.toFixed(2).split(".")[1] === "00"
                                         ? discountPrice.toFixed(2).split(".")[0]
                                         : `${discountPrice.toFixed(2).split(".")[0]}.${discountPrice
                                               .toFixed(2)
                                               .split(".")[1]
                                               .padEnd(2, "0")}`}{" "}
-                                    $
+                                    / pc
                                 </div>
                                 <div className="col-auto">
                                     <button
                                         type="button"
                                         className="btn btn-outline-dark btn-sm"
-                                        onClick={() => removeFromCart(prod)}
+                                        onClick={() => decreaseQuantity(prod.id)}
+                                        disabled={prod.quantity === 1}
                                     >
-                                        Remove from cart
+                                        -
                                     </button>
                                 </div>
                                 <div className="col-auto">
-                                    {prod.quantity > 1 ? (
-                                        <button
-                                            type="button"
-                                            className="btn btn-outline-dark btn-sm"
-                                            onClick={() => decreaseQuantity(prod.id)}
-                                        >
-                                            -
-                                        </button>
-                                    ) : (
-                                        <button type="button" className="btn btn-outline-dark btn-sm" disabled>
-                                            -
-                                        </button>
-                                    )}
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        className="form-control"
+                                        value={prod.quantity}
+                                        onChange={(e) => handleQuantityChange(e, prod)}
+                                    />
                                 </div>
                                 <div className="col-auto">
                                     <button
@@ -112,16 +121,27 @@ const Cart = (props) => {
                                         +
                                     </button>
                                 </div>
-                                <div className="col-auto">{prod.quantity}</div>
-                                <div className="col-auto">{discountPrice * prod.quantity}</div>
+                                <div className="col-auto">{prod.quantity} pc in cart</div>
+                                <div className="col-auto">$ {discountPrice * prod.quantity}</div>
+                                <div className="col-auto">
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-dark btn-sm"
+                                        onClick={() => removeFromCart(prod)}
+                                    >
+                                        Remove from cart
+                                    </button>
+                                </div>
                             </div>
                         </Fragment>
                     );
                 })}
 
                 <div className="row">
-                    <div className="col-3">Total</div>
-                    <div className="col-1 d-flex justify-content-end align-items-center text-wrap">{resultPrice} $</div>
+                    <div className="col-3 fw-bold">Total price</div>
+                    <div className="col-1 d-flex justify-content-end align-items-center text-wrap fw-bold">
+                        $ {resultPrice}
+                    </div>
                 </div>
                 {!showCheckout && (
                     <div className="mt-3 mb-4">

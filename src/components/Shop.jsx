@@ -72,7 +72,6 @@ export const Shop = () => {
     };
 
     const handleSearch = (value) => {
-        console.log("Value from handleOnChange in handleSearch:", value);
         setProducts([]);
         setCategory("");
         setSearchValue(value);
@@ -81,8 +80,8 @@ export const Shop = () => {
     const handleSelectCategory = (category) => {
         setSearchValue("");
         setInputValue("");
-        setProducts([]);
         setCategory(category);
+        setProducts([]);
     };
 
     // Insert item to cart (Add to cart button pressed)
