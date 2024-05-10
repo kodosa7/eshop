@@ -23,7 +23,9 @@ export const Shop = () => {
 
     // fetch data from API (first time and everytime 'category' state changes)
     useEffect(() => {
+        setProducts([]);
         fetchProducts();
+        console.log("efekt");
     }, [searchValue, category]);
 
     // fetch products API
@@ -67,7 +69,6 @@ export const Shop = () => {
     };
 
     const handleSearch = (value) => {
-        setProducts([]);
         setCategory("");
         setSearchValue(value);
     };
@@ -76,7 +77,6 @@ export const Shop = () => {
         setSearchValue("");
         setInputValue("");
         setCategory(category);
-        setProducts([]); // <- !!!!!!!!!
     };
 
     // Insert item to cart (Add to cart button pressed)

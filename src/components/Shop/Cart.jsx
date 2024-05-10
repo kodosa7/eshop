@@ -93,37 +93,50 @@ const Cart = (props) => {
                                               .padEnd(2, "0")}`}{" "}
                                     / pc
                                 </div>
-                                <div className="col-auto">
+                                <div className="col-1">
+                                    <input
+                                        type="text"
+                                        inputMode="numeric"
+                                        min="1"
+                                        className="form-control lh-lg"
+                                        value={prod.quantity}
+                                        onChange={(e) => handleQuantityChange(e, prod)}
+                                    />
+                                </div>
+                                <div className="col-auto d-flex flex-column">
+                                    <button
+                                        type="button"
+                                        className="btn btn-outline-dark btn-sm h-4"
+                                        style={{
+                                            paddingLeft: "1rem",
+                                            paddingRight: "1rem",
+                                            paddingTop: 0,
+                                            paddingBottom: 0,
+                                        }}
+                                        onClick={() => handleAddToCart(prod)}
+                                    >
+                                        +
+                                    </button>
                                     <button
                                         type="button"
                                         className="btn btn-outline-dark btn-sm"
+                                        style={{
+                                            paddingLeft: "1rem",
+                                            paddingRight: "1rem",
+                                            paddingTop: 0,
+                                            paddingBottom: 0,
+                                        }}
                                         onClick={() => decreaseQuantity(prod.id)}
                                         disabled={prod.quantity === 1}
                                     >
                                         -
                                     </button>
                                 </div>
-                                <div className="col-auto">
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        className="form-control"
-                                        value={prod.quantity}
-                                        onChange={(e) => handleQuantityChange(e, prod)}
-                                    />
+                                <div className="col-auto d-flex align-items-center">{prod.quantity} pc in cart</div>
+                                <div className="col-auto d-flex align-items-center">
+                                    $ {discountPrice * prod.quantity}
                                 </div>
-                                <div className="col-auto">
-                                    <button
-                                        type="button"
-                                        className="btn btn-outline-dark btn-sm"
-                                        onClick={() => handleAddToCart(prod)}
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                                <div className="col-auto">{prod.quantity} pc in cart</div>
-                                <div className="col-auto">$ {discountPrice * prod.quantity}</div>
-                                <div className="col-auto">
+                                <div className="col-auto d-flex align-items-center">
                                     <button
                                         type="button"
                                         className="btn btn-outline-dark btn-sm"
