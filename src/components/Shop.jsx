@@ -45,7 +45,7 @@ export const Shop = () => {
             .then((res) => res.json())
             .then((data) => {
                 setTotal(data.total);
-                // calculate product discount price and put it to data
+                // calculate product discount price and put it to fetched data object
                 const productsWithDiscountPrice = data.products.map((product) => {
                     const discountPrice = Math.round(
                         product.price - (product.discountPercentage * product.price) / 100
