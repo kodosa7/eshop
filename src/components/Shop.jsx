@@ -26,11 +26,6 @@ export const Shop = () => {
         fetchProducts();
     }, [searchValue, category]);
 
-    // load and show next items on "Show next items" button click
-    const showNextItems = () => {
-        fetchProducts();
-    };
-
     // fetch products API
     const fetchProducts = () => {
         let fetchUrl = "";
@@ -81,7 +76,7 @@ export const Shop = () => {
         setSearchValue("");
         setInputValue("");
         setCategory(category);
-        setProducts([]);
+        setProducts([]); // <- !!!!!!!!!
     };
 
     // Insert item to cart (Add to cart button pressed)
@@ -202,7 +197,7 @@ export const Shop = () => {
                     {isLoading && <p>Loading products...</p>}
                     {products.length < total && !isLoading && (
                         <div className="row">
-                            <button className="btn btn-primary my-4" onClick={showNextItems}>
+                            <button className="btn btn-primary my-4" onClick={() => fetchProducts()}>
                                 Load next items
                             </button>
                         </div>
