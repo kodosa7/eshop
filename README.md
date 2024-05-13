@@ -4,6 +4,10 @@
 
 This app is a mockup e-shop website app that displays list of goods fetched from an API in categories, with an ordering functionality.
 
+## Website
+
+[els-eshop.netlify.app/](els-eshop.netlify.app/)
+
 ## Data source
 
 The data is fetched from JSON-server hosted on [https://dummyjson.com](dummyjson.com).
