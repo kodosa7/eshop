@@ -25,7 +25,7 @@ export const Shop = () => {
     useEffect(() => {
         setProducts([]);
         fetchProducts();
-        console.log("fetchProducts + setProducts");
+        console.log("useEffect happened");
     }, [searchValue, category]);
 
     // fetch products API

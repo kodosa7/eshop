@@ -27,6 +27,6 @@ dist-ssr
 .DS_Store
 _tmp
 TODO.md
-REVIEW.md
+review.md
 *.code-workspace
 
