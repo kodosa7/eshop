@@ -14,4 +14,16 @@ The data is fetched from JSON-server hosted on [https://dummyjson.com](dummyjson
 -   [React](https://reactjs.org)
 -   [Bootstrap](https://getbootstrap.com)
 
+## Installation
+
+-   Using Vite, create a new project.
+    `npm create vite@latest`
+    `cd <project-name>`
+    `npm install`
+-   Copy the repo to your <project-name> directory.
+
+## Run
+
+`npm run dev`
+
 Disclaimer: This app is built for educational purposes only. It is not affiliated with any real eshop or eshop data.
