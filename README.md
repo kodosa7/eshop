@@ -32,4 +32,8 @@ The data is fetched from JSON-server hosted on [https://dummyjson.com](dummyjson
     npm run dev
 ```
 
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
 Disclaimer: This app is built for educational purposes only. It is not affiliated with any real eshop or eshop data.
