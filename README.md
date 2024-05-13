@@ -6,7 +6,7 @@ This app is a mockup e-shop website app that displays list of goods fetched from
 
 ## Website
 
-[els-eshop.netlify.app/](els-eshop.netlify.app/)
+[https://els-eshop.netlify.app/](https://els-eshop.netlify.app/)
 
 ## Data source
 
