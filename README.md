@@ -18,16 +18,18 @@ The data is fetched from JSON-server hosted on [https://dummyjson.com](dummyjson
 
 -   Using Vite, create a new project.
 
-```
+```bash
     npm create vite@latest
     cd <project-name>
     npm install
 ```
 
--   Copy the repo to your <project-name> directory.
+-   Copy the repo to your `<project-name>` directory.
 
 ## Run
 
-`npm run dev`
+```bash
+    npm run dev
+```
 
 Disclaimer: This app is built for educational purposes only. It is not affiliated with any real eshop or eshop data.
