@@ -25,7 +25,7 @@ export const Shop = () => {
     useEffect(() => {
         setProducts([]);
         fetchProducts();
-        console.log("efekt");
+        console.log("fetchProducts + setProducts");
     }, [searchValue, category]);
 
     // fetch products API
@@ -34,10 +34,13 @@ export const Shop = () => {
         const skip = products.length;
         if (!category && searchValue === "") {
             fetchUrl = `https://dummyjson.com/products?skip=${skip}&limit=8`;
+            console.log("1st case");
         } else if (category && searchValue === "") {
             fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`;
+            console.log("2nd case");
         } else if (searchValue !== "") {
             fetchUrl = `https://dummyjson.com/products/search?q=${searchValue}&skip=${skip}&limit=8`;
+            console.log("3rd case");
         }
 
         setIsLoading(true);
