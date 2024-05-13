@@ -129,7 +129,7 @@ const Cart = (props) => {
                                         onClick={() => decreaseQuantity(prod.id)}
                                         disabled={prod.quantity === 1}
                                     >
-                                        -
+                                        –
                                     </button>
                                 </div>
                                 <div className="col-auto d-flex align-items-center">
