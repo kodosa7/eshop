@@ -17,9 +17,13 @@ The data is fetched from JSON-server hosted on [https://dummyjson.com](dummyjson
 ## Installation
 
 -   Using Vite, create a new project.
-    `npm create vite@latest`
-    `cd <project-name>`
-    `npm install`
+
+```
+    npm create vite@latest
+    cd <project-name>
+    npm install
+```
+
 -   Copy the repo to your <project-name> directory.
 
 ## Run
