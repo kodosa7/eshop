@@ -9,7 +9,7 @@ export const Shop = () => {
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [isOrderSent, setIsOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
-    const [totalCount, setTotal] = useState(0);
+    const [totalCount, setTotalCount] = useState(0);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +42,7 @@ export const Shop = () => {
         fetch(fetchUrl)
             .then((res) => res.json())
             .then((data) => {
-                setTotal(data.total);
+                setTotalCount(data.total);
                 // calculate product discount price and put it to fetched data object
                 const productsWithDiscountPrice = data.products.map((product) => {
                     const discountPrice = Math.round(
