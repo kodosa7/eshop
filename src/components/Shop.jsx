@@ -11,7 +11,8 @@ export const Shop = () => {
     const [totalCount, setTotalCount] = useState(0);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
+    const [isCategoriesLoading, setIsCategoriesLoading] = useState(false);
+    const [isProductsLoading, setIsProductsLoading] = useState(false);
     const [searchedValue, setSearchedValue] = useState("");
     const [searchInputValue, setSearchInputValue] = useState("");
 
@@ -37,7 +38,7 @@ export const Shop = () => {
             fetchUrl = `https://dummyjson.com/products/search?q=${searchedValue}&skip=${skip}&limit=8`;
         }
 
-        setIsLoading(true);
+        setIsProductsLoading(true);
         fetch(fetchUrl)
             .then((res) => res.json())
             .then((data) => {
@@ -50,18 +51,18 @@ export const Shop = () => {
                     return { ...product, discountPrice };
                 });
                 setProducts((prev) => [...prev, ...productsWithDiscountPrice]);
-                setIsLoading(false);
+                setIsProductsLoading(false);
             });
     };
 
     // fetch all categories API
     const fetchCategories = () => {
-        setIsLoading(true);
+        setIsCategoriesLoading(true);
         fetch(`https://dummyjson.com/products/categories/`)
             .then((res) => res.json())
             .then((data) => {
                 setCategories(data);
-                setIsLoading(false);
+                setIsCategoriesLoading(false);
             });
     };
 
@@ -159,7 +160,7 @@ export const Shop = () => {
                         category={category}
                         handleSelectCategory={handleSelectCategory}
                     />
-                    {isLoading && <p>Loading categories...</p>}
+                    {isCategoriesLoading && <p>Loading categories...</p>}
                 </div>
 
                 <div className="col">
@@ -198,10 +199,10 @@ export const Shop = () => {
                             ))}
                         </div>
                     ) : (
-                        !isLoading && <p>No products found</p>
+                        !isProductsLoading && <p>No products found</p>
                     )}
-                    {isLoading && <p>Loading products...</p>}
-                    {products.length < totalCount && !isLoading && (
+                    {isProductsLoading && <p>Loading products...</p>}
+                    {products.length < totalCount && !isProductsLoading && (
                         <div className="row">
                             <button className="btn btn-primary my-4" onClick={() => fetchProducts()}>
                                 Load next items
