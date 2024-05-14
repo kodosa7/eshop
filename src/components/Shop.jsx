@@ -33,7 +33,7 @@ export const Shop = () => {
         if (!category && searchedValue === "") {
             fetchUrl = `https://dummyjson.com/products?skip=${skip}&limit=8`;
         } else if (category && searchedValue === "") {
-            fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`;
+            fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=8`;
         } else {
             fetchUrl = `https://dummyjson.com/products/search?q=${searchedValue}&skip=${skip}&limit=8`;
         }
