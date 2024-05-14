@@ -23,7 +23,6 @@ export const Shop = () => {
 
     // fetch data from API (first time and everytime 'category' state changes)
     useEffect(() => {
-        setProducts([]);
         fetchProducts();
         console.log("useEffect happened");
     }, [searchValue, category]);
@@ -74,12 +73,16 @@ export const Shop = () => {
     const handleSearch = (value) => {
         setCategory("");
         setSearchValue(value);
+        setProducts([]);
     };
 
-    const handleSelectCategory = (category) => {
+    const handleSelectCategory = (newCategory) => {
         setSearchValue("");
         setInputValue("");
-        setCategory(category);
+        if (category !== newCategory) {
+            setCategory(newCategory);
+            setProducts([]);
+        }
     };
 
     // Insert item to cart (Add to cart button pressed)
