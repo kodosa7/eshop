@@ -9,7 +9,7 @@ export const Shop = () => {
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [isOrderSent, setIsOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
-    const [total, setTotal] = useState(0);
+    const [totalCount, setTotal] = useState(0);
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -206,7 +206,7 @@ export const Shop = () => {
                         !isLoading && <p>No products found</p>
                     )}
                     {isLoading && <p>Loading products...</p>}
-                    {products.length < total && !isLoading && (
+                    {products.length < totalCount && !isLoading && (
                         <div className="row">
                             <button className="btn btn-primary my-4" onClick={() => fetchProducts()}>
                                 Load next items
