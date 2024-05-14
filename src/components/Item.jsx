@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Rating from "./Rating";
 
 const Item = (props) => {
@@ -14,10 +13,8 @@ const Item = (props) => {
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">{description}</p>
             </div>
-
             <Rating rating={rating} />
             rating: {rating}
-
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
                     <div className="fw-bold fs-4">

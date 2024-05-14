@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Item from "./Shop/Item";
-import Cart from "./Shop/Cart";
-import Categories from "./Shop/Categories";
-import Search from "./Shop/Search";
+import Item from "./Item";
+import Cart from "./Cart";
+import Categories from "./Categories";
+import Search from "./Search";
 
 export const Shop = () => {
     const [selectedItems, setSelectedItems] = useState([]);
@@ -24,7 +24,6 @@ export const Shop = () => {
     // fetch data from API (first time and everytime 'category' state changes)
     useEffect(() => {
         fetchProducts();
-        console.log("useEffect happened");
     }, [searchValue, category]);
 
     // fetch products API
@@ -33,13 +32,10 @@ export const Shop = () => {
         const skip = products.length;
         if (!category && searchValue === "") {
             fetchUrl = `https://dummyjson.com/products?skip=${skip}&limit=8`;
-            console.log("1st case");
         } else if (category && searchValue === "") {
             fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`;
-            console.log("2nd case");
         } else if (searchValue !== "") {
             fetchUrl = `https://dummyjson.com/products/search?q=${searchValue}&skip=${skip}&limit=8`;
-            console.log("3rd case");
         }
 
         setIsLoading(true);
