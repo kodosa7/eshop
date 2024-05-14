@@ -6,7 +6,6 @@ const Cart = ({
     setSelectedProducts,
     handleAddToCart,
     handleRemoveFromCart,
-    setDisabledButtons,
     isOrderSent,
     setIsOrderSent,
     decreaseQuantity,
@@ -38,7 +37,6 @@ const Cart = ({
     const handleEmail = () => {
         setIsOrderSent(true);
         setIsCheckoutVisible(false);
-        setDisabledButtons([]); // enable all buttons
         setSelectedProducts([]); // empty cart array
     };
 

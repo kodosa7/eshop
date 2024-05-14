@@ -6,7 +6,6 @@ import Search from "./Search";
 
 export const Shop = () => {
     const [selectedProducts, setSelectedProducts] = useState([]);
-    const [disabledButtons, setDisabledButtons] = useState([]);
     const [isOrderSent, setIsOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
     const [totalCount, setTotalCount] = useState(0);
@@ -141,8 +140,6 @@ export const Shop = () => {
                 setSelectedProducts={setSelectedProducts}
                 handleAddToCart={handleAddToCart}
                 handleRemoveFromCart={handleRemoveFromCart}
-                disabledButtons={disabledButtons}
-                setDisabledButtons={setDisabledButtons}
                 isOrderSent={isOrderSent}
                 setIsOrderSent={setIsOrderSent}
                 decreaseQuantity={decreaseQuantity}
@@ -196,7 +193,6 @@ export const Shop = () => {
                                         discountPrice={prod.discountPrice}
                                         rating={prod.rating}
                                         handleAddToCart={() => handleAddToCart(prod)}
-                                        disabledButtons={disabledButtons}
                                     />
                                 </div>
                             ))}

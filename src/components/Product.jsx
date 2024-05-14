@@ -1,17 +1,6 @@
 import Rating from "./Rating";
 
-const Product = ({
-    product,
-    productId,
-    name,
-    description,
-    image,
-    price,
-    discountPrice,
-    rating,
-    handleAddToCart,
-    disabledButtons,
-}) => {
+const Product = ({ product, productId, name, description, image, price, discountPrice, rating, handleAddToCart }) => {
     return (
         <div className="card h-100">
             <div className="ratio ratio-1x1">
@@ -42,9 +31,8 @@ const Product = ({
                         type="button"
                         className="btn btn-outline-dark"
                         onClick={() => handleAddToCart(product)}
-                        disabled={disabledButtons.includes(productId)}
                     >
-                        {disabledButtons.includes(productId) ? "Already in cart" : "Buy"}
+                        Buy
                     </button>
                 </div>
             </div>
