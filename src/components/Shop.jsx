@@ -13,7 +13,7 @@ export const Shop = () => {
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [searchValue, setSearchValue] = useState("");
+    const [searchedValue, setSearchedValue] = useState("");
     const [searchInputValue, setSearchInputValue] = useState("");
 
     // fetch data from API (first time)
@@ -24,18 +24,18 @@ export const Shop = () => {
     // fetch data from API (first time and everytime 'category' state changes)
     useEffect(() => {
         fetchProducts();
-    }, [searchValue, category]);
+    }, [searchedValue, category]);
 
     // fetch products API
     const fetchProducts = () => {
         let fetchUrl = "";
         const skip = products.length;
-        if (!category && searchValue === "") {
+        if (!category && searchedValue === "") {
             fetchUrl = `https://dummyjson.com/products?skip=${skip}&limit=8`;
-        } else if (category && searchValue === "") {
+        } else if (category && searchedValue === "") {
             fetchUrl = `https://dummyjson.com/products/category/${category}?skip=${skip}&limit=2`;
-        } else if (searchValue !== "") {
-            fetchUrl = `https://dummyjson.com/products/search?q=${searchValue}&skip=${skip}&limit=8`;
+        } else if (searchedValue !== "") {
+            fetchUrl = `https://dummyjson.com/products/search?q=${searchedValue}&skip=${skip}&limit=8`;
         }
 
         setIsLoading(true);
@@ -68,12 +68,12 @@ export const Shop = () => {
 
     const handleSearch = (value) => {
         setCategory("");
-        setSearchValue(value);
+        setSearchedValue(value);
         setProducts([]);
     };
 
     const handleSelectCategory = (newCategory) => {
-        setSearchValue("");
+        setSearchedValue("");
         setSearchInputValue("");
         if (category !== newCategory) {
             setCategory(newCategory);
@@ -150,7 +150,6 @@ export const Shop = () => {
             {/* Search */}
             <Search
                 handleSearch={handleSearch}
-                searchValue={searchValue}
                 searchInputValue={searchInputValue}
                 setSearchInputValue={setSearchInputValue}
             />
@@ -167,7 +166,7 @@ export const Shop = () => {
                 </div>
 
                 <div className="col">
-                    {searchValue === "" ? (
+                    {searchedValue === "" ? (
                         !category ? (
                             <h2>All products</h2>
                         ) : (
