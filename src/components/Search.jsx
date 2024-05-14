@@ -5,7 +5,7 @@ const Search = ({ handleSearch, searchInputValue, setSearchInputValue }) => {
     };
 
     return (
-        <form className="mt-4 mb-4" onSubmit={(e) => handleSubmit(e, searchInputValue)}>
+        <form className="mt-4 mb-4" onSubmit={(event) => handleSubmit(event, searchInputValue)}>
             <div className="input-group">
                 <div className="form-outline">
                     <input
