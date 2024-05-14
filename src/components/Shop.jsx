@@ -126,6 +126,7 @@ export const Shop = () => {
 
     return (
         <>
+            <h1>E-shop</h1>
             {/* Cart */}
             <Cart
                 selectedItems={selectedItems}
