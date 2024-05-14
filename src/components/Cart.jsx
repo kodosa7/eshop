@@ -11,7 +11,7 @@ const Cart = ({
     setIsOrderSent,
     decreaseQuantity,
 }) => {
-    const [isCheckout, setIsCheckout] = useState(false);
+    const [isCheckoutVisible, setIsCheckoutVisible] = useState(false);
 
     let resultPrice = 0;
     selectedProducts.forEach((product) => {
@@ -25,19 +25,19 @@ const Cart = ({
 
         // if cart gets emptied then hide the checkout form
         if (selectedProducts.length === 1) {
-            setIsCheckout(false);
+            setIsCheckoutVisible(false);
         }
     };
 
     // checkout button
     const handleCheckout = () => {
-        setIsCheckout(true);
+        setIsCheckoutVisible(true);
     };
 
     // show success text and empty cart
     const handleEmail = () => {
         setIsOrderSent(true);
-        setIsCheckout(false);
+        setIsCheckoutVisible(false);
         setDisabledButtons([]); // enable all buttons
         setSelectedProducts([]); // empty cart array
     };
@@ -157,14 +157,14 @@ const Cart = ({
                         $ {resultPrice}
                     </div>
                 </div>
-                {!isCheckout && (
+                {!isCheckoutVisible && (
                     <div className="mt-3 mb-4">
                         <button type="button" className="btn btn-primary" onClick={handleCheckout}>
                             Checkout
                         </button>
                     </div>
                 )}
-                {isCheckout && <Checkout eMail={""} handleEmail={handleEmail} />}
+                {isCheckoutVisible && <Checkout eMail={""} handleEmail={handleEmail} />}
             </>
         );
     }
