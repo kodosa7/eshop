@@ -1,8 +1,6 @@
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
-const Rating = (props) => {
-    const { rating } = props;
-
+const Rating = ({ rating }) => {
     return (
         <div className="">
             {[...Array(5)].map((star, index) => {

@@ -1,31 +1,30 @@
 import { useState, Fragment } from "react";
 import Checkout from "./Checkout";
 
-const Cart = (props) => {
-    const {
-        selectedItems,
-        setSelectedItems,
-        handleAddToCart,
-        handleRemoveFromCart,
-        setDisabledButtons,
-        showOrderSent,
-        setShowOrderSent,
-        decreaseQuantity,
-    } = props;
+const Cart = ({
+    selectedProducts,
+    setSelectedProducts,
+    handleAddToCart,
+    handleRemoveFromCart,
+    setDisabledButtons,
+    showOrderSent,
+    setShowOrderSent,
+    decreaseQuantity,
+}) => {
     const [showCheckout, setShowCheckout] = useState(false);
 
     let resultPrice = 0;
-    selectedItems.forEach((item) => {
-        resultPrice += item.totalPrice;
+    selectedProducts.forEach((product) => {
+        resultPrice += product.totalPrice;
     });
 
-    const removeFromCart = (item) => {
-        const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
-        setSelectedItems(updatedItems);
-        handleRemoveFromCart(item); // remove button disabled
+    const removeFromCart = (product) => {
+        const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
+        setSelectedProducts(updatedProducts);
+        handleRemoveFromCart(product); // remove button disabled
 
         // if cart gets emptied then hide the checkout form
-        if (selectedItems.length === 1) {
+        if (selectedProducts.length === 1) {
             setShowCheckout(false);
         }
     };
@@ -40,20 +39,20 @@ const Cart = (props) => {
         setShowOrderSent(true);
         setShowCheckout(false);
         setDisabledButtons([]); // enable all buttons
-        setSelectedItems([]); // empty cart array
+        setSelectedProducts([]); // empty cart array
     };
 
     const handleQuantityChange = (event, prod) => {
         const newQuantity = parseInt(event.target.value);
         if (!isNaN(newQuantity) && newQuantity >= 0) {
-            const updatedItems = selectedItems.map((item) =>
-                item.id === prod.id ? { ...item, quantity: newQuantity } : item
+            const updatedProducts = selectedProducts.map((product) =>
+                product.id === prod.id ? { ...product, quantity: newQuantity } : product
             );
-            setSelectedItems(updatedItems);
+            setSelectedProducts(updatedProducts);
         }
     };
 
-    if (selectedItems.length === 0 || showOrderSent) {
+    if (selectedProducts.length === 0 || showOrderSent) {
         return (
             <>
                 {showOrderSent && (
@@ -71,7 +70,7 @@ const Cart = (props) => {
         return (
             <>
                 <h2>Cart</h2>
-                {selectedItems.map((prod, index) => {
+                {selectedProducts.map((prod, index) => {
                     const { title, discountPrice } = prod;
 
                     return (

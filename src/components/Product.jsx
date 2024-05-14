@@ -1,9 +1,17 @@
 import Rating from "./Rating";
 
-const Item = (props) => {
-    const { item, itemId, name, description, image, price, discountPrice, rating, handleAddToCart, disabledButtons } =
-        props;
-
+const Product = ({
+    product,
+    productId,
+    name,
+    description,
+    image,
+    price,
+    discountPrice,
+    rating,
+    handleAddToCart,
+    disabledButtons,
+}) => {
     return (
         <div className="card h-100">
             <div className="ratio ratio-1x1">
@@ -30,13 +38,13 @@ const Item = (props) => {
                         <s>${price}</s>
                     </div>
                     <button
-                        key={itemId}
+                        key={productId}
                         type="button"
                         className="btn btn-outline-dark"
-                        onClick={() => handleAddToCart(item)}
-                        disabled={disabledButtons.includes(itemId)}
+                        onClick={() => handleAddToCart(product)}
+                        disabled={disabledButtons.includes(productId)}
                     >
-                        {disabledButtons.includes(itemId) ? "Already in cart" : "Buy"}
+                        {disabledButtons.includes(productId) ? "Already in cart" : "Buy"}
                     </button>
                 </div>
             </div>
@@ -44,4 +52,4 @@ const Item = (props) => {
     );
 };
 
-export default Item;
+export default Product;

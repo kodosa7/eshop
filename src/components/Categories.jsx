@@ -1,6 +1,4 @@
-const Categories = (props) => {
-    const { categories, category, handleSelectCategory } = props;
-
+const Categories = ({ categories, category, handleSelectCategory }) => {
     return (
         <>
             <h2>Categories</h2>

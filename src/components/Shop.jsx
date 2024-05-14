@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import Item from "./Item";
+import Product from "./Product";
 import Cart from "./Cart";
 import Categories from "./Categories";
 import Search from "./Search";
 
 export const Shop = () => {
-    const [selectedItems, setSelectedItems] = useState([]);
+    const [selectedProducts, setSelectedProducts] = useState([]);
     const [disabledButtons, setDisabledButtons] = useState([]);
     const [showOrderSent, setShowOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
@@ -81,47 +81,55 @@ export const Shop = () => {
         }
     };
 
-    // Insert item to cart (Add to cart button pressed)
-    const handleAddToCart = (item) => {
-        if (selectedItems.some((prod) => prod.id === item.id)) {
-            increaseQuantity(item.id);
+    // Insert product to cart (Add to cart button pressed)
+    const handleAddToCart = (product) => {
+        if (selectedProducts.some((prod) => prod.id === product.id)) {
+            increaseQuantity(product.id);
         } else {
-            setSelectedItems([...selectedItems, { ...item, quantity: 1, totalPrice: item.discountPrice }]);
+            setSelectedProducts([...selectedProducts, { ...product, quantity: 1, totalPrice: product.discountPrice }]);
         }
         // hide "order was sent" green element
         setShowOrderSent(false);
     };
 
     // Remove from cart button pressed
-    const handleRemoveFromCart = (item) => {
-        const updatedItems = selectedItems.filter((prod) => prod.id !== item.id);
-        setSelectedItems(updatedItems);
+    const handleRemoveFromCart = (product) => {
+        const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
+        setSelectedProducts(updatedProducts);
         // hide "order was sent" green element
         setShowOrderSent(false);
     };
 
     // increase quantity (+)
     const increaseQuantity = (id) => {
-        const newCart = selectedItems.map((item) => {
-            if (item.id === id) {
-                return { ...item, quantity: item.quantity + 1, totalPrice: item.discountPrice * (item.quantity + 1) };
+        const newCart = selectedProducts.map((product) => {
+            if (product.id === id) {
+                return {
+                    ...product,
+                    quantity: product.quantity + 1,
+                    totalPrice: product.discountPrice * (product.quantity + 1),
+                };
             } else {
-                return item;
+                return product;
             }
         });
-        setSelectedItems(newCart);
+        setSelectedProducts(newCart);
     };
 
     // increase quantity (-)
     const decreaseQuantity = (id) => {
-        const newCart = selectedItems.map((item) => {
-            if (item.id === id) {
-                return { ...item, quantity: item.quantity - 1, totalPrice: item.discountPrice * (item.quantity - 1) };
+        const newCart = selectedProducts.map((product) => {
+            if (product.id === id) {
+                return {
+                    ...product,
+                    quantity: product.quantity - 1,
+                    totalPrice: product.discountPrice * (product.quantity - 1),
+                };
             } else {
-                return item;
+                return product;
             }
         });
-        setSelectedItems(newCart);
+        setSelectedProducts(newCart);
     };
 
     return (
@@ -129,8 +137,8 @@ export const Shop = () => {
             <h1>E-shop</h1>
             {/* Cart */}
             <Cart
-                selectedItems={selectedItems}
-                setSelectedItems={setSelectedItems}
+                selectedProducts={selectedProducts}
+                setSelectedProducts={setSelectedProducts}
                 handleAddToCart={handleAddToCart}
                 handleRemoveFromCart={handleRemoveFromCart}
                 disabledButtons={disabledButtons}
@@ -178,9 +186,9 @@ export const Shop = () => {
                         <div className="row row-gap-4">
                             {products.map((prod, index) => (
                                 <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
-                                    <Item
-                                        item={prod}
-                                        itemId={prod.id}
+                                    <Product
+                                        product={prod}
+                                        productId={prod.id}
                                         index={index}
                                         name={prod.title}
                                         image={prod.thumbnail}

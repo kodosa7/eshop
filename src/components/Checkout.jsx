@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 
-const Checkout = (props) => {
-    const { handleEmail } = props;
+const Checkout = ({ handleEmail }) => {
     const [isEmailValid, setIsEmailValid] = useState(false);
     const [isEmailFieldEmpty, setIsEmailFieldEmpty] = useState(false);
 
