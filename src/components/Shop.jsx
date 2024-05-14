@@ -7,7 +7,7 @@ import Search from "./Search";
 export const Shop = () => {
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [disabledButtons, setDisabledButtons] = useState([]);
-    const [showOrderSent, setShowOrderSent] = useState(false);
+    const [isOrderSent, setIsOrderSent] = useState(false);
     const [products, setProducts] = useState([]);
     const [total, setTotal] = useState(0);
     const [categories, setCategories] = useState([]);
@@ -74,7 +74,7 @@ export const Shop = () => {
 
     const handleSelectCategory = (newCategory) => {
         setSearchValue("");
-        setInputValue("");
+        setSearchInputValue("");
         if (category !== newCategory) {
             setCategory(newCategory);
             setProducts([]);
@@ -89,7 +89,7 @@ export const Shop = () => {
             setSelectedProducts([...selectedProducts, { ...product, quantity: 1, totalPrice: product.discountPrice }]);
         }
         // hide "order was sent" green element
-        setShowOrderSent(false);
+        setIsOrderSent(false);
     };
 
     // Remove from cart button pressed
@@ -97,7 +97,7 @@ export const Shop = () => {
         const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
         setSelectedProducts(updatedProducts);
         // hide "order was sent" green element
-        setShowOrderSent(false);
+        setIsOrderSent(false);
     };
 
     // increase quantity (+)
@@ -143,8 +143,8 @@ export const Shop = () => {
                 handleRemoveFromCart={handleRemoveFromCart}
                 disabledButtons={disabledButtons}
                 setDisabledButtons={setDisabledButtons}
-                showOrderSent={showOrderSent}
-                setShowOrderSent={setShowOrderSent}
+                isOrderSent={isOrderSent}
+                setIsOrderSent={setIsOrderSent}
                 decreaseQuantity={decreaseQuantity}
             />
             {/* Search */}

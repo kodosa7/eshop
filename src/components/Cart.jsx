@@ -7,11 +7,11 @@ const Cart = ({
     handleAddToCart,
     handleRemoveFromCart,
     setDisabledButtons,
-    showOrderSent,
-    setShowOrderSent,
+    isOrderSent,
+    setIsOrderSent,
     decreaseQuantity,
 }) => {
-    const [showCheckout, setShowCheckout] = useState(false);
+    const [isCheckout, setIsCheckout] = useState(false);
 
     let resultPrice = 0;
     selectedProducts.forEach((product) => {
@@ -25,19 +25,19 @@ const Cart = ({
 
         // if cart gets emptied then hide the checkout form
         if (selectedProducts.length === 1) {
-            setShowCheckout(false);
+            setIsCheckout(false);
         }
     };
 
     // checkout button
     const handleCheckout = () => {
-        setShowCheckout(true);
+        setIsCheckout(true);
     };
 
     // show success text and empty cart
     const handleEmail = () => {
-        setShowOrderSent(true);
-        setShowCheckout(false);
+        setIsOrderSent(true);
+        setIsCheckout(false);
         setDisabledButtons([]); // enable all buttons
         setSelectedProducts([]); // empty cart array
     };
@@ -52,10 +52,10 @@ const Cart = ({
         }
     };
 
-    if (selectedProducts.length === 0 || showOrderSent) {
+    if (selectedProducts.length === 0 || isOrderSent) {
         return (
             <>
-                {showOrderSent && (
+                {isOrderSent && (
                     <div className="my-3 pt-3 pb-2 px-3 text-success bg-success-subtle border border-success rounded-3">
                         <p>Your order was sent. Thank You.</p>
                         <p>You can buy more if you want now.</p>
@@ -157,14 +157,14 @@ const Cart = ({
                         $ {resultPrice}
                     </div>
                 </div>
-                {!showCheckout && (
+                {!isCheckout && (
                     <div className="mt-3 mb-4">
                         <button type="button" className="btn btn-primary" onClick={handleCheckout}>
                             Checkout
                         </button>
                     </div>
                 )}
-                {showCheckout && <Checkout eMail={""} handleEmail={handleEmail} />}
+                {isCheckout && <Checkout eMail={""} handleEmail={handleEmail} />}
             </>
         );
     }
