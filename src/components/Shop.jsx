@@ -14,7 +14,7 @@ export const Shop = () => {
     const [category, setCategory] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [searchValue, setSearchValue] = useState("");
-    const [inputValue, setInputValue] = useState("");
+    const [searchInputValue, setSearchInputValue] = useState("");
 
     // fetch data from API (first time)
     useEffect(() => {
@@ -151,8 +151,8 @@ export const Shop = () => {
             <Search
                 handleSearch={handleSearch}
                 searchValue={searchValue}
-                inputValue={inputValue}
-                setInputValue={setInputValue}
+                searchInputValue={searchInputValue}
+                setSearchInputValue={setSearchInputValue}
             />
 
             <div className="row">

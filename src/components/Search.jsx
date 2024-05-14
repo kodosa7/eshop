@@ -1,11 +1,11 @@
-const Search = ({ handleSearch, inputValue, setInputValue }) => {
+const Search = ({ handleSearch, searchInputValue, setSearchInputValue }) => {
     const handleSubmit = (e, value) => {
         handleSearch(value);
         e.preventDefault();
     };
 
     return (
-        <form className="mt-4 mb-4" onSubmit={(e) => handleSubmit(e, inputValue)}>
+        <form className="mt-4 mb-4" onSubmit={(e) => handleSubmit(e, searchInputValue)}>
             <div className="input-group">
                 <div className="form-outline">
                     <input
@@ -16,8 +16,8 @@ const Search = ({ handleSearch, inputValue, setInputValue }) => {
                         name="search"
                         aria-label="Search input field"
                         aria-describedby="searchHelp"
-                        onChange={(event) => setInputValue(event.target.value)}
-                        value={inputValue}
+                        onChange={(event) => setSearchInputValue(event.target.value)}
+                        value={searchInputValue}
                         required
                     />
                 </div>
