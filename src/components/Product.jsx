@@ -1,5 +1,4 @@
 import Rating from "./Rating";
-import fixDecimalNum from "../utilities/utilities";
 
 const Product = ({
     product,

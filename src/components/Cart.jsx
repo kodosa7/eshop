@@ -1,6 +1,5 @@
 import { useState, Fragment } from "react";
 import Checkout from "./Checkout";
-import fixDecimalNum from "../utilities/utilities.js";
 
 const Cart = ({
     selectedProducts,
@@ -80,7 +79,7 @@ const Cart = ({
                                     {prod.title}
                                 </div>
                                 <div className="col-1 d-flex justify-content-end align-items-center">
-                                    $ {() => fixDecimalNum(prod.discountPrice)} / pc
+                                    $ {prod.discountPrice} / pc
                                 </div>
                                 <div className="col-1">
                                     <input
