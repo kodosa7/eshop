@@ -208,7 +208,7 @@ export const Shop = () => {
                     {isFetchProductError ? (
                         <p>No products found, no internet?</p>
                     ) : isProductsLoading ? (
-                        <p>Loading asdsad</p>
+                        <p>Loading products...</p>
                     ) : products.length !== 0 ? (
                         <div className="row row-gap-4">
                             {products.map((prod) => (
