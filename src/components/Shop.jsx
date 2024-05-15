@@ -22,8 +22,21 @@ export const Shop = () => {
     }, []);
 
     // fetch products from API (first time and everytime 'category' state changes)
+    // using async func to ignore double trigger of the effect when in StrictMode
     useEffect(() => {
-        fetchProducts();
+        let ignore = false;
+
+        async function startFetching() {
+            await null;
+            if (!ignore) {
+                fetchProducts();
+            }
+        }
+        startFetching();
+
+        return () => {
+            ignore = true;
+        };
     }, [searchedValue, category]);
 
     // fetch products API
