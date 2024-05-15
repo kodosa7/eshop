@@ -181,12 +181,11 @@ export const Shop = () => {
 
                     {products.length !== 0 ? (
                         <div className="row row-gap-4">
-                            {products.map((prod, index) => (
+                            {products.map((prod) => (
                                 <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
                                     <Product
                                         product={prod}
                                         productId={prod.id}
-                                        index={index}
                                         name={prod.title}
                                         image={prod.thumbnail}
                                         description={prod.description}
