@@ -69,8 +69,6 @@ const Cart = ({
             <>
                 <h2>Cart</h2>
                 {selectedProducts.map((prod, index) => {
-                    const { title, discountPrice } = prod;
-
                     return (
                         <Fragment key={prod.id}>
                             <div className="row mb-1">
@@ -78,13 +76,13 @@ const Cart = ({
                                     className="col-3 d-flex justify-content-between align-items-center fw-bold"
                                     key={index}
                                 >
-                                    {title}
+                                    {prod.title}
                                 </div>
                                 <div className="col-1 d-flex justify-content-end align-items-center">
                                     ${" "}
-                                    {discountPrice.toFixed(2).split(".")[1] === "00"
-                                        ? discountPrice.toFixed(2).split(".")[0]
-                                        : `${discountPrice.toFixed(2).split(".")[0]}.${discountPrice
+                                    {prod.discountPrice.toFixed(2).split(".")[1] === "00"
+                                        ? prod.discountPrice.toFixed(2).split(".")[0]
+                                        : `${prod.discountPrice.toFixed(2).split(".")[0]}.${prod.discountPrice
                                               .toFixed(2)
                                               .split(".")[1]
                                               .padEnd(2, "0")}`}{" "}
@@ -133,7 +131,7 @@ const Cart = ({
                                     {prod.quantity} {prod.quantity === 1 ? "pc" : "pcs"} in cart
                                 </div>
                                 <div className="col-auto d-flex align-items-center">
-                                    $ {discountPrice * prod.quantity}
+                                    $ {prod.discountPrice * prod.quantity}
                                 </div>
                                 <div className="col-auto d-flex align-items-center">
                                     <button
