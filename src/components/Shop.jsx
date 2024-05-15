@@ -219,7 +219,7 @@ export const Shop = () => {
                                         name={prod.title}
                                         image={prod.thumbnail}
                                         description={prod.description}
-                                        price={prod.price}
+                                        originalPrice={prod.price}
                                         discountPrice={prod.discountPrice}
                                         rating={prod.rating}
                                         handleAddToCart={() => handleAddToCart(prod)}

@@ -1,6 +1,17 @@
 import Rating from "./Rating";
+import fixDecimalNum from "../utilities/utilities";
 
-const Product = ({ product, productId, name, description, image, price, discountPrice, rating, handleAddToCart }) => {
+const Product = ({
+    product,
+    productId,
+    name,
+    description,
+    image,
+    originalPrice,
+    discountPrice,
+    rating,
+    handleAddToCart,
+}) => {
     return (
         <div className="card h-100">
             <div className="ratio ratio-1x1">
@@ -14,17 +25,9 @@ const Product = ({ product, productId, name, description, image, price, discount
             rating: {rating}
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
-                    <div className="fw-bold fs-4">
-                        $
-                        {discountPrice.toFixed(2).split(".")[1] === "00"
-                            ? discountPrice.toFixed(2).split(".")[0]
-                            : `${discountPrice.toFixed(2).split(".")[0]}.${discountPrice
-                                  .toFixed(2)
-                                  .split(".")[1]
-                                  .padEnd(2, "0")}`}{" "}
-                    </div>
+                    <div className="fw-bold fs-4">$ {discountPrice}</div>
                     <div className="fw-light fs-6">
-                        <s>${price}</s>
+                        <s>${originalPrice}</s>
                     </div>
                     <button
                         key={productId}

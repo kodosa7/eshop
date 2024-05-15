@@ -1,5 +1,6 @@
 import { useState, Fragment } from "react";
 import Checkout from "./Checkout";
+import fixDecimalNum from "../utilities/utilities.js";
 
 const Cart = ({
     selectedProducts,
@@ -79,14 +80,7 @@ const Cart = ({
                                     {prod.title}
                                 </div>
                                 <div className="col-1 d-flex justify-content-end align-items-center">
-                                    ${" "}
-                                    {prod.discountPrice.toFixed(2).split(".")[1] === "00"
-                                        ? prod.discountPrice.toFixed(2).split(".")[0]
-                                        : `${prod.discountPrice.toFixed(2).split(".")[0]}.${prod.discountPrice
-                                              .toFixed(2)
-                                              .split(".")[1]
-                                              .padEnd(2, "0")}`}{" "}
-                                    / pc
+                                    $ {() => fixDecimalNum(prod.discountPrice)} / pc
                                 </div>
                                 <div className="col-1">
                                     <input
