@@ -16,12 +16,12 @@ export const Shop = () => {
     const [searchedValue, setSearchedValue] = useState("");
     const [searchInputValue, setSearchInputValue] = useState("");
 
-    // fetch data from API (first time)
+    // fetch categories from API (first time)
     useEffect(() => {
         fetchCategories();
     }, []);
 
-    // fetch data from API (first time and everytime 'category' state changes)
+    // fetch products from API (first time and everytime 'category' state changes)
     useEffect(() => {
         fetchProducts();
     }, [searchedValue, category]);
