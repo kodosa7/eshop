@@ -1,4 +1,4 @@
-const Categories = ({ categories, category, handleSelectCategory }) => {
+const Categories = ({ categories, category, handleSelectCategory, isCategoriesLoading }) => {
     return (
         <>
             <h2>Categories</h2>
@@ -7,7 +7,7 @@ const Categories = ({ categories, category, handleSelectCategory }) => {
                 href="#"
                 onClick={() => handleSelectCategory("")}
             >
-                All Products
+                {isCategoriesLoading ? "" : "All Products"}
             </a>
 
             {categories.map((selectedCategory, index) => (

@@ -15,6 +15,8 @@ export const Shop = () => {
     const [isProductsLoading, setIsProductsLoading] = useState(false);
     const [searchedValue, setSearchedValue] = useState("");
     const [searchInputValue, setSearchInputValue] = useState("");
+    const [isFetchProductError, setIsFetchProductError] = useState(false);
+    const [isFetchCategoriesError, setIsFetchCategoriesError] = useState(false);
 
     // fetch categories from API (first time)
     useEffect(() => {
@@ -65,6 +67,9 @@ export const Shop = () => {
                 });
                 setProducts((prev) => [...prev, ...productsWithDiscountPrice]);
                 setIsProductsLoading(false);
+            })
+            .catch(() => {
+                setIsFetchProductError(true);
             });
     };
 
@@ -76,6 +81,9 @@ export const Shop = () => {
             .then((data) => {
                 setCategories(data);
                 setIsCategoriesLoading(false);
+            })
+            .catch(() => {
+                setIsFetchCategoriesError(true);
             });
     };
 
@@ -168,12 +176,17 @@ export const Shop = () => {
             <div className="row">
                 <div className="col-3">
                     {/* Categories */}
-                    <Categories
-                        categories={categories}
-                        category={category}
-                        handleSelectCategory={handleSelectCategory}
-                    />
-                    {isCategoriesLoading && <p>Loading categories...</p>}
+                    {isFetchCategoriesError ? (
+                        <p>No categories found, no internet?</p>
+                    ) : (
+                        <Categories
+                            categories={categories}
+                            category={category}
+                            handleSelectCategory={handleSelectCategory}
+                            isCategoriesLoading={isCategoriesLoading}
+                        />
+                    )}
+                    {isCategoriesLoading && !isFetchCategoriesError && <p>Loading categories...</p>}
                 </div>
 
                 <div className="col">
@@ -192,7 +205,11 @@ export const Shop = () => {
                         <h2>Search results</h2>
                     )}
 
-                    {products.length !== 0 ? (
+                    {isFetchProductError ? (
+                        <p>No products found, no internet?</p>
+                    ) : isProductsLoading ? (
+                        <p>Loading asdsad</p>
+                    ) : products.length !== 0 ? (
                         <div className="row row-gap-4">
                             {products.map((prod) => (
                                 <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
@@ -211,9 +228,9 @@ export const Shop = () => {
                             ))}
                         </div>
                     ) : (
-                        !isProductsLoading && <p>No products found</p>
+                        !isProductsLoading && <p>There are no such products :-(</p>
                     )}
-                    {isProductsLoading && <p>Loading products...</p>}
+
                     {products.length < totalCount && !isProductsLoading && (
                         <div className="row">
                             <button className="btn btn-primary my-4" onClick={() => fetchProducts()}>
