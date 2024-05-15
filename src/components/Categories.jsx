@@ -1,3 +1,5 @@
+import beautifyCategoryName from "../utils/utils.js";
+
 const Categories = ({ categories, category, handleSelectCategory, isCategoriesLoading }) => {
     return (
         <>
@@ -10,8 +12,8 @@ const Categories = ({ categories, category, handleSelectCategory, isCategoriesLo
                 {isCategoriesLoading ? "" : "All Products"}
             </a>
 
-            {categories.map((selectedCategory, index) => (
-                <div key={index} className="col">
+            {categories.map((selectedCategory) => (
+                <div key={selectedCategory} className="col">
                     <a
                         className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
                             category === selectedCategory ? "link-info" : "link-dark"
@@ -19,10 +21,7 @@ const Categories = ({ categories, category, handleSelectCategory, isCategoriesLo
                         href="#"
                         onClick={() => handleSelectCategory(selectedCategory)}
                     >
-                        {selectedCategory
-                            .split("-")
-                            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                            .join(" ")}
+                        {beautifyCategoryName(selectedCategory)}
                     </a>
                 </div>
             ))}

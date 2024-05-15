@@ -3,6 +3,7 @@ import Product from "./Product";
 import Cart from "./Cart";
 import Categories from "./Categories";
 import Search from "./Search";
+import beautifyCategoryName from "../utils/utils.js";
 
 export const Shop = () => {
     const [selectedProducts, setSelectedProducts] = useState([]);
@@ -194,12 +195,7 @@ export const Shop = () => {
                         !category ? (
                             <h2>All products</h2>
                         ) : (
-                            <h2>
-                                {category
-                                    .split("-")
-                                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                                    .join(" ")}
-                            </h2>
+                            <h2>{beautifyCategoryName(category)}</h2>
                         )
                     ) : (
                         <h2>Search results</h2>
