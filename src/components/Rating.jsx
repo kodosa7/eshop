@@ -1,45 +1,28 @@
 import { FaStar, FaStarHalf } from "react-icons/fa";
 
 const Rating = ({ rating }) => {
+    // get a whole (x.0) or half (x.5) number from rating
+    const halfRoundedRating = Math.round(rating * 2) / 2;
+
     return (
         <div className="">
-            {[...Array(5)].map((star, index) => {
-                const currentRating = index + 1;
+            {[...Array(5)].map((_, index) => {
+                // set up three star variants
+                const yellowStar = <FaStar style={{ color: "#ffc107" }} size={25} />;
+                const halfYellowStar = (
+                    <>
+                        <FaStar style={{ color: "#e4e5e9" }} size={25} />
+                        <FaStarHalf style={{ color: "#ffc107", position: "absolute", left: 0, top: "1px" }} size={25} />
+                    </>
+                );
+                const greyStar = <FaStar style={{ color: "#e4e5e9" }} size={25} />;
 
-                let newStar;
-
-                // const difference = currentRating - rating;
-
-                const num = rating % 1;
-                const decimalNum = +num.toFixed(2);
-
-                console.log(currentRating, rating, decimalNum);
-
-                if (decimalNum <= 0.25 || decimalNum > 0.75) {
-                    // yellow
-                    console.log("yellow");
-                    newStar = <FaStar style={{ color: "#ffc107" }} size={25} />;
-                } else if (decimalNum >= 0.25 || decimalNum <= 0.75) {
-                    // half-yellow
-                    console.log("half-yellow");
-                    newStar = (
-                        <>
-                            <FaStar style={{ color: "#e4e5e9" }} size={25} />
-                            <FaStarHalf
-                                style={{ color: "#ffc107", position: "absolute", left: 0, top: "1px" }}
-                                size={25}
-                            />
-                        </>
-                    );
-                } else {
-                    // grey
-                    console.log("grey");
-                    newStar = <FaStar style={{ color: "#e4e5e9" }} size={25} />;
-                }
+                // count a whole or half number from the rounded rating number
+                const baseHalfRating = halfRoundedRating - index;
 
                 return (
                     <span key={index} style={{ position: "relative" }}>
-                        {newStar}
+                        {baseHalfRating > 0.5 ? yellowStar : baseHalfRating === 0.5 ? halfYellowStar : greyStar}
                     </span>
                 );
             })}
@@ -48,19 +31,3 @@ const Rating = ({ rating }) => {
 };
 
 export default Rating;
-
-// if (currentRating <= rating) {
-//     newStar = <FaStar style={{ color: "#ffc107" }} size={25} />;
-// } else if (currentRating - rating < 0.5) {
-//     newStar = (
-//         <>
-//             <FaStar style={{ color: "#e4e5e9" }} size={25} />
-//             <FaStarHalf
-//                 style={{ color: "#ffc107", position: "absolute", left: 0, top: "1px" }}
-//                 size={25}
-//             />
-//         </>
-//     );
-// } else {
-//     newStar = <FaStar style={{ color: "#e4e5e9" }} size={25} />;
-// }
