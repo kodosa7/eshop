@@ -5,22 +5,18 @@ const Checkout = ({ handleEmail }) => {
     const [isEmailFilled, setIsEmailFilled] = useState(false);
 
     const handleValidation = (event) => {
-        event.preventDefault();
         setIsEmailFilled(true);
         const form = event.currentTarget;
 
         if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
             setIsEmailValid(false);
         } else {
             setIsEmailValid(true);
         }
-        form.classList.add("was-validated");
+        form.classList.add("wasValidated");
     };
 
     const inputRef = useRef();
-
     const handleSubmit = (event) => {
         event.preventDefault();
         if (isEmailValid) {
