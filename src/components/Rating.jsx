@@ -15,12 +15,16 @@ const Rating = ({ rating }) => {
 
                 console.log(currentRating, rating, decimalNum);
 
-                if (decimalNum <= 0.75) {
+                if (decimalNum <= 0.25 || decimalNum > 0.75) {
+                    // yellow
+                    console.log("yellow");
                     newStar = <FaStar style={{ color: "#ffc107" }} size={25} />;
-                } else if (decimalNum <= 0.25) {
+                } else if (decimalNum >= 0.25 || decimalNum <= 0.75) {
+                    // half-yellow
+                    console.log("half-yellow");
                     newStar = (
                         <>
-                            <FaStar style={{ color: "#ffc107" }} size={25} />
+                            <FaStar style={{ color: "#e4e5e9" }} size={25} />
                             <FaStarHalf
                                 style={{ color: "#ffc107", position: "absolute", left: 0, top: "1px" }}
                                 size={25}
@@ -28,6 +32,8 @@ const Rating = ({ rating }) => {
                         </>
                     );
                 } else {
+                    // grey
+                    console.log("grey");
                     newStar = <FaStar style={{ color: "#e4e5e9" }} size={25} />;
                 }
 
@@ -43,20 +49,18 @@ const Rating = ({ rating }) => {
 
 export default Rating;
 
-
-
-                // if (currentRating <= rating) {
-                //     newStar = <FaStar style={{ color: "#ffc107" }} size={25} />;
-                // } else if (currentRating - rating < 0.5) {
-                //     newStar = (
-                //         <>
-                //             <FaStar style={{ color: "#e4e5e9" }} size={25} />
-                //             <FaStarHalf
-                //                 style={{ color: "#ffc107", position: "absolute", left: 0, top: "1px" }}
-                //                 size={25}
-                //             />
-                //         </>
-                //     );
-                // } else {
-                //     newStar = <FaStar style={{ color: "#e4e5e9" }} size={25} />;
-                // }
+// if (currentRating <= rating) {
+//     newStar = <FaStar style={{ color: "#ffc107" }} size={25} />;
+// } else if (currentRating - rating < 0.5) {
+//     newStar = (
+//         <>
+//             <FaStar style={{ color: "#e4e5e9" }} size={25} />
+//             <FaStarHalf
+//                 style={{ color: "#ffc107", position: "absolute", left: 0, top: "1px" }}
+//                 size={25}
+//             />
+//         </>
+//     );
+// } else {
+//     newStar = <FaStar style={{ color: "#e4e5e9" }} size={25} />;
+// }
