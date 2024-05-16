@@ -1,7 +1,13 @@
-const Search = ({ handleSearch, searchInputValue, setSearchInputValue }) => {
-    const handleSubmit = (e, value) => {
+const Search = ({ searchInputValue, setSearchInputValue, setCategory, setProducts, setSearchedValue }) => {
+    const handleSubmit = (event, value) => {
         handleSearch(value);
-        e.preventDefault();
+        event.preventDefault();
+    };
+
+    const handleSearch = (value) => {
+        setCategory("");
+        setSearchedValue(value);
+        setProducts([]);
     };
 
     return (

@@ -8,13 +8,11 @@ const Checkout = ({ handleEmail }) => {
     const handleValidation = (event) => {
         setIsEmailFilled(true);
         const form = event.currentTarget;
-
         if (form.checkValidity() === false) {
             setIsEmailValid(false);
         } else {
             setIsEmailValid(true);
         }
-        // form.classList.add("wasValidated");
         setIsInputValid(true);
     };
 

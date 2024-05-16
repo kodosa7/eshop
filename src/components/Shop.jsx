@@ -88,12 +88,6 @@ export const Shop = () => {
             });
     };
 
-    const handleSearch = (value) => {
-        setCategory("");
-        setSearchedValue(value);
-        setProducts([]);
-    };
-
     const handleSelectCategory = (newCategory) => {
         setSearchedValue("");
         setSearchInputValue("");
@@ -169,9 +163,11 @@ export const Shop = () => {
             />
             {/* Search */}
             <Search
-                handleSearch={handleSearch}
                 searchInputValue={searchInputValue}
                 setSearchInputValue={setSearchInputValue}
+                setCategory={setCategory}
+                setProducts={setProducts}
+                setSearchedValue={setSearchedValue}
             />
 
             <div className="row">
