@@ -2,11 +2,11 @@ import { useState, useRef } from "react";
 
 const Checkout = ({ handleEmail }) => {
     const [isEmailValid, setIsEmailValid] = useState(false);
-    const [isEmailFieldEmpty, setIsEmailFieldEmpty] = useState(false);
+    const [isEmailFilled, setIsEmailFilled] = useState(false);
 
     const handleValidation = (event) => {
         event.preventDefault();
-        setIsEmailFieldEmpty(true);
+        setIsEmailFilled(true);
         const form = event.currentTarget;
 
         if (form.checkValidity() === false) {
@@ -59,7 +59,7 @@ const Checkout = ({ handleEmail }) => {
                 </div>
             </div>
             <div id="emailHelp" className="form-text">
-                {isEmailFieldEmpty ? "" : "Please enter an email address."}
+                {isEmailFilled ? "" : "Please enter an email address."}
             </div>
             <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
                 Place order
