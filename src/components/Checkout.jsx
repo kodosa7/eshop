@@ -20,7 +20,7 @@ const Checkout = ({ handleEmail }) => {
     };
 
     const inputRef = useRef();
-    const handleOnChange = (event) => {
+    const handleOnInput = (event) => {
         event.preventDefault();
     };
 
@@ -50,7 +50,7 @@ const Checkout = ({ handleEmail }) => {
                     name="email"
                     aria-label="Email input field"
                     aria-describedby="emailHelp"
-                    onChange={handleOnChange}
+                    onInput={handleOnInput}
                     onSubmit={handleSubmit}
                     required
                 />
