@@ -5,14 +5,22 @@ const Rating = ({ rating }) => {
         <div className="">
             {[...Array(5)].map((star, index) => {
                 const currentRating = index + 1;
+
                 let newStar;
 
-                if (currentRating <= rating) {
+                // const difference = currentRating - rating;
+
+                const num = rating % 1;
+                const decimalNum = +num.toFixed(2);
+
+                console.log(currentRating, rating, decimalNum);
+
+                if (decimalNum <= 0.75) {
                     newStar = <FaStar style={{ color: "#ffc107" }} size={25} />;
-                } else if (currentRating - rating < 0.5) {
+                } else if (decimalNum <= 0.25) {
                     newStar = (
                         <>
-                            <FaStar style={{ color: "#e4e5e9" }} size={25} />
+                            <FaStar style={{ color: "#ffc107" }} size={25} />
                             <FaStarHalf
                                 style={{ color: "#ffc107", position: "absolute", left: 0, top: "1px" }}
                                 size={25}
@@ -34,3 +42,21 @@ const Rating = ({ rating }) => {
 };
 
 export default Rating;
+
+
+
+                // if (currentRating <= rating) {
+                //     newStar = <FaStar style={{ color: "#ffc107" }} size={25} />;
+                // } else if (currentRating - rating < 0.5) {
+                //     newStar = (
+                //         <>
+                //             <FaStar style={{ color: "#e4e5e9" }} size={25} />
+                //             <FaStarHalf
+                //                 style={{ color: "#ffc107", position: "absolute", left: 0, top: "1px" }}
+                //                 size={25}
+                //             />
+                //         </>
+                //     );
+                // } else {
+                //     newStar = <FaStar style={{ color: "#e4e5e9" }} size={25} />;
+                // }

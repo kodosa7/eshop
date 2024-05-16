@@ -30,21 +30,21 @@ const Checkout = ({ handleEmail }) => {
 
     return (
         <div className="mt-4 mb-4">
-            <form onInput={handleValidation} className={isInputValid ? "was-validated" : ""}>
+            <form className={isInputValid ? "was-validated" : ""} onSubmit={handleSubmit}>
                 <div className="form-label">
                     <label htmlFor="email">e-mail</label>
                 </div>
                 <div className="input-group">
                     <input
                         type="email"
+                        className="form-control"
                         placeholder=""
                         ref={inputRef}
-                        className="form-control"
                         id="email"
                         name="email"
                         aria-label="Email input field"
                         aria-describedby="emailHelp"
-                        onSubmit={handleSubmit}
+                        onInput={handleValidation}
                         required
                     />
                     <div className={isEmailValid ? "valid-feedback" : "invalid-feedback"}>
@@ -54,7 +54,7 @@ const Checkout = ({ handleEmail }) => {
                 <div id="emailHelp" className="form-text">
                     {isEmailFilled ? "" : "Please enter an email address."}
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+                <button type="submit" className="btn btn-primary">
                     Place order
                 </button>
             </form>
