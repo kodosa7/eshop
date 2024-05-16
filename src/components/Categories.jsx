@@ -5,7 +5,9 @@ const Categories = ({ categories, category, handleSelectCategory, isCategoriesLo
         <>
             <h2>Categories</h2>
             <a
-                className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
+                    category === "" ? "link-info" : "link-dark"
+                }`}
                 href="#"
                 onClick={() => handleSelectCategory("")}
             >
