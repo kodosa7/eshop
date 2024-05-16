@@ -34,30 +34,32 @@ const Checkout = ({ handleEmail }) => {
                 <div className="form-label">
                     <label htmlFor="email">e-mail</label>
                 </div>
-                <div className="input-group">
-                    <input
-                        type="email"
-                        className="form-control"
-                        placeholder=""
-                        ref={inputRef}
-                        id="email"
-                        name="email"
-                        aria-label="Email input field"
-                        aria-describedby="emailHelp"
-                        onInput={handleValidation}
-                        required
-                    />
-                    <div className={isEmailValid ? "valid-feedback" : "invalid-feedback"}>
-                        {isEmailValid ? "Email address looks good." : "Please enter a valid email address."}
+                <div className="d-flex flex-direction-row justify-content-start">
+                    <div className="form-outline">
+                        <input
+                            type="email"
+                            className="form-control"
+                            placeholder=""
+                            ref={inputRef}
+                            id="email"
+                            name="email"
+                            aria-label="Email input field"
+                            aria-describedby="emailHelp"
+                            onInput={handleValidation}
+                            required
+                        />
+                        <div className={isEmailValid ? "valid-feedback" : "invalid-feedback"}>
+                            {isEmailValid ? "Email address looks good." : "Please enter a valid email address."}
+                        </div>
                     </div>
+                    <button type="submit" className="btn btn-primary">
+                        Place order
+                    </button>
                 </div>
-                <div id="emailHelp" className="form-text">
-                    {isEmailFilled ? "" : "Please enter an email address."}
-                </div>
-                <button type="submit" className="btn btn-primary">
-                    Place order
-                </button>
             </form>
+            <div id="emailHelp" className="form-text">
+                {isEmailFilled ? "" : "Please enter an email address."}
+            </div>
         </div>
     );
 };
