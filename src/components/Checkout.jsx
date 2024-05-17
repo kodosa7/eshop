@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const Checkout = ({ handleEmail }) => {
+const Checkout = ({ eMail }) => {
     const [isEmailValid, setIsEmailValid] = useState(false);
     const [isEmailFilled, setIsEmailFilled] = useState(false);
     const [isInputValid, setIsInputValid] = useState(false);
@@ -21,7 +21,7 @@ const Checkout = ({ handleEmail }) => {
         event.preventDefault();
         if (isEmailValid) {
             // execute the parent function with the email value
-            handleEmail(inputRef.current.value);
+            eMail(inputRef.current.value);
         } else {
             // if value is invalid, do this
             console.log("not submitted, field invalid");

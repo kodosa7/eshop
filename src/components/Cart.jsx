@@ -142,7 +142,7 @@ const Cart = ({
                         </button>
                     </div>
                 )}
-                {isCheckoutFormVisible && <Checkout eMail={""} handleEmail={handleEmail} />}
+                {isCheckoutFormVisible && <Checkout eMail={handleEmail} />}
             </>
         );
     }
