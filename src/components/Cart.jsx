@@ -4,7 +4,7 @@ import Checkout from "./Checkout";
 const Cart = ({
     productsInCart,
     setProductsInCart,
-    handleAddToCartBtn,
+    onIncrease,
     handleRemoveFromCartBtn,
     isOrderSent,
     setIsOrderSent,
@@ -17,6 +17,7 @@ const Cart = ({
         resultPrice += product.totalPrice;
     });
 
+    // do shop.jsx
     const removeFromCart = (product) => {
         const updatedProducts = productsInCart.filter((prod) => prod.id !== product.id);
         setProductsInCart(updatedProducts);
@@ -101,7 +102,7 @@ const Cart = ({
                                             paddingTop: 0,
                                             paddingBottom: 0,
                                         }}
-                                        onClick={() => handleAddToCartBtn(prod)}
+                                        onClick={() => onIncrease(prod)}
                                     >
                                         +
                                     </button>

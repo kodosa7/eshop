@@ -155,7 +155,7 @@ export const Shop = () => {
             <Cart
                 productsInCart={selectedProducts}
                 setProductsInCart={setSelectedProducts}
-                handleAddToCartBtn={handleAddToCart}
+                onIncrease={handleAddToCart}
                 handleRemoveFromCartBtn={handleRemoveFromCart}
                 isOrderSent={isOrderSent}
                 setIsOrderSent={setIsOrderSent}
