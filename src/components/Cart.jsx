@@ -9,8 +9,8 @@ const Cart = ({
     onRemove,
     isOrderSent,
     setIsOrderSent,
-    isCheckoutVisible,
-    setIsCheckoutVisible,
+    isCheckoutFormVisible,
+    setIsCheckoutFormVisible,
 }) => {
     let resultPrice = 0;
     productsInCart.forEach((product) => {
@@ -19,13 +19,13 @@ const Cart = ({
 
     // checkout button
     const onCheckout = () => {
-        setIsCheckoutVisible(true);
+        setIsCheckoutFormVisible(true);
     };
 
     // show success text and empty cart
     const handleEmail = () => {
         setIsOrderSent(true);
-        setIsCheckoutVisible(false);
+        setIsCheckoutFormVisible(false);
         setProductsInCart([]); // empty cart array
     };
 
@@ -135,14 +135,14 @@ const Cart = ({
                         $ {resultPrice}
                     </div>
                 </div>
-                {!isCheckoutVisible && (
+                {!isCheckoutFormVisible && (
                     <div className="mt-3 mb-4">
                         <button type="button" className="btn btn-primary" onClick={onCheckout}>
                             Checkout
                         </button>
                     </div>
                 )}
-                {isCheckoutVisible && <Checkout eMail={""} handleEmail={handleEmail} />}
+                {isCheckoutFormVisible && <Checkout eMail={""} handleEmail={handleEmail} />}
             </>
         );
     }
