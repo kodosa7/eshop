@@ -1,6 +1,6 @@
 import beautifyCategoryName from "../utils/utils.js";
 
-const Categories = ({ categories, category, handleSelectCategory, isCategoriesLoadingMessage }) => {
+const Categories = ({ categories, category, handleSelectCategory, isLoadingMessageVisible }) => {
     return (
         <>
             <h2>Categories</h2>
@@ -11,7 +11,7 @@ const Categories = ({ categories, category, handleSelectCategory, isCategoriesLo
                 href="#"
                 onClick={() => handleSelectCategory("")}
             >
-                {isCategoriesLoadingMessage ? "" : "All Producsdfsdts"}
+                {isLoadingMessageVisible ? "" : "All Products"}
             </a>
 
             {categories.map((categoryItem) => (

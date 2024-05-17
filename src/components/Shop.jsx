@@ -196,7 +196,7 @@ export const Shop = () => {
                             categories={categories}
                             category={category}
                             handleSelectCategory={handleSelectCategory}
-                            isCategoriesLoadingMessage={isCategoriesLoading}
+                            isLoadingMessageVisible={isCategoriesLoading}
                         />
                     )}
                     {isCategoriesLoading && !isFetchCategoriesError && <p>Loading categories...</p>}
