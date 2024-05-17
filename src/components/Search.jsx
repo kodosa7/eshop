@@ -1,4 +1,4 @@
-const Search = ({ searchInputValue, setSearchInputValue, setCategory, setProducts, setSearchedValue }) => {
+const Search = ({ searchInputValue, onSearch, setCategory, setProducts, setSearchedValue }) => {
     const handleSubmit = (event, value) => {
         handleSearch(value);
         event.preventDefault();
@@ -22,7 +22,7 @@ const Search = ({ searchInputValue, setSearchInputValue, setCategory, setProduct
                         name="search"
                         aria-label="Search input field"
                         aria-describedby="searchHelp"
-                        onChange={(event) => setSearchInputValue(event.target.value)}
+                        onChange={(event) => onSearch(event.target.value)}
                         value={searchInputValue}
                         required
                     />

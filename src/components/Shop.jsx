@@ -183,7 +183,7 @@ export const Shop = () => {
                 setSearchInputValue={setSearchInputValue}
                 setCategory={setCategory}
                 setProducts={setProducts}
-                setSearchedValue={setSearchedValue}
+                onSearch={setSearchedValue}
             />
 
             <div className="row">

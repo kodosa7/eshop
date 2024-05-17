@@ -11,7 +11,7 @@ const Categories = ({ categories, category, handleSelectCategory, isCategoriesLo
                 href="#"
                 onClick={() => handleSelectCategory("")}
             >
-                {isCategoriesLoadingMessage ? "" : "All Products"}
+                {isCategoriesLoadingMessage ? "" : "All Producsdfsdts"}
             </a>
 
             {categories.map((categoryItem) => (
