@@ -156,7 +156,7 @@ export const Shop = () => {
                 productsInCart={selectedProducts}
                 setProductsInCart={setSelectedProducts}
                 handleAddToCartBtn={handleAddToCart}
-                handleRemoveFromCart={handleRemoveFromCart}
+                handleRemoveFromCartBtn={handleRemoveFromCart}
                 isOrderSent={isOrderSent}
                 setIsOrderSent={setIsOrderSent}
                 decreaseQuantity={decreaseQuantity}

@@ -5,7 +5,7 @@ const Cart = ({
     productsInCart,
     setProductsInCart,
     handleAddToCartBtn,
-    handleRemoveFromCart,
+    handleRemoveFromCartBtn,
     isOrderSent,
     setIsOrderSent,
     decreaseQuantity,
@@ -20,7 +20,7 @@ const Cart = ({
     const removeFromCart = (product) => {
         const updatedProducts = productsInCart.filter((prod) => prod.id !== product.id);
         setProductsInCart(updatedProducts);
-        handleRemoveFromCart(product); // remove button disabled
+        handleRemoveFromCartBtn(product); // remove button disabled
 
         // if cart gets emptied then hide the checkout form
         if (productsInCart.length === 1) {
