@@ -150,7 +150,7 @@ export const Shop = () => {
     };
 
     // do shop.jsx
-    const onRemove = (product) => {
+    const onRemoveFromCart = (product) => {
         const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
         setSelectedProducts(updatedProducts);
         handleRemoveFromCart(product); // remove button disabled
@@ -173,9 +173,8 @@ export const Shop = () => {
                 handleRemoveFromCartBtn={handleRemoveFromCart}
                 isOrderSent={isOrderSent}
                 setIsOrderSent={setIsOrderSent}
-                onRemove={onRemove}
+                onRemove={onRemoveFromCart}
                 isCheckoutVisible={isCheckoutVisible}
-                
             />
             {/* Search */}
             <Search
