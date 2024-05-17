@@ -1,6 +1,6 @@
 import beautifyCategoryName from "../utils/utils.js";
 
-const Categories = ({ categories, category, handleSelectCategory, isCategoriesLoading }) => {
+const Categories = ({ categories, category, handleSelectCategory, isCategoriesLoadingMessage }) => {
     return (
         <>
             <h2>Categories</h2>
@@ -11,19 +11,19 @@ const Categories = ({ categories, category, handleSelectCategory, isCategoriesLo
                 href="#"
                 onClick={() => handleSelectCategory("")}
             >
-                {isCategoriesLoading ? "" : "All Products"}
+                {isCategoriesLoadingMessage ? "" : "All Products"}
             </a>
 
-            {categories.map((selectedCategory) => (
-                <div key={selectedCategory} className="col">
+            {categories.map((categoryItem) => (
+                <div key={categoryItem} className="col">
                     <a
                         className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
-                            category === selectedCategory ? "link-info" : "link-dark"
+                            category === categoryItem ? "link-info" : "link-dark"
                         }`}
                         href="#"
-                        onClick={() => handleSelectCategory(selectedCategory)}
+                        onClick={() => handleSelectCategory(categoryItem)}
                     >
-                        {beautifyCategoryName(selectedCategory)}
+                        {beautifyCategoryName(categoryItem)}
                     </a>
                 </div>
             ))}
