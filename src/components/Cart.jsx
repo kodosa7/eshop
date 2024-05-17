@@ -4,7 +4,7 @@ import Checkout from "./Checkout";
 const Cart = ({
     productsInCart,
     setProductsInCart,
-    handleAddToCart,
+    handleAddToCartBtn,
     handleRemoveFromCart,
     isOrderSent,
     setIsOrderSent,
@@ -101,7 +101,7 @@ const Cart = ({
                                             paddingTop: 0,
                                             paddingBottom: 0,
                                         }}
-                                        onClick={() => handleAddToCart(prod)}
+                                        onClick={() => handleAddToCartBtn(prod)}
                                     >
                                         +
                                     </button>
