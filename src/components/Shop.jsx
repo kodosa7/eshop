@@ -153,8 +153,8 @@ export const Shop = () => {
             <h1>E-shop</h1>
             {/* Cart */}
             <Cart
-                selectedProducts={selectedProducts}
-                setSelectedProducts={setSelectedProducts}
+                productsInCart={selectedProducts}
+                setProductsInCart={setSelectedProducts}
                 handleAddToCart={handleAddToCart}
                 handleRemoveFromCart={handleRemoveFromCart}
                 isOrderSent={isOrderSent}

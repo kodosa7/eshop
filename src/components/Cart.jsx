@@ -2,8 +2,8 @@ import { useState, Fragment } from "react";
 import Checkout from "./Checkout";
 
 const Cart = ({
-    selectedProducts,
-    setSelectedProducts,
+    productsInCart,
+    setProductsInCart,
     handleAddToCart,
     handleRemoveFromCart,
     isOrderSent,
@@ -13,17 +13,17 @@ const Cart = ({
     const [isCheckoutVisible, setIsCheckoutVisible] = useState(false);
 
     let resultPrice = 0;
-    selectedProducts.forEach((product) => {
+    productsInCart.forEach((product) => {
         resultPrice += product.totalPrice;
     });
 
     const removeFromCart = (product) => {
-        const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
-        setSelectedProducts(updatedProducts);
+        const updatedProducts = productsInCart.filter((prod) => prod.id !== product.id);
+        setProductsInCart(updatedProducts);
         handleRemoveFromCart(product); // remove button disabled
 
         // if cart gets emptied then hide the checkout form
-        if (selectedProducts.length === 1) {
+        if (productsInCart.length === 1) {
             setIsCheckoutVisible(false);
         }
     };
@@ -37,20 +37,20 @@ const Cart = ({
     const handleEmail = () => {
         setIsOrderSent(true);
         setIsCheckoutVisible(false);
-        setSelectedProducts([]); // empty cart array
+        setProductsInCart([]); // empty cart array
     };
 
     const handleQuantityChange = (event, prod) => {
         const newQuantity = parseInt(event.target.value);
         if (!isNaN(newQuantity) && newQuantity >= 0) {
-            const updatedProducts = selectedProducts.map((product) =>
+            const updatedProducts = productsInCart.map((product) =>
                 product.id === prod.id ? { ...product, quantity: newQuantity } : product
             );
-            setSelectedProducts(updatedProducts);
+            setProductsInCart(updatedProducts);
         }
     };
 
-    if (selectedProducts.length === 0 || isOrderSent) {
+    if (productsInCart.length === 0 || isOrderSent) {
         return (
             <>
                 {isOrderSent && (
@@ -68,7 +68,7 @@ const Cart = ({
         return (
             <>
                 <h2>Cart</h2>
-                {selectedProducts.map((prod, index) => {
+                {productsInCart.map((prod, index) => {
                     return (
                         <Fragment key={prod.id}>
                             <div className="row mb-1">
