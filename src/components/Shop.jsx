@@ -221,17 +221,7 @@ export const Shop = () => {
                         <div className="row row-gap-4">
                             {products.map((prod) => (
                                 <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
-                                    <Product
-                                        product={prod}
-                                        productId={prod.id}
-                                        name={prod.title}
-                                        image={prod.thumbnail}
-                                        description={prod.description}
-                                        originalPrice={prod.price}
-                                        discountPrice={prod.discountPrice}
-                                        rating={prod.rating}
-                                        handleAddToCart={() => handleAddToCart(prod)}
-                                    />
+                                    <Product product={prod} handleAddToCart={() => handleAddToCart(prod)} />
                                 </div>
                             ))}
                         </div>
