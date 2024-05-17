@@ -29,7 +29,7 @@ const Cart = ({
         setProductsInCart([]); // empty cart array
     };
 
-    const handleQuantityChange = (event, prod) => {
+    const onQuantityChange = (event, prod) => {
         const newQuantity = parseInt(event.target.value);
         if (!isNaN(newQuantity) && newQuantity >= 0) {
             const updatedProducts = productsInCart.map((product) =>
@@ -77,7 +77,7 @@ const Cart = ({
                                         min="1"
                                         className="form-control lh-lg"
                                         value={prod.quantity}
-                                        onChange={(e) => handleQuantityChange(e, prod)}
+                                        onChange={(e) => onQuantityChange(e, prod)}
                                     />
                                 </div>
                                 <div className="col-auto d-flex flex-column">
