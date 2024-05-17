@@ -156,10 +156,10 @@ export const Shop = () => {
                 productsInCart={selectedProducts}
                 setProductsInCart={setSelectedProducts}
                 onIncrease={handleAddToCart}
+                onDecrease={decreaseQuantity}
                 handleRemoveFromCartBtn={handleRemoveFromCart}
                 isOrderSent={isOrderSent}
                 setIsOrderSent={setIsOrderSent}
-                decreaseQuantity={decreaseQuantity}
             />
             {/* Search */}
             <Search

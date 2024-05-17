@@ -5,10 +5,10 @@ const Cart = ({
     productsInCart,
     setProductsInCart,
     onIncrease,
+    onDecrease,
     handleRemoveFromCartBtn,
     isOrderSent,
     setIsOrderSent,
-    decreaseQuantity,
 }) => {
     const [isCheckoutVisible, setIsCheckoutVisible] = useState(false);
 
@@ -115,7 +115,7 @@ const Cart = ({
                                             paddingTop: 0,
                                             paddingBottom: 0,
                                         }}
-                                        onClick={() => decreaseQuantity(prod.id)}
+                                        onClick={() => onDecrease(prod.id)}
                                         disabled={prod.quantity === 1}
                                     >
                                         –
