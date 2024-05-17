@@ -6,7 +6,7 @@ const Cart = ({
     setProductsInCart,
     onIncrease,
     onDecrease,
-    handleRemoveFromCartBtn,
+    handleRemoveFromCart,
     isOrderSent,
     setIsOrderSent,
 }) => {
@@ -18,10 +18,10 @@ const Cart = ({
     });
 
     // do shop.jsx
-    const removeFromCart = (product) => {
+    const onRemove = (product) => {
         const updatedProducts = productsInCart.filter((prod) => prod.id !== product.id);
         setProductsInCart(updatedProducts);
-        handleRemoveFromCartBtn(product); // remove button disabled
+        handleRemoveFromCart(product); // remove button disabled
 
         // if cart gets emptied then hide the checkout form
         if (productsInCart.length === 1) {
@@ -131,7 +131,7 @@ const Cart = ({
                                     <button
                                         type="button"
                                         className="btn btn-outline-dark btn-sm"
-                                        onClick={() => removeFromCart(prod)}
+                                        onClick={() => onRemove(prod)}
                                     >
                                         Remove from cart
                                     </button>
