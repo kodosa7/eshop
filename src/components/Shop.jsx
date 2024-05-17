@@ -18,6 +18,7 @@ export const Shop = () => {
     const [searchInputValue, setSearchInputValue] = useState("");
     const [isFetchProductError, setIsFetchProductError] = useState(false);
     const [isFetchCategoriesError, setIsFetchCategoriesError] = useState(false);
+    const [isCheckoutVisible, setIsCheckoutVisible] = useState(false);
 
     // fetch categories from API (first time)
     useEffect(() => {
@@ -148,6 +149,18 @@ export const Shop = () => {
         setSelectedProducts(newCart);
     };
 
+    // do shop.jsx
+    const onRemove = (product) => {
+        const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
+        setSelectedProducts(updatedProducts);
+        handleRemoveFromCart(product); // remove button disabled
+
+        // if cart gets emptied then hide the checkout form
+        if (selectedProducts.length === 1) {
+            setIsCheckoutVisible(false);
+        }
+    };
+
     return (
         <>
             <h1>E-shop</h1>
@@ -160,6 +173,9 @@ export const Shop = () => {
                 handleRemoveFromCartBtn={handleRemoveFromCart}
                 isOrderSent={isOrderSent}
                 setIsOrderSent={setIsOrderSent}
+                onRemove={onRemove}
+                isCheckoutVisible={isCheckoutVisible}
+                
             />
             {/* Search */}
             <Search

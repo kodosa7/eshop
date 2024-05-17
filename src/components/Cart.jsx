@@ -6,31 +6,19 @@ const Cart = ({
     setProductsInCart,
     onIncrease,
     onDecrease,
-    handleRemoveFromCart,
+    onRemove,
     isOrderSent,
     setIsOrderSent,
+    isCheckoutVisible,
+    setIsCheckoutVisible,
 }) => {
-    const [isCheckoutVisible, setIsCheckoutVisible] = useState(false);
-
     let resultPrice = 0;
     productsInCart.forEach((product) => {
         resultPrice += product.totalPrice;
     });
 
-    // do shop.jsx
-    const onRemove = (product) => {
-        const updatedProducts = productsInCart.filter((prod) => prod.id !== product.id);
-        setProductsInCart(updatedProducts);
-        handleRemoveFromCart(product); // remove button disabled
-
-        // if cart gets emptied then hide the checkout form
-        if (productsInCart.length === 1) {
-            setIsCheckoutVisible(false);
-        }
-    };
-
     // checkout button
-    const handleCheckout = () => {
+    const onCheckout = () => {
         setIsCheckoutVisible(true);
     };
 
@@ -149,7 +137,7 @@ const Cart = ({
                 </div>
                 {!isCheckoutVisible && (
                     <div className="mt-3 mb-4">
-                        <button type="button" className="btn btn-primary" onClick={handleCheckout}>
+                        <button type="button" className="btn btn-primary" onClick={onCheckout}>
                             Checkout
                         </button>
                     </div>
