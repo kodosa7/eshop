@@ -51,14 +51,14 @@ const Checkout = ({ eMailAddress }) => {
                             {isEmailValid ? "Email address looks good." : "Please enter a valid email address."}
                         </div>
                     </div>
-                    <button type="submit" className="btn btn-primary">
-                        Place order
-                    </button>
                 </div>
+                <div id="emailHelp" className="form-text">
+                    {isEmailFilled ? "" : "Please enter an email address."}
+                </div>
+                <button type="submit" className="btn btn-primary mt-2">
+                    Place order
+                </button>
             </form>
-            <div id="emailHelp" className="form-text">
-                {isEmailFilled ? "" : "Please enter an email address."}
-            </div>
         </div>
     );
 };
