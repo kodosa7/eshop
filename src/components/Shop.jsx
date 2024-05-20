@@ -180,7 +180,6 @@ export const Shop = () => {
             {/* Search */}
             <Search
                 searchInputValue={searchInputValue}
-                setSearchInputValue={setSearchInputValue}
                 setCategory={setCategory}
                 setProducts={setProducts}
                 onSearch={setSearchedValue}
