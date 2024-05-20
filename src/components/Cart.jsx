@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { Fragment } from "react";
 import Checkout from "./Checkout";
 
 const Cart = ({
@@ -17,13 +17,11 @@ const Cart = ({
         resultPrice += product.totalPrice;
     });
 
-    // checkout button
     const onCheckout = () => {
         setIsCheckoutFormVisible(true);
     };
 
-    // show success text and empty cart
-    const handleEmail = () => {
+    const handleIsOrderSent = () => {
         setIsOrderSent(true);
         setIsCheckoutFormVisible(false);
         setProductsInCart([]); // empty cart array
@@ -142,7 +140,7 @@ const Cart = ({
                         </button>
                     </div>
                 )}
-                {isCheckoutFormVisible && <Checkout eMail={handleEmail} />}
+                {isCheckoutFormVisible && <Checkout eMail={handleIsOrderSent} />}
             </>
         );
     }
