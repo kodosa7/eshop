@@ -17,7 +17,7 @@ const Checkout = ({ eMail }) => {
     };
 
     const inputRef = useRef();
-    const handleSubmit = (event) => {
+    const onSubmitForm = (event) => {
         event.preventDefault();
         if (isEmailValid) {
             // execute the parent function with the email value
@@ -30,7 +30,7 @@ const Checkout = ({ eMail }) => {
 
     return (
         <div className="mt-4 mb-4">
-            <form className={isInputValid ? "was-validated" : ""} onSubmit={handleSubmit}>
+            <form className={isInputValid ? "was-validated" : ""} onSubmit={onSubmitForm}>
                 <div className="form-label">
                     <label htmlFor="email">e-mail</label>
                 </div>
