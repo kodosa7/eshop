@@ -1,23 +1,21 @@
 import { useState, useRef } from "react";
 
-const Checkout = ({ eMail }) => {
+const Checkout = ({ eMailAddress }) => {
     const [isEmailValid, setIsEmailValid] = useState(false);
     const [isEmailFilled, setIsEmailFilled] = useState(false);
     const [isInputValid, setIsInputValid] = useState(false);
 
-    
     const inputRef = useRef();
     const onSubmitForm = (event) => {
         event.preventDefault();
         if (isEmailValid) {
             // execute the parent function with the email value
-            eMail(inputRef.current.value);
+            eMailAddress(inputRef.current.value);
         } else {
             // if value is invalid, do this
             console.log("not submitted, field invalid");
         }
     };
-
     const onValidateInput = (event) => {
         setIsEmailFilled(true);
         const form = event.currentTarget;

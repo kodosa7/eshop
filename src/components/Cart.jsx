@@ -140,7 +140,7 @@ const Cart = ({
                         </button>
                     </div>
                 )}
-                {isCheckoutFormVisible && <Checkout eMail={handleIsOrderSent} />}
+                {isCheckoutFormVisible && <Checkout eMailAddress={handleIsOrderSent} />}
             </>
         );
     }
