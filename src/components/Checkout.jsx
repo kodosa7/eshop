@@ -5,17 +5,7 @@ const Checkout = ({ eMail }) => {
     const [isEmailFilled, setIsEmailFilled] = useState(false);
     const [isInputValid, setIsInputValid] = useState(false);
 
-    const handleValidation = (event) => {
-        setIsEmailFilled(true);
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            setIsEmailValid(false);
-        } else {
-            setIsEmailValid(true);
-        }
-        setIsInputValid(true);
-    };
-
+    
     const inputRef = useRef();
     const onSubmitForm = (event) => {
         event.preventDefault();
@@ -26,6 +16,17 @@ const Checkout = ({ eMail }) => {
             // if value is invalid, do this
             console.log("not submitted, field invalid");
         }
+    };
+
+    const onValidateInput = (event) => {
+        setIsEmailFilled(true);
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            setIsEmailValid(false);
+        } else {
+            setIsEmailValid(true);
+        }
+        setIsInputValid(true);
     };
 
     return (
@@ -45,7 +46,7 @@ const Checkout = ({ eMail }) => {
                             name="email"
                             aria-label="Email input field"
                             aria-describedby="emailHelp"
-                            onInput={handleValidation}
+                            onInput={onValidateInput}
                             required
                         />
                         <div className={isEmailValid ? "valid-feedback" : "invalid-feedback"}>
