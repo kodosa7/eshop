@@ -1,6 +1,6 @@
 import Rating from "./Rating";
 
-const Product = ({ product, handleAddToCart }) => {
+const Product = ({ product, onAddToCartBtn }) => {
     return (
         <div className="card h-100">
             <div className="ratio ratio-1x1">
@@ -21,7 +21,7 @@ const Product = ({ product, handleAddToCart }) => {
                         key={product.id}
                         type="button"
                         className="btn btn-outline-dark"
-                        onClick={() => handleAddToCart(product)}
+                        onClick={() => onAddToCartBtn(product)}
                     >
                         Buy
                     </button>

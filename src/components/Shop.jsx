@@ -99,7 +99,7 @@ export const Shop = () => {
     };
 
     // Insert product to cart (Add to cart button pressed)
-    const handleAddToCart = (product) => {
+    const handleAddToCartBtn = (product) => {
         if (selectedProducts.some((prod) => prod.id === product.id)) {
             increaseQuantity(product.id);
         } else {
@@ -168,7 +168,7 @@ export const Shop = () => {
             <Cart
                 productsInCart={selectedProducts}
                 setProductsInCart={setSelectedProducts}
-                onIncrease={handleAddToCart}
+                onIncrease={handleAddToCartBtn}
                 onDecrease={decreaseQuantity}
                 handleRemoveFromCartBtn={handleRemoveFromCart}
                 isOrderSent={isOrderSent}
@@ -221,7 +221,7 @@ export const Shop = () => {
                         <div className="row row-gap-4">
                             {products.map((prod) => (
                                 <div key={prod.id} className="col-sm-6 col-md-4 col-lg-3">
-                                    <Product product={prod} handleAddToCart={() => handleAddToCart(prod)} />
+                                    <Product product={prod} onAddToCartBtn={() => handleAddToCartBtn(prod)} />
                                 </div>
                             ))}
                         </div>
