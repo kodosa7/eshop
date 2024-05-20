@@ -1,5 +1,5 @@
 const Search = ({ searchInputValue, onSearch, setCategory, setProducts, setSearchedValue }) => {
-    const handleSubmit = (event, value) => {
+    const onSubmitSearchForm = (event, value) => {
         handleSearch(value);
         event.preventDefault();
     };
@@ -11,7 +11,7 @@ const Search = ({ searchInputValue, onSearch, setCategory, setProducts, setSearc
     };
 
     return (
-        <form className="mt-4 mb-4" onSubmit={(event) => handleSubmit(event, searchInputValue)}>
+        <form className="mt-4 mb-4" onSubmit={(event) => onSubmitSearchForm(event, searchInputValue)}>
             <div className="input-group">
                 <div className="form-outline">
                     <input
