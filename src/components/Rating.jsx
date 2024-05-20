@@ -7,7 +7,7 @@ const Rating = ({ rating }) => {
     return (
         <div className="">
             {[...Array(5)].map((_, index) => {
-                // set up three star variants
+                // set up 3 star variants
                 const yellowStar = <FaStar style={{ color: "#ffc107" }} size={25} />;
                 const halfYellowStar = (
                     <>
