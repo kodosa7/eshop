@@ -1,17 +1,11 @@
-const Search = ({ searchInputValue, onSearch, setCategory, setProducts, setSearchedValue }) => {
-    const onSubmitSearchForm = (event, value) => {
-        handleSearch(value);
+const Search = ({ searchInputValue, setSearchInputValue, onSearch }) => {
+    const onSubmitSearchForm = (event) => {
         event.preventDefault();
-    };
-
-    const handleSearch = (value) => {
-        setCategory("");
-        setSearchedValue(value);
-        setProducts([]);
+        onSearch(searchInputValue);
     };
 
     return (
-        <form className="mt-4 mb-4" onSubmit={(event) => onSubmitSearchForm(event, searchInputValue)}>
+        <form className="mt-4 mb-4" onSubmit={onSubmitSearchForm}>
             <div className="input-group">
                 <div className="form-outline">
                     <input
@@ -22,7 +16,7 @@ const Search = ({ searchInputValue, onSearch, setCategory, setProducts, setSearc
                         name="search"
                         aria-label="Search input field"
                         aria-describedby="searchHelp"
-                        onChange={(event) => onSearch(event.target.value)}
+                        onChange={(event) => setSearchInputValue(event.target.value)}
                         value={searchInputValue}
                         required
                     />

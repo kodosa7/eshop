@@ -20,13 +20,12 @@ export const Shop = () => {
     const [isFetchCategoriesError, setIsFetchCategoriesError] = useState(false);
     const [isCheckoutFormVisible, setIsCheckoutFormVisible] = useState(false);
 
-    // fetch categories from API (first time)
+    // Fetch categories from API on component mount
     useEffect(() => {
         fetchCategories();
     }, []);
 
-    // fetch products from API (first time and everytime 'category' state changes)
-    // using async func to ignore double trigger of the effect when in StrictMode
+    // Fetch products from API on component mount and every time 'searchedValue' or 'category' changes
     useEffect(() => {
         let ignore = false;
 
@@ -43,7 +42,7 @@ export const Shop = () => {
         };
     }, [searchedValue, category]);
 
-    // fetch products API
+    // Function to fetch products from API
     const fetchProducts = () => {
         let fetchUrl = "";
         const skip = products.length;
@@ -60,7 +59,6 @@ export const Shop = () => {
             .then((res) => res.json())
             .then((data) => {
                 setTotalCount(data.total);
-                // calculate product discount price and put it to fetched data object
                 const productsWithDiscountPrice = data.products.map((product) => {
                     const discountPrice = Math.round(
                         product.price - (product.discountPercentage * product.price) / 100
@@ -75,7 +73,7 @@ export const Shop = () => {
             });
     };
 
-    // fetch all categories API
+    // Function to fetch categories from API
     const fetchCategories = () => {
         setIsCategoriesLoading(true);
         fetch(`https://dummyjson.com/products/categories/`)
@@ -89,6 +87,7 @@ export const Shop = () => {
             });
     };
 
+    // Handle category selection
     const handleSelectCategory = (newCategory) => {
         setSearchedValue("");
         setSearchInputValue("");
@@ -98,26 +97,24 @@ export const Shop = () => {
         }
     };
 
-    // Insert product to cart (Add to cart button pressed)
+    // Insert product to cart
     const handleAddToCartBtn = (product) => {
         if (selectedProducts.some((prod) => prod.id === product.id)) {
             increaseQuantity(product.id);
         } else {
             setSelectedProducts([...selectedProducts, { ...product, quantity: 1, totalPrice: product.discountPrice }]);
         }
-        // hide "order was sent" green element
         setIsOrderSent(false);
     };
 
-    // Remove from cart button pressed
+    // Remove product from cart
     const handleRemoveFromCart = (product) => {
         const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
         setSelectedProducts(updatedProducts);
-        // hide "order was sent" green element
         setIsOrderSent(false);
     };
 
-    // increase quantity (+)
+    // Increase quantity of a product in the cart
     const increaseQuantity = (id) => {
         const newCart = selectedProducts.map((product) => {
             if (product.id === id) {
@@ -133,7 +130,7 @@ export const Shop = () => {
         setSelectedProducts(newCart);
     };
 
-    // increase quantity (-)
+    // Decrease quantity of a product in the cart
     const decreaseQuantity = (id) => {
         const newCart = selectedProducts.map((product) => {
             if (product.id === id) {
@@ -149,22 +146,26 @@ export const Shop = () => {
         setSelectedProducts(newCart);
     };
 
-    // remove from cart button
+    // Remove product from cart
     const onRemoveFromCart = (product) => {
         const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
         setSelectedProducts(updatedProducts);
-        handleRemoveFromCart(product); // remove button disabled
+        handleRemoveFromCart(product);
 
-        // if cart gets emptied then hide the checkout form
         if (selectedProducts.length === 1) {
             setIsCheckoutFormVisible(false);
         }
     };
 
+    const handleSearch = (value) => {
+        setCategory("");
+        setSearchedValue(value);
+        setProducts([]);
+    };
+
     return (
         <>
             <h1>E-shop</h1>
-            {/* Cart */}
             <Cart
                 productsInCart={selectedProducts}
                 setProductsInCart={setSelectedProducts}
@@ -177,17 +178,14 @@ export const Shop = () => {
                 isCheckoutFormVisible={isCheckoutFormVisible}
                 setIsCheckoutFormVisible={setIsCheckoutFormVisible}
             />
-            {/* Search */}
             <Search
                 searchInputValue={searchInputValue}
-                setCategory={setCategory}
-                setProducts={setProducts}
-                onSearch={setSearchedValue}
+                setSearchInputValue={setSearchInputValue}
+                onSearch={handleSearch}
             />
 
             <div className="row">
                 <div className="col-3">
-                    {/* Categories */}
                     {isFetchCategoriesError ? (
                         <p>No categories found, no internet?</p>
                     ) : (
