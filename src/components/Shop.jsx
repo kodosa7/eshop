@@ -100,7 +100,7 @@ export const Shop = () => {
     // Insert product to cart
     const handleAddToCartBtn = (product) => {
         if (selectedProducts.some((prod) => prod.id === product.id)) {
-            increaseQuantity(product.id);
+            onIncreaseQuantity(product.id);
         } else {
             setSelectedProducts([...selectedProducts, { ...product, quantity: 1, totalPrice: product.discountPrice }]);
         }
@@ -115,7 +115,7 @@ export const Shop = () => {
     };
 
     // Increase quantity of a product in the cart
-    const increaseQuantity = (id) => {
+    const onIncreaseQuantity = (id) => {
         const newCart = selectedProducts.map((product) => {
             if (product.id === id) {
                 if (product.quantity === "") {
@@ -139,7 +139,7 @@ export const Shop = () => {
     };
 
     // Decrease quantity of a product in the cart
-    const decreaseQuantity = (id) => {
+    const onDecreaseQuantity = (id) => {
         const newCart = selectedProducts.map((product) => {
             if (product.id === id) {
                 return {
@@ -201,7 +201,7 @@ export const Shop = () => {
                 productsInCart={selectedProducts}
                 setProductsInCart={setSelectedProducts}
                 onIncrease={handleAddToCartBtn}
-                onDecrease={decreaseQuantity}
+                onDecrease={onDecreaseQuantity}
                 onRemove={onRemoveFromCart}
                 onQuantityChange={onQuantityChange}
                 handleRemoveFromCartBtn={handleRemoveFromCart}
