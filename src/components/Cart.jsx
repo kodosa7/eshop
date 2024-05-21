@@ -68,7 +68,7 @@ const Cart = ({
                                         value={prod.quantity}
                                         onChange={(e) => {
                                             if (e.target.value < 1) {
-                                                onRemove(prod);
+                                                onRemove(prod.id);
                                             } else {
                                                 onQuantityChange(e, prod.id);
                                             }
@@ -114,7 +114,7 @@ const Cart = ({
                                     <button
                                         type="button"
                                         className="btn btn-outline-dark btn-sm"
-                                        onClick={() => onRemove(prod)}
+                                        onClick={() => onRemove(prod.id)}
                                     >
                                         Remove from cart
                                     </button>

@@ -108,8 +108,8 @@ export const Shop = () => {
     };
 
     // Remove product from cart
-    const handleRemoveFromCart = (product) => {
-        const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
+    const handleRemoveFromCart = (id) => {
+        const updatedProducts = selectedProducts.filter((prod) => prod.id !== id);
         setSelectedProducts(updatedProducts);
         setIsOrderSent(false);
     };
@@ -178,10 +178,10 @@ export const Shop = () => {
     };
 
     // Remove product from cart
-    const onRemoveFromCart = (product) => {
-        const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
+    const onRemoveFromCart = (id) => {
+        const updatedProducts = selectedProducts.filter((prod) => prod.id !== id);
         setSelectedProducts(updatedProducts);
-        handleRemoveFromCart(product);
+        handleRemoveFromCart(id);
 
         if (selectedProducts.length === 1) {
             setIsCheckoutFormVisible(false);
