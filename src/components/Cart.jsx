@@ -70,7 +70,7 @@ const Cart = ({
                                             if (e.target.value < 1) {
                                                 onRemove(prod);
                                             } else {
-                                                onQuantityChange(e, prod);
+                                                onQuantityChange(e, prod.id);
                                             }
                                         }}
                                         onBlur={(e) => {

@@ -155,23 +155,23 @@ export const Shop = () => {
     };
 
     // Change quantity by typing a new number
-    const onQuantityChange = (event, prod) => {
+    const onQuantityChange = (event, id) => {
         const newQuantity = parseInt(event.target.value);
         if (!isNaN(newQuantity) && newQuantity >= 0) {
             const updatedProducts = selectedProducts.map((product) =>
-                product.id === prod.id
+                product.id === id
                     ? { ...product, quantity: newQuantity, totalPrice: product.discountPrice * newQuantity }
                     : product
             );
             setSelectedProducts(updatedProducts);
         } else if (event.target.value === "") {
             const updatedProducts = selectedProducts.map((product) =>
-                product.id === prod.id ? { ...product, quantity: "", totalPrice: product.discountPrice } : product
+                product.id === id ? { ...product, quantity: "", totalPrice: product.discountPrice } : product
             );
             setSelectedProducts(updatedProducts);
         } else {
             const updatedProducts = selectedProducts.map((product) =>
-                product.id === prod.id ? { ...product, quantity: 1, totalPrice: product.discountPrice } : product
+                product.id === id ? { ...product, quantity: 1, totalPrice: product.discountPrice } : product
             );
             setSelectedProducts(updatedProducts);
         }
