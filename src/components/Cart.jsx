@@ -67,6 +67,11 @@ const Cart = ({
                                         className="form-control lh-lg"
                                         value={prod.quantity}
                                         onChange={(e) => onQuantityChange(e, prod)}
+                                        onBlur={(e) => {
+                                            if (e.target.value === "") {
+                                                e.target.value = 1;
+                                            }
+                                        }}
                                     />
                                 </div>
                                 <div className="col-auto d-flex flex-column">
@@ -93,17 +98,12 @@ const Cart = ({
                                             paddingBottom: 0,
                                         }}
                                         onClick={() => onDecrease(prod.id)}
-                                        disabled={prod.quantity === 1}
+                                        disabled={prod.quantity <= 1 || prod.quantity === ""}
                                     >
                                         –
                                     </button>
                                 </div>
-                                <div className="col-auto d-flex align-items-center">
-                                    {prod.quantity} {prod.quantity === 1 ? "pc" : "pcs"} in cart
-                                </div>
-                                <div className="col-auto d-flex align-items-center">
-                                    $ {prod.discountPrice * prod.quantity}
-                                </div>
+                                <div className="col-auto d-flex align-items-center">$ {prod.totalPrice}</div>
                                 <div className="col-auto d-flex align-items-center">
                                     <button
                                         type="button"

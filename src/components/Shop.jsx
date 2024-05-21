@@ -150,13 +150,24 @@ export const Shop = () => {
     const onQuantityChange = (event, prod) => {
         const newQuantity = parseInt(event.target.value);
         if (!isNaN(newQuantity) && newQuantity >= 0) {
-            const updatedProducts = productsInCart.map((product) =>
-                product.id === prod.id ? { ...product, quantity: newQuantity } : product
+            const updatedProducts = selectedProducts.map((product) =>
+                product.id === prod.id
+                    ? { ...product, quantity: newQuantity, totalPrice: product.discountPrice * newQuantity }
+                    : product
+            );
+            setSelectedProducts(updatedProducts);
+        } else if (event.target.value === "") {
+            const updatedProducts = selectedProducts.map((product) =>
+                product.id === prod.id ? { ...product, quantity: "", totalPrice: product.discountPrice } : product
+            );
+            setSelectedProducts(updatedProducts);
+        } else {
+            const updatedProducts = selectedProducts.map((product) =>
+                product.id === prod.id ? { ...product, quantity: 1, totalPrice: product.discountPrice } : product
             );
             setSelectedProducts(updatedProducts);
         }
     };
-
 
     // Remove product from cart
     const onRemoveFromCart = (product) => {
