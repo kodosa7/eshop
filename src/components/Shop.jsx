@@ -118,11 +118,19 @@ export const Shop = () => {
     const increaseQuantity = (id) => {
         const newCart = selectedProducts.map((product) => {
             if (product.id === id) {
-                return {
-                    ...product,
-                    quantity: product.quantity + 1,
-                    totalPrice: product.discountPrice * (product.quantity + 1),
-                };
+                if (product.quantity === "") {
+                    return {
+                        ...product,
+                        quantity: 1,
+                        totalPrice: product.discountPrice,
+                    };
+                } else {
+                    return {
+                        ...product,
+                        quantity: product.quantity + 1,
+                        totalPrice: product.discountPrice * (product.quantity + 1),
+                    };
+                }
             } else {
                 return product;
             }
@@ -158,7 +166,7 @@ export const Shop = () => {
             setSelectedProducts(updatedProducts);
         } else if (event.target.value === "") {
             const updatedProducts = selectedProducts.map((product) =>
-                product.id === prod.id ? { ...product, quantity: "", totalPrice: product.discountPrice } : product
+                product.id === prod.id ? { ...product, quantity: "", totalPrice: 0 } : product
             );
             setSelectedProducts(updatedProducts);
         } else {
