@@ -7,6 +7,7 @@ const Cart = ({
     onIncrease,
     onDecrease,
     onRemove,
+    onQuantityChange,
     isOrderSent,
     setIsOrderSent,
     isCheckoutFormVisible,
@@ -25,16 +26,6 @@ const Cart = ({
         setIsOrderSent(true);
         setIsCheckoutFormVisible(false);
         setProductsInCart([]); // empty cart array
-    };
-
-    const onQuantityChange = (event, prod) => {
-        const newQuantity = parseInt(event.target.value);
-        if (!isNaN(newQuantity) && newQuantity >= 0) {
-            const updatedProducts = productsInCart.map((product) =>
-                product.id === prod.id ? { ...product, quantity: newQuantity } : product
-            );
-            setProductsInCart(updatedProducts);
-        }
     };
 
     if (productsInCart.length === 0 || isOrderSent) {

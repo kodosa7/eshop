@@ -146,6 +146,18 @@ export const Shop = () => {
         setSelectedProducts(newCart);
     };
 
+    // Change quantity by typing a new number
+    const onQuantityChange = (event, prod) => {
+        const newQuantity = parseInt(event.target.value);
+        if (!isNaN(newQuantity) && newQuantity >= 0) {
+            const updatedProducts = productsInCart.map((product) =>
+                product.id === prod.id ? { ...product, quantity: newQuantity } : product
+            );
+            setSelectedProducts(updatedProducts);
+        }
+    };
+
+
     // Remove product from cart
     const onRemoveFromCart = (product) => {
         const updatedProducts = selectedProducts.filter((prod) => prod.id !== product.id);
@@ -171,10 +183,11 @@ export const Shop = () => {
                 setProductsInCart={setSelectedProducts}
                 onIncrease={handleAddToCartBtn}
                 onDecrease={decreaseQuantity}
+                onRemove={onRemoveFromCart}
+                onQuantityChange={onQuantityChange}
                 handleRemoveFromCartBtn={handleRemoveFromCart}
                 isOrderSent={isOrderSent}
                 setIsOrderSent={setIsOrderSent}
-                onRemove={onRemoveFromCart}
                 isCheckoutFormVisible={isCheckoutFormVisible}
                 setIsCheckoutFormVisible={setIsCheckoutFormVisible}
             />
