@@ -166,7 +166,7 @@ export const Shop = () => {
             setSelectedProducts(updatedProducts);
         } else if (event.target.value === "") {
             const updatedProducts = selectedProducts.map((product) =>
-                product.id === prod.id ? { ...product, quantity: "", totalPrice: 0 } : product
+                product.id === prod.id ? { ...product, quantity: "", totalPrice: product.discountPrice } : product
             );
             setSelectedProducts(updatedProducts);
         } else {
