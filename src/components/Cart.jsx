@@ -66,7 +66,13 @@ const Cart = ({
                                         min="1"
                                         className="form-control lh-lg"
                                         value={prod.quantity}
-                                        onChange={(e) => onQuantityChange(e, prod)}
+                                        onChange={(e) => {
+                                            if (e.target.value < 1) {
+                                                onRemove(prod);
+                                            } else {
+                                                onQuantityChange(e, prod);
+                                            }
+                                        }}
                                         onBlur={(e) => {
                                             if (e.target.value === "") {
                                                 e.target.value = 1;
