@@ -3,7 +3,6 @@ import { useState, useRef } from "react";
 const Checkout = ({ eMailAddress }) => {
     const [isEmailValid, setIsEmailValid] = useState(false);
     const [isEmailFilled, setIsEmailFilled] = useState(false);
-    const [isInputValid, setIsInputValid] = useState(false);
 
     const inputRef = useRef();
     const onSubmitForm = (event) => {
@@ -24,12 +23,11 @@ const Checkout = ({ eMailAddress }) => {
         } else {
             setIsEmailValid(true);
         }
-        setIsInputValid(true);
     };
 
     return (
         <div className="mt-4 mb-4">
-            <form className={isInputValid ? "was-validated" : ""} onSubmit={onSubmitForm}>
+            <form className={isEmailFilled ? "was-validated" : ""} onSubmit={onSubmitForm}>
                 <div className="form-label">
                     <label htmlFor="email">e-mail</label>
                 </div>
