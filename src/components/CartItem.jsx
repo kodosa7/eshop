@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import QuantityChanger from "./QuantityChanger";
 
 const CartItem = ({ productsInCart, onIncrease, onDecrease, onRemove, onQuantityChange }) => {
     return (
@@ -12,56 +13,15 @@ const CartItem = ({ productsInCart, onIncrease, onDecrease, onRemove, onQuantity
                         <div className="col-1 d-flex justify-content-end align-items-center">
                             $ {prod.discountPrice} / pc
                         </div>
-                        <div className="col-1">
-                            <input
-                                type="text"
-                                inputMode="numeric"
-                                min="1"
-                                className="form-control lh-lg"
-                                value={prod.quantity}
-                                onChange={(e) => {
-                                    if (e.target.value < 1) {
-                                        onRemove(prod.id);
-                                    } else {
-                                        onQuantityChange(e, prod.id);
-                                    }
-                                }}
-                                onBlur={(e) => {
-                                    if (e.target.value === "") {
-                                        e.target.value = 1;
-                                    }
-                                }}
-                            />
-                        </div>
-                        <div className="col-auto d-flex flex-column">
-                            <button
-                                type="button"
-                                className="btn btn-outline-dark btn-sm h-4"
-                                style={{
-                                    paddingLeft: "1rem",
-                                    paddingRight: "1rem",
-                                    paddingTop: 0,
-                                    paddingBottom: 0,
-                                }}
-                                onClick={() => onIncrease(prod)}
-                            >
-                                +
-                            </button>
-                            <button
-                                type="button"
-                                className="btn btn-outline-dark btn-sm"
-                                style={{
-                                    paddingLeft: "1rem",
-                                    paddingRight: "1rem",
-                                    paddingTop: 0,
-                                    paddingBottom: 0,
-                                }}
-                                onClick={() => onDecrease(prod.id)}
-                                disabled={prod.quantity <= 1 || prod.quantity === ""}
-                            >
-                                –
-                            </button>
-                        </div>
+
+                        <QuantityChanger
+                            prod={prod}
+                            onRemove={onRemove}
+                            onQuantityChange={onQuantityChange}
+                            onIncrease={onIncrease}
+                            onDecrease={onDecrease}
+                        />
+
                         <div className="col-auto d-flex align-items-center">$ {prod.totalPrice}</div>
                         <div className="col-auto d-flex align-items-center">
                             <button
