@@ -47,13 +47,16 @@ const Cart = ({
         return (
             <>
                 <h2>Cart</h2>
-                <CartItem
-                    productsInCart={productsInCart}
-                    onIncrease={onIncrease}
-                    onDecrease={onDecrease}
-                    onRemove={onRemove}
-                    onQuantityChange={onQuantityChange}
-                />
+                {productsInCart.map((prod, index) => (
+                    <CartItem
+                        key={prod.id}
+                        onIncrease={onIncrease}
+                        onDecrease={onDecrease}
+                        onRemove={onRemove}
+                        onQuantityChange={onQuantityChange}
+                        product={prod}
+                    />
+                ))}
                 <div className="row">
                     <div className="col-3 fw-bold">Total price</div>
                     <div className="col-1 d-flex justify-content-end align-items-center text-wrap fw-bold">
