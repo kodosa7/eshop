@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { useState, Fragment } from "react";
 import Checkout from "./Checkout";
 
 const Cart = ({
@@ -10,9 +10,9 @@ const Cart = ({
     onQuantityChange,
     isOrderSent,
     setIsOrderSent,
-    isCheckoutFormVisible,
-    setIsCheckoutFormVisible,
 }) => {
+    const [isCheckoutFormVisible, setIsCheckoutFormVisible] = useState(false);
+
     let resultPrice = 0;
     productsInCart.forEach((product) => {
         resultPrice += product.totalPrice;

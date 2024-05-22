@@ -18,7 +18,6 @@ export const Shop = () => {
     const [searchInputValue, setSearchInputValue] = useState("");
     const [isFetchProductError, setIsFetchProductError] = useState(false);
     const [isFetchCategoriesError, setIsFetchCategoriesError] = useState(false);
-    const [isCheckoutFormVisible, setIsCheckoutFormVisible] = useState(false);
 
     // Fetch categories from API on component mount
     useEffect(() => {
@@ -183,9 +182,9 @@ export const Shop = () => {
         setSelectedProducts(updatedProducts);
         handleRemoveFromCart(id);
 
-        if (selectedProducts.length === 1) {
-            setIsCheckoutFormVisible(false);
-        }
+        // if (selectedProducts.length === 1) {
+        //     setIsCheckoutFormVisible(false);
+        // }
     };
 
     const handleSearch = (value) => {
@@ -207,8 +206,6 @@ export const Shop = () => {
                 handleRemoveFromCartBtn={handleRemoveFromCart}
                 isOrderSent={isOrderSent}
                 setIsOrderSent={setIsOrderSent}
-                isCheckoutFormVisible={isCheckoutFormVisible}
-                setIsCheckoutFormVisible={setIsCheckoutFormVisible}
             />
             <Search
                 searchInputValue={searchInputValue}
