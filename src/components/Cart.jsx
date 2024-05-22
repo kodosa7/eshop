@@ -50,10 +50,7 @@ const Cart = ({
                     return (
                         <Fragment key={prod.id}>
                             <div className="row mb-1">
-                                <div
-                                    className="col-3 d-flex justify-content-between align-items-center fw-bold"
-                                    key={index}
-                                >
+                                <div className="col-3 d-flex justify-content-between align-items-center fw-bold">
                                     {prod.title}
                                 </div>
                                 <div className="col-1 d-flex justify-content-end align-items-center">
