@@ -181,10 +181,6 @@ export const Shop = () => {
         const updatedProducts = selectedProducts.filter((prod) => prod.id !== id);
         setSelectedProducts(updatedProducts);
         handleRemoveFromCart(id);
-
-        // if (selectedProducts.length === 1) {
-        //     setIsCheckoutFormVisible(false);
-        // }
     };
 
     const handleSearch = (value) => {
