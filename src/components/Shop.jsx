@@ -24,11 +24,12 @@ export const Shop = () => {
         fetchCategories();
     }, []);
 
-    // Fetch products from API on component mount and every time 'searchedValue' or 'category' changes
+    // Fetch products from API on component mount
     useEffect(() => {
         let ignore = false;
 
         async function startFetching() {
+            await null;
             if (!ignore) {
                 fetchProducts();
             }
