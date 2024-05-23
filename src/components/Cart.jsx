@@ -26,7 +26,7 @@ const Cart = ({
     const handleIsOrderSent = () => {
         setIsOrderSent(true);
         setIsCheckoutFormVisible(false);
-        setProductsInCart([]); // empty cart array
+        setProductsInCart([]);
     };
 
     if (productsInCart.length === 0 || isOrderSent) {
