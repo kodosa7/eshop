@@ -29,7 +29,6 @@ export const Shop = () => {
         let ignore = false;
 
         async function startFetching() {
-            await null;
             if (!ignore) {
                 fetchProducts();
             }
