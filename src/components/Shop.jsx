@@ -187,6 +187,7 @@ export const Shop = () => {
         setCategory("");
         setSearchedValue(value);
         setProducts([]);
+        setSearchInputValue("");
     };
 
     return (
