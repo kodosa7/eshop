@@ -47,7 +47,7 @@ const Cart = ({
         return (
             <>
                 <h2>Cart</h2>
-                {productsInCart.map((prod, index) => (
+                {productsInCart.map((prod) => (
                     <CartItem
                         key={prod.id}
                         onIncrease={onIncrease}
