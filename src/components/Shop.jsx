@@ -183,11 +183,18 @@ export const Shop = () => {
         handleRemoveFromCart(id);
     };
 
+    // Search button actions
     const handleSearch = (value) => {
         setCategory("");
         setSearchedValue(value);
         setProducts([]);
         setSearchInputValue("");
+    };
+
+    // Search form submit actions
+    const onSubmitSearchForm = (event) => {
+        event.preventDefault();
+        handleSearch(searchInputValue);
     };
 
     return (
@@ -207,7 +214,7 @@ export const Shop = () => {
             <Search
                 searchInputValue={searchInputValue}
                 setSearchInputValue={setSearchInputValue}
-                onSearch={handleSearch}
+                onSubmitSearchForm={onSubmitSearchForm}
             />
 
             <div className="row">
