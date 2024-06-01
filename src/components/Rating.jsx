@@ -13,7 +13,7 @@ const Rating = ({ rating }) => {
                     <>
                         <FaStar style={{ color: "#e4e5e9" }} size={25} />
                         <FaStarHalf
-                            style={{ color: "#ffc107", position: "absolute", left: 0, top: "1.5px" }}
+                            style={{ color: "#ffc107", position: "absolute", left: 0, top: "1px" }}
                             size={25}
                         />
                     </>
