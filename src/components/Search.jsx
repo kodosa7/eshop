@@ -1,9 +1,4 @@
-const Search = ({ searchInputValue, setSearchInputValue, onSearch }) => {
-    const onSubmitSearchForm = (event) => {
-        event.preventDefault();
-        onSearch(searchInputValue);
-    };
-
+const Search = ({ searchInputValue, setSearchInputValue, onSubmitSearchForm }) => {
     return (
         <form className="mt-4 mb-4" onSubmit={onSubmitSearchForm}>
             <div className="input-group">
