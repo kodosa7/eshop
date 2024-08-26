@@ -4,22 +4,26 @@ body {
         "Helvetica Neue", Helvetica, Arial, sans-serif; 
 }
 
-.title {
-    font-family: 'Black Han Sans', sans-serif;
-    font-size: 4rem;
-    line-height: 0.75;
+.title-first {
+    font-family: 'Krona One', sans-serif;
+    font-weight: 700;
+    font-size: 6rem;
+    line-height: 0.85;
 }
 
-.title-gap {
-    width: 0.25rem;
+.title-second {
+    font-family: 'Krona One', sans-serif;
+    font-weight: 400;
+    font-size: 6rem;
+    line-height: 0.85;
 }
+
 .subtitle {
     font-family: 'Average', sans-serif;
     font-size: 1rem;
+    margin-top: 3.5rem;
 }
 
 .logo {
-    height: 5rem;
-    padding: 0.25rem;
-    margin-top: 0.5rem;
+    height: 2.25rem;
 }
