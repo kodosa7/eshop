@@ -1,3 +1,5 @@
+import allProductsIcon from "/src/assets/allproducts.svg";
+
 const Categories = ({ categories, category, handleSelectCategory, isLoadingMessage }) => {
     return (
         <>
@@ -9,7 +11,12 @@ const Categories = ({ categories, category, handleSelectCategory, isLoadingMessa
                 href="#"
                 onClick={() => handleSelectCategory("")}
             >
-                {isLoadingMessage ? "" : "All Products"}
+                {isLoadingMessage ? "" : (
+                    <>
+                        <i class="bi bi-three-dots"></i>&nbsp;
+                        All Products
+                    </>
+                )}
             </a>
 
             {categories.map((categoryItem, i) => (
