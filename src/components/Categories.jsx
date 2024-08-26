@@ -1,5 +1,3 @@
-import allProductsIcon from "/src/assets/allproducts.svg";
-
 const Categories = ({ categories, category, handleSelectCategory, isLoadingMessage }) => {
     return (
         <>
