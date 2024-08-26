@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Header from "./Header";
 import Product from "./Product";
 import Cart from "./Cart";
 import Categories from "./Categories";
@@ -199,8 +200,7 @@ export const Shop = () => {
 
     return (
         <>
-            <div className="title">MIRAMALL</div>
-            <div className="subtitle">WHERE RETAIL DREAMS COME TRUE</div>
+            <Header />
             <Cart
                 productsInCart={selectedProducts}
                 setProductsInCart={setSelectedProducts}
