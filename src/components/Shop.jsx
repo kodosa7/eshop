@@ -199,7 +199,8 @@ export const Shop = () => {
 
     return (
         <>
-            <h1>E-shop</h1>
+            <div className="title">MIRAMALL</div>
+            <div className="subtitle">WHERE RETAIL DREAMS COME TRUE</div>
             <Cart
                 productsInCart={selectedProducts}
                 setProductsInCart={setSelectedProducts}
