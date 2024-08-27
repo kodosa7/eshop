@@ -216,8 +216,8 @@ export const Shop = () => {
                 setIsOrderSent={setIsOrderSent}
             />
 
-            <div className="row">
-                <div className="col-3">
+            <div className="shop-container row">
+                <div className="col-3 mt-2 mb-2 ml-1 mr-1">
                     {isFetchCategoriesError ? (
                         <p>No categories found, no internet?</p>
                     ) : (
@@ -231,7 +231,7 @@ export const Shop = () => {
                     {isCategoriesLoading && !isFetchCategoriesError && <p>Loading categories...</p>}
                 </div>
 
-                <div className="col">
+                <div className="col mt-2 mb-2 ml-1 mr-1">
                     {searchedValue === "" ? (
                         !category ? (
                             <h4>All products</h4>
