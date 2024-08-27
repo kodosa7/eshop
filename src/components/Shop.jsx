@@ -3,7 +3,6 @@ import Header from "./Header";
 import Product from "./Product";
 import Cart from "./Cart";
 import Categories from "./Categories";
-import Search from "./Search";
 import beautifyCategoryName from "../utils/utils.js";
 
 export const Shop = () => {
@@ -240,7 +239,7 @@ export const Shop = () => {
                             <h4>{beautifyCategoryName(category)}</h4>
                         )
                     ) : (
-                        <h2>Search results</h2>
+                        <h4>Search results</h4>
                     )}
 
                     {isFetchProductError ? (
