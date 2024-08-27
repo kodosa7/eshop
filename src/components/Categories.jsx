@@ -31,7 +31,7 @@ const Categories = ({ categories, category, handleSelectCategory, isLoadingMessa
 
     return (
         <>
-            <h2>Categories</h2>
+            <h4>Categories</h4>
             <a className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
                     category === "" ? "link-info" : "link-dark"
                 }`}

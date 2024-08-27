@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Checkout from "./Checkout";
 import CartItem from "./CartItem";
+import iconShoppingCartSad from "/src/assets/shopping-cart-sad.svg";
 
 const Cart = ({
     productsInCart,
@@ -39,14 +40,14 @@ const Cart = ({
                     </div>
                 )}
 
-                <h2>Cart</h2>
-                <p>Add something to your cart, make it from your heart.</p>
+                <h4>Shopping Cart</h4>
+                <p>I'm so empty <span><img className="sad-cart-icon" src={iconShoppingCartSad}></img></span></p>
             </>
         );
     } else {
         return (
             <>
-                <h2>Cart</h2>
+                <h4>Shopping Cart</h4>
                 {productsInCart.map((prod) => (
                     <CartItem
                         key={prod.id}

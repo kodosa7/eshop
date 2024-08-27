@@ -235,9 +235,9 @@ export const Shop = () => {
                 <div className="col">
                     {searchedValue === "" ? (
                         !category ? (
-                            <h2>All products</h2>
+                            <h4>All products</h4>
                         ) : (
-                            <h2>{beautifyCategoryName(category)}</h2>
+                            <h4>{beautifyCategoryName(category)}</h4>
                         )
                     ) : (
                         <h2>Search results</h2>
