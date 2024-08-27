@@ -200,7 +200,11 @@ export const Shop = () => {
 
     return (
         <>
-            <Header />
+            <Header 
+                searchInputValue={searchInputValue}
+                setSearchInputValue={setSearchInputValue}
+                onSubmitSearchForm={onSubmitSearchForm}
+            />
             <Cart
                 productsInCart={selectedProducts}
                 setProductsInCart={setSelectedProducts}
@@ -211,11 +215,6 @@ export const Shop = () => {
                 handleRemoveFromCartBtn={handleRemoveFromCart}
                 isOrderSent={isOrderSent}
                 setIsOrderSent={setIsOrderSent}
-            />
-            <Search
-                searchInputValue={searchInputValue}
-                setSearchInputValue={setSearchInputValue}
-                onSubmitSearchForm={onSubmitSearchForm}
             />
 
             <div className="row">
