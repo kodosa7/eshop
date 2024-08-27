@@ -49,7 +49,7 @@ const Categories = ({ categories, category, handleSelectCategory, isLoadingMessa
             {categories.map((categoryItem, i) => (
                 <div key={i} className="col">
                     
-                    <a className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
+                    <a className={`lh-lg link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
                             category === categoryItem.slug ? "link-primary" : "link-dark"
                         }`}
                         href="#"
