@@ -33,7 +33,7 @@ const Categories = ({ categories, category, handleSelectCategory, isLoadingMessa
         <>
             <h4>Categories</h4>
             <a className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
-                    category === "" ? "link-info" : "link-dark"
+                    category === "" ? "link-primary" : "link-dark"
                 }`}
                 href="#"
                 onClick={() => handleSelectCategory("")}
@@ -50,7 +50,7 @@ const Categories = ({ categories, category, handleSelectCategory, isLoadingMessa
                 <div key={i} className="col">
                     
                     <a className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
-                            category === categoryItem.slug ? "link-info" : "link-dark"
+                            category === categoryItem.slug ? "link-primary" : "link-dark"
                         }`}
                         href="#"
                         onClick={() => handleSelectCategory(categoryItem.slug)}
