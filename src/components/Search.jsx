@@ -5,7 +5,7 @@ const Search = ({ searchInputValue, setSearchInputValue, onSubmitSearchForm }) =
                 <input
                     className="form-control"
                     type="search"
-                    placeholder="Search"
+                    placeholder="What are you looking for? (e.g. smartphone...)"
                     id="search1"
                     name="search"
                     aria-label="Search input field"
