@@ -1,5 +1,5 @@
 import logo from "/src/assets/logo.svg";
-import mascot from "/src/assets/mascot.webp";
+import heart from "/src/assets/heart.svg";
 import { getYear } from "../utils/utils.js";
 import { useState } from "react";
 
@@ -44,7 +44,8 @@ const Footer = () => {
             </div>
             <div className="perex row pt-4">
                 <div className="d-flex justify-content-center">
-                    ❤️ © {currentYear} Azia.mart |&nbsp;<i className="bi bi-info-circle-fill pe-1"></i><a href="#">Privacy Policy</a>
+                <img src={heart}></img>&nbsp;
+                © {currentYear} Azia.mart |&nbsp;<i className="bi bi-info-circle-fill pe-1"></i><a href="#">Privacy Policy</a>
                 </div>
             </div>
         </footer>
