@@ -36,22 +36,13 @@ const Footer = () => {
                     <li><a href="#">Compliance</a></li>
                 </ul>
             </div>
-            <div className="col-2">
+            <div className="col-3">
                 <h6>Follow us</h6>
-                <ul>
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Instagram</a></li>
-                    <li><a href="#">YouTube</a></li>
-                    <li><a href="#">X</a></li>
-                </ul>
+                <a href="#"><i className="bi bi-facebook fs-2 pe-3"></i></a>
+                <a href="#"><i className="bi bi-instagram fs-2 pe-3"></i></a>
+                <a href="#"><i className="bi bi-youtube fs-2 pe-3"></i></a>
+                <a href="#"><i className="bi bi-twitter-x fs-2"></i></a>
             </div>
-            {/* <div className="position-absolute top-0 end-0" style={{ zIndex: 1, maxWidth: "3%" }}>
-                <img 
-                    src={mascot} 
-                    alt="Mascot" 
-                    className="img-fluid"
-                />
-            </div> */}
             <div className="perex row pt-4 d-flex justify-content-center">
                 ❤️ © {currentYear} Azia.mart Limited | Privacy Policy
             </div>
