@@ -20,6 +20,12 @@ h6 {
     font-size: 0.85rem;
 }
 
+.perex a,
+.perex a:hover {
+    text-decoration: none;
+    font-weight: normal;
+}
+
 .container {
     background-color: #fff;
 }
@@ -32,7 +38,8 @@ h6 {
     border-bottom: 0;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    box-shadow: 0 0 3px rgba(0, 0, 0, .2);;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, .2);
+    clip-path: inset(0 -10px 0 0);
 }
 
 .footer-container {

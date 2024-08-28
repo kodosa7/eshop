@@ -43,8 +43,10 @@ const Footer = () => {
                 <a href="#"><i className="bi bi-youtube fs-2 pe-3"></i></a>
                 <a href="#"><i className="bi bi-twitter-x fs-2"></i></a>
             </div>
-            <div className="perex row pt-4 d-flex justify-content-center">
-                ❤️ © {currentYear} Azia.mart Limited | Privacy Policy
+            <div className="perex row pt-4">
+                <div className="d-flex justify-content-center">
+                    ❤️ © {currentYear} Azia.mart |&nbsp;<a href="#">Privacy Policy</a>
+                </div>
             </div>
         </footer>
     )
