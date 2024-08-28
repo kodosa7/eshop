@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import Product from "./Product";
 import Cart from "./Cart";
 import Categories from "./Categories";
-import beautifyCategoryName from "../utils/utils.js";
+import { beautifyCategoryName } from "../utils/utils.js";
 
 export const Shop = () => {
     const [selectedProducts, setSelectedProducts] = useState([]);

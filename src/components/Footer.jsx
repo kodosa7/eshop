@@ -1,9 +1,13 @@
 import logo from "/src/assets/logo.svg";
 import mascot from "/src/assets/mascot.webp";
+import { getYear } from "../utils/utils.js";
+import { useState } from "react";
 
 const Footer = () => {
+    const [currentYear, setCurrentDate] = useState(getYear());
+
     return (
-        <footer className="footer-container mt-4 mb-4 position-relative row pt-4">
+        <footer className="footer-container mt-4 pb-5 position-relative row pt-4">
             <div className="col-12 col-md-3 mb-3 mb-md-0 text-center text-md-start">
                 <img src={ logo } alt="Logo" className="img-fluid" style={{ maxHeight: "50px", position: "relative", zIndex: 2 }} />
             </div>
@@ -48,6 +52,9 @@ const Footer = () => {
                     className="img-fluid"
                 />
             </div> */}
+            <div className="perex row pt-4 d-flex justify-content-center">
+                ❤️ © {currentYear} Azia.mart Limited | Privacy Policy
+            </div>
         </footer>
     )
 }

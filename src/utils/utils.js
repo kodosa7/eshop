@@ -15,4 +15,9 @@ const beautifyCategoryName = (categoryName) => {
     return newCategoryName;
 };
 
-export default beautifyCategoryName;
+const getYear = () => {
+    const today = new Date();
+    return today.getFullYear();
+};
+
+export { beautifyCategoryName, getYear };
