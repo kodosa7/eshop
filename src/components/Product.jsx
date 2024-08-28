@@ -13,7 +13,7 @@ const Product = ({ product, onAddToCartBtn }) => {
             <Rating rating={product.rating} />
             <div className="card-footer">
                 <div className="d-flex justify-content-between align-items-center text-wrap">
-                    <div className="fw-bold fs-4 pe-1"><span className="fw-bold fs-4 opacity-25">$</span>{product.discountPrice}</div>
+                    <div className="fw-bold fs-4 pe-1"><span className="fw-bold fs-6 opacity-25">$</span>{product.discountPrice}</div>
                     <div className="fw-light fs-6">
                         <s>${product.price}</s>
                     </div>
