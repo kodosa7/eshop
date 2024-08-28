@@ -18,7 +18,6 @@ const Footer = () => {
                     <li><a href="#">Payment Options</a></li>
                     <li><a href="#">Returns and Refunds</a></li>
                     <li><a href="#">Terms and Conditions</a></li>
-                    <li><a href="#">Advertising Terms and Conditions</a></li>
                     <li><a href="#">Fraud and Security</a></li>
                 </ul>
             </div>
