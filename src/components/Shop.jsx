@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 import Product from "./Product";
 import Cart from "./Cart";
 import Categories from "./Categories";
@@ -267,6 +268,7 @@ export const Shop = () => {
                     )}
                 </div>
             </div>
+            <Footer />
         </>
     );
 };
