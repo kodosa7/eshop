@@ -45,7 +45,7 @@ const Footer = () => {
             </div>
             <div className="perex row pt-4">
                 <div className="d-flex justify-content-center">
-                    ❤️ © {currentYear} Azia.mart |&nbsp;<a href="#">Privacy Policy</a>
+                    ❤️ © {currentYear} Azia.mart |&nbsp;<i className="bi bi-info-circle-fill pe-1"></i><a href="#">Privacy Policy</a>
                 </div>
             </div>
         </footer>
