@@ -8,6 +8,10 @@ This app is a mockup e-shop website app that displays list of goods fetched from
 
 [https://els-eshop.netlify.app/](https://els-eshop.netlify.app/)
 
+## Refference image
+
+![image](https://github.com/user-attachments/assets/529fdbbd-6a86-4d31-9932-e59168b57615)
+
 ## Data source
 
 The data is fetched from JSON-server hosted on [https://dummyjson.com](dummyjson.com).
@@ -38,7 +42,7 @@ The data is fetched from JSON-server hosted on [https://dummyjson.com](dummyjson
 
 ## Disclaimer
 
-This app is built for educational purposes only. It is not affiliated with any real eshop or eshop data.
+This app is built for educational purposes only. It is not affiliated with any real eshop, eshop data or copyrighted material.
 
 ## License
 
