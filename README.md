@@ -1,4 +1,4 @@
-# E-shop
+# The E-Shop Project
 
 ## Description
 
