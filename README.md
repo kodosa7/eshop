@@ -2,8 +2,8 @@
 
 ## Description
 
-This app is a mockup e-shop website app that displays list of goods fetched from an API in categories, with an ordering functionality.  
-It has been made as an educational project during the [CoreSkill](https://coreskill.tech/) Mentoring Programme.
+This app is a mockup e-shop website app that displays list of goods fetched from an API in categories, with a simple ordering functionality.  
+It has been developed as an educational project during the [CoreSkill](https://coreskill.tech/) Mentoring Programme and completed after it.
 
 ## Website
 
