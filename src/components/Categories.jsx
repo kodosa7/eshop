@@ -33,14 +33,14 @@ const Categories = ({ categories, category, handleSelectCategory, isLoadingMessa
         <>
             <h4>Categories</h4>
             <a className={`link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
-                    category === "" ? "link-primary" : "link-dark"
+                    category === "" ? "link-primary link-opacity-100 link-opacity-75-hover" : "link-primary"
                 }`}
                 href="#"
                 onClick={() => handleSelectCategory("")}
             >
                 {isLoadingMessage ? "" : (
                     <>
-                        <i className={`bi ${categoryIcons[""]}`}></i>&nbsp;
+                        <i className={`bi ${categoryIcons[""]} pe-1`}></i>
                         All Products
                     </>
                 )}
@@ -50,12 +50,12 @@ const Categories = ({ categories, category, handleSelectCategory, isLoadingMessa
                 <div key={i} className="col">
                     
                     <a className={`lh-lg link-underline link-underline-opacity-0 link-underline-opacity-75-hover ${
-                            category === categoryItem.slug ? "link-primary" : "link-dark"
+                            category === categoryItem.slug ? "link-primary link-opacity-100 link-opacity-75-hover" : "link-primary"
                         }`}
                         href="#"
                         onClick={() => handleSelectCategory(categoryItem.slug)}
                     >
-                        <i className={`bi ${categoryIcons[categoryItem.slug] || 'bi-tag'}`}></i>&nbsp;
+                        <i className={`bi ${categoryIcons[categoryItem.slug] || 'bi-tag'} pe-1`}></i>
                         {categoryItem.name}
                     </a>
                 </div>
