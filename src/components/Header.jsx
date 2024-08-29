@@ -6,7 +6,7 @@ const Header = ({ searchInputValue, setSearchInputValue, onSubmitSearchForm }) =
     return (
         <header className="container mb-4 position-relative">
             <div className="row pt-4">
-                <div className="col-12 col-md-3 mb-3 mb-md-0 text-center text-md-start">
+                <div className="col-12 col-md-3 mb-3 mb-md-0 text-md-start">
                     <img src={logo} alt="Logo" className="img-fluid" style={{ maxHeight: "50px", position: "relative", zIndex: 2 }} />
                 </div>
                 <div className="col-12 col-md-6 position-relative" style={{ zIndex: 2 }}>
