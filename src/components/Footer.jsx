@@ -9,7 +9,9 @@ const Footer = () => {
     return (
         <footer className="footer-container mt-4 pb-5 position-relative row pt-4">
             <div className="col-12 col-md-3 mb-3 mb-md-0 text-center text-md-start">
-                <img src={ logo } alt="Logo" className="img-fluid" style={{ maxHeight: "50px", position: "relative", zIndex: 2 }} />
+                <a href="#">
+                    <img src={ logo } alt="Logo" className="img-fluid" style={{ maxHeight: "50px", position: "relative", zIndex: 2 }} />
+                </a>
             </div>
             <div className="col-md-2">
                 <h6>Shipping</h6>
