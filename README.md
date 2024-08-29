@@ -45,6 +45,11 @@ The data is fetched from JSON-server hosted on [https://dummyjson.com](dummyjson
 
 This app is built for educational purposes only. It is not affiliated with any real eshop, eshop data or copyrighted material.
 
+## About the author
+
+Creative computer enthusiast and programmer looking for an opportunity as a Front-end developer.
+For further information, feel free to visit [https://senovska.eu](my Portfolio Website).
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
