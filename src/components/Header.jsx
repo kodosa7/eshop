@@ -21,7 +21,7 @@ const Header = ({ searchInputValue, setSearchInputValue, onSubmitSearchForm }) =
                     </div>
                 </div>
             </div>
-            <div className="position-absolute top-0 end-0" style={{ zIndex: 1, maxWidth: "15%" }}>
+            <div className="position-absolute top-0 end-0" style={{ zIndex: 1, maxWidth: "11%" }}>
                 <img 
                     src={mascot} 
                     alt="Mascot" 
