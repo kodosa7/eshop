@@ -218,7 +218,7 @@ export const Shop = () => {
             />
 
             <div className="shop-container row">
-                <div className="col-3 mt-2 mb-2 ml-1 mr-1">
+                <div className="col-sm-3 mt-2 mb-2 ml-1 mr-1">
                     {isFetchCategoriesError ? (
                         <p>No categories found, no internet?</p>
                     ) : (
