@@ -47,8 +47,8 @@ This app is built for educational purposes only. It is not affiliated with any r
 
 ## About the author
 
-Creative computer enthusiast and programmer looking for an opportunity as a Front-end developer.
-For further information, feel free to visit [https://senovska.eu](my Portfolio Website).
+Creative computer enthusiast and programmer looking for an opportunity as a Front-end developer.  
+For further information, feel free to visit [My Portfolio Website](https://senovska.eu).
 
 ## License
 
