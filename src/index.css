@@ -11,13 +11,13 @@ h4 {
     font-size: 1.25rem;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 575px) {
     h4 {
-        font-size: 1rem;
+        font-size: 1.75rem;
     }
 
     a {
-        font-size: 0.675rem;
+        font-size: 1.5rem;
     }
 }
 
