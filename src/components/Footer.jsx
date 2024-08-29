@@ -1,4 +1,4 @@
-import logo from "/src/assets/logo.svg";
+import logo from "/src/assets/logo.webp";
 import heart from "/src/assets/heart.svg";
 import { getYear } from "../utils/utils.js";
 import { useState } from "react";

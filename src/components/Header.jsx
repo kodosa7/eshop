@@ -1,4 +1,4 @@
-import logo from "/src/assets/logo.svg";
+import logo from "/src/assets/logo.webp";
 import mascot from "/src/assets/mascot.webp";
 import Search from "./Search";
 
